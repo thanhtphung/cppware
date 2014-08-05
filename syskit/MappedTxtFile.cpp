@@ -12,7 +12,7 @@ BEGIN_NAMESPACE1(syskit)
 //!
 //! Map given existing file. Skip byte-order-marker and reveal it in the bom() method
 //! if skipBom is set. Don't look for leading byte-order-marker otherwise. The file is
-//! mapped in read-only mode is readOnly is true. Otherwise, the mapped file is writable.
+//! mapped in read-only mode if readOnly is true. Otherwise, the mapped file is writable.
 //! Constructor can fail if file is not accessible. Use isOk() to determine if the
 //! construction is successful.
 //!

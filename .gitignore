@@ -1,5 +1,9 @@
+Build/Bin/
+Build/Lib/
+cppware-dox/
 gcc46/
 gcc48/
 obj/
 *.suo
+*.swp
 *.vcxproj.user
