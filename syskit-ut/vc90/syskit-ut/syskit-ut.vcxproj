@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{23FF251D-863D-4740-A2FB-3425BC2B58D3}</ProjectGuid>
+    <RootNamespace>syskitut</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\exe-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\exed-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\exe-x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\exed-x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ROOT_DIR)appkit\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ROOT_DIR)appkit\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ROOT_DIR)appkit\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ROOT_DIR)appkit\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(TargetPath)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Atomic32Suite.cpp" />
+    <ClCompile Include="..\..\Atomic64Suite.cpp" />
+    <ClCompile Include="..\..\BitVec32Suite.cpp" />
+    <ClCompile Include="..\..\BitVec64Suite.cpp" />
+    <ClCompile Include="..\..\BitVecSuite.cpp" />
+    <ClCompile Include="..\..\BomSuite.cpp" />
+    <ClCompile Include="..\..\BstSuite.cpp" />
+    <ClCompile Include="..\..\BufArenaSuite.cpp" />
+    <ClCompile Include="..\..\CriSectionSuite.cpp" />
+    <ClCompile Include="..\..\D64HeapSuite.cpp" />
+    <ClCompile Include="..\..\D64VecSuite.cpp" />
+    <ClCompile Include="..\..\F32HeapSuite.cpp" />
+    <ClCompile Include="..\..\F32VecSuite.cpp" />
+    <ClCompile Include="..\..\FifoSuite.cpp" />
+    <ClCompile Include="..\..\GrowableSuite.cpp" />
+    <ClCompile Include="..\..\HashTableSuite.cpp" />
+    <ClCompile Include="..\..\HeapSuite.cpp" />
+    <ClCompile Include="..\..\HeapXSuite.cpp" />
+    <ClCompile Include="..\..\ItemQSuite.cpp" />
+    <ClCompile Include="..\..\LifoSuite.cpp" />
+    <ClCompile Include="..\..\MappedFileSuite.cpp" />
+    <ClCompile Include="..\..\MappedTxtFileSuite.cpp" />
+    <ClCompile Include="..\..\MiscSuite.cpp" />
+    <ClCompile Include="..\..\PrimeSuite.cpp" />
+    <ClCompile Include="..\..\ProcessSuite.cpp" />
+    <ClCompile Include="..\..\RefCountedSuite.cpp" />
+    <ClCompile Include="..\..\SemaphoreSuite.cpp" />
+    <ClCompile Include="..\..\ShmSuite.cpp" />
+    <ClCompile Include="..\..\SpinSectionSuite.cpp" />
+    <ClCompile Include="..\..\TreeSuite.cpp" />
+    <ClCompile Include="..\..\TrieSuite.cpp" />
+    <ClCompile Include="..\..\U16HeapSuite.cpp" />
+    <ClCompile Include="..\..\U16VecSuite.cpp" />
+    <ClCompile Include="..\..\U32HeapSuite.cpp" />
+    <ClCompile Include="..\..\U32VecSuite.cpp" />
+    <ClCompile Include="..\..\U64HeapSuite.cpp" />
+    <ClCompile Include="..\..\U64VecSuite.cpp" />
+    <ClCompile Include="..\..\Utf16SeqSuite.cpp" />
+    <ClCompile Include="..\..\Utf16Suite.cpp" />
+    <ClCompile Include="..\..\Utf8SeqSuite.cpp" />
+    <ClCompile Include="..\..\Utf8Suite.cpp" />
+    <ClCompile Include="..\..\VecSuite.cpp" />
+    <ClCompile Include="..\..\win\syskit-ut-pch-win.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\syskit-ut.cpp" />
+    <ClCompile Include="..\..\ThreadSuite.cpp" />
+    <ClCompile Include="..\..\ZippedSuite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Atomic32Suite.hpp" />
+    <ClInclude Include="..\..\Atomic64Suite.hpp" />
+    <ClInclude Include="..\..\BitVec32Suite.hpp" />
+    <ClInclude Include="..\..\BitVec64Suite.hpp" />
+    <ClInclude Include="..\..\BitVecSuite.hpp" />
+    <ClInclude Include="..\..\BomSuite.hpp" />
+    <ClInclude Include="..\..\BstSuite.hpp" />
+    <ClInclude Include="..\..\BufArenaSuite.hpp" />
+    <ClInclude Include="..\..\CriSectionSuite.hpp" />
+    <ClInclude Include="..\..\D64HeapSuite.hpp" />
+    <ClInclude Include="..\..\D64VecSuite.hpp" />
+    <ClInclude Include="..\..\F32HeapSuite.hpp" />
+    <ClInclude Include="..\..\F32VecSuite.hpp" />
+    <ClInclude Include="..\..\FifoSuite.hpp" />
+    <ClInclude Include="..\..\GrowableSuite.hpp" />
+    <ClInclude Include="..\..\HashTableSuite.hpp" />
+    <ClInclude Include="..\..\HeapSuite.hpp" />
+    <ClInclude Include="..\..\HeapXSuite.hpp" />
+    <ClInclude Include="..\..\ItemQSuite.hpp" />
+    <ClInclude Include="..\..\LifoSuite.hpp" />
+    <ClInclude Include="..\..\MappedFileSuite.hpp" />
+    <ClInclude Include="..\..\MappedTxtFileSuite.hpp" />
+    <ClInclude Include="..\..\MiscSuite.hpp" />
+    <ClInclude Include="..\..\PrimeSuite.hpp" />
+    <ClInclude Include="..\..\ProcessSuite.hpp" />
+    <ClInclude Include="..\..\RefCountedSuite.hpp" />
+    <ClInclude Include="..\..\SemaphoreSuite.hpp" />
+    <ClInclude Include="..\..\ShmSuite.hpp" />
+    <ClInclude Include="..\..\SpinSectionSuite.hpp" />
+    <ClInclude Include="..\..\syskit-ut-pch.h" />
+    <ClInclude Include="..\..\ThreadSuite.hpp" />
+    <ClInclude Include="..\..\TreeSuite.hpp" />
+    <ClInclude Include="..\..\TrieSuite.hpp" />
+    <ClInclude Include="..\..\U16HeapSuite.hpp" />
+    <ClInclude Include="..\..\U16VecSuite.hpp" />
+    <ClInclude Include="..\..\U32HeapSuite.hpp" />
+    <ClInclude Include="..\..\U32VecSuite.hpp" />
+    <ClInclude Include="..\..\U64HeapSuite.hpp" />
+    <ClInclude Include="..\..\U64VecSuite.hpp" />
+    <ClInclude Include="..\..\Utf16SeqSuite.hpp" />
+    <ClInclude Include="..\..\Utf16Suite.hpp" />
+    <ClInclude Include="..\..\Utf8SeqSuite.hpp" />
+    <ClInclude Include="..\..\Utf8Suite.hpp" />
+    <ClInclude Include="..\..\VecSuite.hpp" />
+    <ClInclude Include="..\..\ZippedSuite.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\appkit\vc90\appkit\appkit.vcxproj">
+      <Project>{7787ddc5-57a8-4ba1-bc37-94f45e82b88f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\syskit\vc90\syskit\syskit.vcxproj">
+      <Project>{aab2ed1c-b225-45fc-bd31-08dcb241fa6c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
