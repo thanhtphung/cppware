@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <ROOT_DIR>$(SolutionDir)..\</ROOT_DIR>
+    <PLATFORM_BASE>$(PlatformToolset)-$(Platform)</PLATFORM_BASE>
+    <LIB_DIR>$(ROOT_DIR)Build\Lib\$(PLATFORM_BASE)\</LIB_DIR>
+    <OBJ_DIR>$(ROOT_DIR)Build\obj\$(PLATFORM_BASE)\</OBJ_DIR>
+    <INCLUDE_DIR>$(ProjectDir)..\..\..\</INCLUDE_DIR>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(LIB_DIR)</OutDir>
+    <IntDir>$(OBJ_DIR)$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;$(INCLUDE_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>$(ProjectName)-pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>_LIB;_WIN32_WINNT=0x0502;NDEBUG;WIN32;WINVER=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="ROOT_DIR">
+      <Value>$(ROOT_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PLATFORM_BASE">
+      <Value>$(PLATFORM_BASE)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LIB_DIR">
+      <Value>$(LIB_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OBJ_DIR">
+      <Value>$(OBJ_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="INCLUDE_DIR">
+      <Value>$(INCLUDE_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
