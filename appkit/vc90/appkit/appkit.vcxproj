@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7787DDC5-57A8-4BA1-BC37-94F45E82B88F}</ProjectGuid>
+    <RootNamespace>appkit</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\lib-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\libd-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\lib-x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\libd-x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\App-0.cpp" />
+    <ClCompile Include="..\..\App-1.cpp" />
+    <ClCompile Include="..\..\App.cpp" />
+    <ClCompile Include="..\..\AppDllMain.cpp" />
+    <ClCompile Include="..\..\AppMain.cpp" />
+    <ClCompile Include="..\..\Bool.cpp" />
+    <ClCompile Include="..\..\BufPoolCmd.cpp" />
+    <ClCompile Include="..\..\Cmd.cpp" />
+    <ClCompile Include="..\..\CmdAgent.cpp" />
+    <ClCompile Include="..\..\CmdCmd.cpp" />
+    <ClCompile Include="..\..\DicFile.cpp" />
+    <ClCompile Include="..\..\F32.cpp" />
+    <ClCompile Include="..\..\Messenger.cpp" />
+    <ClCompile Include="..\..\MiscDbugCmd.cpp" />
+    <ClCompile Include="..\..\NetDemon.cpp" />
+    <ClCompile Include="..\..\NetDemonCmd.cpp" />
+    <ClCompile Include="..\..\NewsAnchor.cpp" />
+    <ClCompile Include="..\..\NewsCmd.cpp" />
+    <ClCompile Include="..\..\NewsObserver.cpp" />
+    <ClCompile Include="..\..\NewsStory.cpp" />
+    <ClCompile Include="..\..\Observable.cpp" />
+    <ClCompile Include="..\..\NewsSubject.cpp" />
+    <ClCompile Include="..\..\Observer.cpp" />
+    <ClCompile Include="..\..\QuotedString.cpp" />
+    <ClCompile Include="..\..\U64Set.cpp" />
+    <ClCompile Include="..\..\U8.cpp" />
+    <ClCompile Include="..\..\WinApp.cpp" />
+    <ClCompile Include="..\..\WinAppCmd.cpp" />
+    <ClCompile Include="..\..\WinAppMain.cpp" />
+    <ClCompile Include="..\..\WinCmd.cpp" />
+    <ClCompile Include="..\..\win\CmdLine-win.cpp" />
+    <ClCompile Include="..\..\CmdLine.cpp" />
+    <ClCompile Include="..\..\CmdMap.cpp" />
+    <ClCompile Include="..\..\win\appkit-pch-win.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\win\crt-win.cpp" />
+    <ClCompile Include="..\..\CsvRow.cpp" />
+    <ClCompile Include="..\..\D64.cpp" />
+    <ClCompile Include="..\..\DelimitedTxt.cpp" />
+    <ClCompile Include="..\..\Demon.cpp" />
+    <ClCompile Include="..\..\win\Demon-win.cpp" />
+    <ClCompile Include="..\..\win\Directory-win.cpp" />
+    <ClCompile Include="..\..\Directory.cpp" />
+    <ClCompile Include="..\..\LogPath.cpp" />
+    <ClCompile Include="..\..\Path.cpp" />
+    <ClCompile Include="..\..\RawView.cpp" />
+    <ClCompile Include="..\..\S32.cpp" />
+    <ClCompile Include="..\..\Set.cpp" />
+    <ClCompile Include="..\..\std.cpp" />
+    <ClCompile Include="..\..\Str.cpp" />
+    <ClCompile Include="..\..\StrArray.cpp" />
+    <ClCompile Include="..\..\win\std-win.cpp" />
+    <ClCompile Include="..\..\win\String-win.cpp" />
+    <ClCompile Include="..\..\String.cpp" />
+    <ClCompile Include="..\..\StringDic.cpp" />
+    <ClCompile Include="..\..\StringPair.cpp" />
+    <ClCompile Include="..\..\StringVec.cpp" />
+    <ClCompile Include="..\..\SysIo.cpp" />
+    <ClCompile Include="..\..\TempDir.cpp" />
+    <ClCompile Include="..\..\TempFile.cpp" />
+    <ClCompile Include="..\..\Toeprint.cpp" />
+    <ClCompile Include="..\..\Tokenizer.cpp" />
+    <ClCompile Include="..\..\U16.cpp" />
+    <ClCompile Include="..\..\U16Set.cpp" />
+    <ClCompile Include="..\..\U32.cpp" />
+    <ClCompile Include="..\..\U32Set.cpp" />
+    <ClCompile Include="..\..\U64.cpp" />
+    <ClCompile Include="..\..\UnitTestBed.cpp" />
+    <ClCompile Include="..\..\UnitTestStat.cpp" />
+    <ClCompile Include="..\..\XmlDoc.cpp" />
+    <ClCompile Include="..\..\XmlElement.cpp" />
+    <ClCompile Include="..\..\XmlLexer.cpp" />
+    <ClCompile Include="..\..\XmlProlog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\App.hpp" />
+    <ClInclude Include="..\..\appkit-pch.h" />
+    <ClInclude Include="..\..\Bool.hpp" />
+    <ClInclude Include="..\..\BufPoolCmd.hpp" />
+    <ClInclude Include="..\..\Cmd.hpp" />
+    <ClInclude Include="..\..\CmdAgent.hpp" />
+    <ClInclude Include="..\..\CmdCmd.hpp" />
+    <ClInclude Include="..\..\CmdLine.hpp" />
+    <ClInclude Include="..\..\CmdMap.hpp" />
+    <ClInclude Include="..\..\crt.hpp" />
+    <ClInclude Include="..\..\CsvRow.hpp" />
+    <ClInclude Include="..\..\D64.hpp" />
+    <ClInclude Include="..\..\DelimitedTxt.hpp" />
+    <ClInclude Include="..\..\Demon.hpp" />
+    <ClInclude Include="..\..\DicFile.hpp" />
+    <ClInclude Include="..\..\Directory.hpp" />
+    <ClInclude Include="..\..\F32.hpp" />
+    <ClInclude Include="..\..\LogPath.hpp" />
+    <ClInclude Include="..\..\Messenger.hpp" />
+    <ClInclude Include="..\..\MiscDbugCmd.hpp" />
+    <ClInclude Include="..\..\NetDemon.hpp" />
+    <ClInclude Include="..\..\NetDemonCmd.hpp" />
+    <ClInclude Include="..\..\NewsAnchor.hpp" />
+    <ClInclude Include="..\..\NewsCmd.hpp" />
+    <ClInclude Include="..\..\NewsObserver.hpp" />
+    <ClInclude Include="..\..\NewsStory.hpp" />
+    <ClInclude Include="..\..\Observable.hpp" />
+    <ClInclude Include="..\..\NewsSubject.hpp" />
+    <ClInclude Include="..\..\Observer.hpp" />
+    <ClInclude Include="..\..\Path.hpp" />
+    <ClInclude Include="..\..\QuotedString.hpp" />
+    <ClInclude Include="..\..\RawView.hpp" />
+    <ClInclude Include="..\..\S32.hpp" />
+    <ClInclude Include="..\..\Set.hpp" />
+    <ClInclude Include="..\..\std.hpp" />
+    <ClInclude Include="..\..\Str.hpp" />
+    <ClInclude Include="..\..\StrArray.hpp" />
+    <ClInclude Include="..\..\String.hpp" />
+    <ClInclude Include="..\..\StringDic.hpp" />
+    <ClInclude Include="..\..\StringPair.hpp" />
+    <ClInclude Include="..\..\StringVec.hpp" />
+    <ClInclude Include="..\..\SysIo.hpp" />
+    <ClInclude Include="..\..\TempDir.hpp" />
+    <ClInclude Include="..\..\TempFile.hpp" />
+    <ClInclude Include="..\..\Toeprint.hpp" />
+    <ClInclude Include="..\..\Tokenizer.hpp" />
+    <ClInclude Include="..\..\U16.hpp" />
+    <ClInclude Include="..\..\U16Set.hpp" />
+    <ClInclude Include="..\..\U32.hpp" />
+    <ClInclude Include="..\..\U32Set.hpp" />
+    <ClInclude Include="..\..\U64.hpp" />
+    <ClInclude Include="..\..\U64Set.hpp" />
+    <ClInclude Include="..\..\U8.hpp" />
+    <ClInclude Include="..\..\UnitTestBed.hpp" />
+    <ClInclude Include="..\..\UnitTestStat.hpp" />
+    <ClInclude Include="..\..\Uword.hpp" />
+    <ClInclude Include="..\..\win32\F32-win32.hpp" />
+    <ClInclude Include="..\..\WinApp.hpp" />
+    <ClInclude Include="..\..\WinAppCmd.hpp" />
+    <ClInclude Include="..\..\WinCmd.hpp" />
+    <ClInclude Include="..\..\win\crt-win.hpp" />
+    <ClInclude Include="..\..\win\link-with-appkit.h" />
+    <ClInclude Include="..\..\win\std-win.hpp" />
+    <ClInclude Include="..\..\win\String-win.hpp" />
+    <ClInclude Include="..\..\x64\F32-x64.hpp" />
+    <ClInclude Include="..\..\XmlDoc.hpp" />
+    <ClInclude Include="..\..\XmlElement.hpp" />
+    <ClInclude Include="..\..\XmlLexer.hpp" />
+    <ClInclude Include="..\..\XmlProlog.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
