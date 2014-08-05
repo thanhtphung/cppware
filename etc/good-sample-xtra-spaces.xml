@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!--xml file with no unknowns (good-sample is normalized for XmlDoc) /*misc prolog item 1/2*/-->
+<!--xml file with no unknowns (good-sample-xtra-spaces is not normalized for XmlDoc) /*misc prolog item 2/2*/-->
+<root>
+  <!--comment with double-hyphens is not okay-->
+  <![CDATA[Cdata]]>
+  <mom0>
+    <!--empty-element with no attributes-->
+    <empty-element/>
+    <empty-element  a="a"	bb="bb"
+ccc   =
+"ccc"/>
+    <!--character data with special characters-->
+    <![CDATA['"<>&]]>
+    <!--no content-->
+    <e0>
+    </e0>
+    <!--some content-->
+    <e1>body</e1>
+    <!--some content with escape sequences-->
+    <e2>&quot;body&quot;&amp;&lt;&gt;</e2>
+    <non-empty-element n="&#1;&apos;">body</non-empty-element>
+    <e3>
+      content
+	with
+siblings
+      <sib0>sib0</sib0>
+      <sib1>sib1</sib1>
+    </e3>
+    <e4><!----></e4>
+  </mom0>
+  <!--character data with tricky-end-->
+  <![CDATA[]123]<]]]>
+  <uncle name = "abc/123" />
+  <mom1>
+    <element0>
+      content with siblings
+      <!--content with siblings-->
+      more  content		 with
+
+ siblings
+
+
+
+      <!--content with siblings-->
+      <![CDATA["	no escape 'sequences' required"]]>
+      more  and  more  content  with  siblings
+      <baby>
+      </baby>
+      more	and	more	and	more	content	with	siblings
+      <baby/>
+      more and more and more and more content with siblings
+    </element0>
+  </mom1>
+</root>

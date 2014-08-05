@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xml file with non-ASCII (tiếng Việt, sample-utf8 is in XmlDoc's normalized form)-->
+<!--xml file with non-ASCII (tiếng Việt, sample-utf8-xtra-spaces is not in XmlDoc's normalized form)-->
+<bà-ngoại>
+  <!--hello=chào-->
+  <![CDATA[nước Việt có ba miền: Bắc, Trung, Nam]]>
+  <mẹ>
+    <con-gái-0/>
+    <con-gái-1 nguyên-âm 	=	 "&apos;aăâeêoôơuưi&apos;"/>
+    <con-gái-2>
+      &quot;làm ơn chớ nên nhớ
+ - chịu ơn chớ nên quên
+ -	người	xấu	chớ	nên	nói
+ - mình hay chớ nên khen&quot;
+      <cháu-ngoại-0>
+cháu ngoại 0</cháu-ngoại-0>
+      <cháu-ngoại-1>			cháu ngoại
+				 1</cháu-ngoại-1>
+    </con-gái-2>
+  </mẹ>
+</bà-ngoại>

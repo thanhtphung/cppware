@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- example persistent dictionary-->
+<Example>
+  <Dictionary id="Example">
+    <n0 a0="v0" a1="v1" a2="v2">v0</n0>
+    <dicName>CTLSimConfig</dicName>
+    <DistGate_SavedMenuItem>5m</DistGate_SavedMenuItem>
+    <DistGateSavedValue>5</DistGateSavedValue>
+    <MenuTimeout_SavedMenuItem>&apos;25 SEC&apos;</MenuTimeout_SavedMenuItem>
+    <MenuTimeoutValue>25</MenuTimeoutValue>
+    <Nightret_SavedMenuItem>RETICLE#</Nightret_SavedMenuItem>
+    <NightretBR_SavedMenuItem>0</NightretBR_SavedMenuItem>
+    <GenTimeOut_SavedMenuItem>&apos;5 MIN&apos;</GenTimeOut_SavedMenuItem>
+  </Dictionary>
+</Example>
