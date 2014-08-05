@@ -1,0 +1,224 @@
+﻿Environment at start of build:
+ALLUSERSPROFILE = C:\ProgramData
+APPDATA = C:\Users\ttp\AppData\Roaming
+CLASSPATH = .;C:\Program Files (x86)\Java\jre7\lib\ext\QTJava.zip
+CommonProgramFiles = C:\Program Files (x86)\Common Files
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+CommonProgramW6432 = C:\Program Files\Common Files
+COMPUTERNAME = WII-DESKTOP
+ComSpec = C:\Windows\system32\cmd.exe
+DDS_CONFIG = G:\projects\Mainline2\Install Projects\Core Framework\Data\DDSConfig
+DXSDK_DIR = C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\
+ERLANG_HOME = C:\Program Files\erl5.10.4
+FP_NO_HOST_CHECK = NO
+HOMEDRIVE = C:
+HOMEPATH = \Users\ttp
+LOCALAPPDATA = C:\Users\ttp\AppData\Local
+LOGONSERVER = \\WII-DESKTOP
+MSBuildLoadMicrosoftTargetsReadOnly = true
+MTS_SYS_DATA_PATH = C:\Data\Software\Fats4\Fats4Data
+NUMBER_OF_PROCESSORS = 8
+OnlineServices = Online Services
+OS = Windows_NT
+OSPL_HOME = C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32
+OSPL_LOGPATH = G:\projects\FIST32\Build\Bin\Logs
+OSPL_TARGET = x86.win32
+OSPL_TMPL_PATH = C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\etc\idlpp
+OSPL_URI = "file://C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\etc\config\ospl.xml"
+P4JOURNAL = C:\p4log\journal
+P4ROOT = G:\p4root
+Path = C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\NativeBinaries/x86;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Codejock Software\MFC\Xtreme ToolkitPro v15.3.1\Bin\vc100;C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\host\lib;C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\lib;C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\bin;C:\OpenSpliceDDS_6.1\HDE\x86.win32\bin;G:\projects\FIST32\Shared\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\12.0\DLLShared\;C:\Program Files\Perforce;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\IBM\RationalPurifyPlus\Common;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\P;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\;C:\Program Files\OpenVPN\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\HashiCorp\Vagrant\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\bin;C:\data\software\fats4\Shared\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\12.0\DLLShared\;C:\Program Files\Perforce;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\IBM\RationalPurifyPlus\Common;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Perforce\Server
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PCBRAND = Pavilion
+PkgDefApplicationConfigFile = C:\Users\ttp\AppData\Local\Microsoft\VisualStudio\12.0\devenv.exe.config
+Platform = MCD
+PLUGIN_PATH = G:\projects\Mainline2\Plugins\bin\
+prismtech_LICENSE = C:\Program Files (x86)\PrismTech\OpenSpliceDDS\V6.2.1\HDE\x86.win32\etc\license.lic
+PROCESSOR_ARCHITECTURE = x86
+PROCESSOR_ARCHITEW6432 = AMD64
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+PROCESSOR_LEVEL = 6
+PROCESSOR_REVISION = 3a09
+ProgramData = C:\ProgramData
+ProgramFiles = C:\Program Files (x86)
+ProgramFiles(x86) = C:\Program Files (x86)
+ProgramW6432 = C:\Program Files
+PSModulePath = C:\Windows\system32\WindowsPowerShell\v1.0\Modules\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\PowerShell\Modules\
+PUBLIC = C:\Users\Public
+QTJAVA = C:\Program Files (x86)\Java\jre7\lib\ext\QTJava.zip
+ROOT_DIR = G:\projects\Mainline2\
+SESSIONNAME = Console
+SystemDrive = C:
+SystemRoot = C:\Windows
+TEMP = C:\Users\ttp\AppData\Local\Temp
+TMP = C:\Users\ttp\AppData\Local\Temp
+USERDOMAIN = WII-DESKTOP
+USERNAME = ttp
+USERPROFILE = C:\Users\ttp
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+VisualStudioDir = C:\Users\ttp\Documents\Visual Studio 2013
+VisualStudioEdition = Microsoft Visual Studio Professional 2013
+VisualStudioVersion = 12.0
+VS100COMNTOOLS = c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS90COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\
+VSLANG = 1033
+windir = C:\Windows
+windows_tracing_flags = 3
+windows_tracing_logfile = C:\BVTBin\Tests\installpackage\csilogfile.log
+
+  BriefTestProgressListener.cpp
+  TestResultCollector.cpp
+  TestSuccessListener.cpp
+  TextTestProgressListener.cpp
+  TextTestResult.cpp
+  TextTestRunner.cpp
+  CompilerOutputter.cpp
+  TextOutputter.cpp
+  XmlOutputter.cpp
+  XmlOutputterHook.cpp
+  AdditionalMessage.cpp
+  Asserter.cpp
+  Exception.cpp
+  Message.cpp
+  SourceLine.cpp
+  SynchronizedObject.cpp
+  Test.cpp
+  TestAssert.cpp
+  TestCase.cpp
+  TestComposite.cpp
+  Generating Code...
+  Compiling...
+  TestFailure.cpp
+  TestLeaf.cpp
+  TestPath.cpp
+  TestResult.cpp
+  TestRunner.cpp
+  TestSuite.cpp
+  TestFactoryRegistry.cpp
+  TestNamer.cpp
+  TestSuiteBuilderContext.cpp
+  TypeInfoHelper.cpp
+  RepeatedTest.cpp
+  TestCaseDecorator.cpp
+  TestDecorator.cpp
+  TestSetUp.cpp
+  BeOsDynamicLibraryManager.cpp
+  DynamicLibraryManager.cpp
+  DynamicLibraryManagerException.cpp
+  PlugInManager.cpp
+  PlugInParameters.cpp
+  ShlDynamicLibraryManager.cpp
+  Generating Code...
+  Compiling...
+  TestPlugInDefaultImpl.cpp
+  UnixDynamicLibraryManager.cpp
+  Win32DynamicLibraryManager.cpp
+  StringTools.cpp
+  XmlDocument.cpp
+  XmlElement.cpp
+  DefaultProtector.cpp
+  Protector.cpp
+  ProtectorChain.cpp
+  Generating Code...
+  cppunit.vcxproj -> G:\githome\cppware\VSSolutionFiles\..\Build\Lib\v90-Win32\cppunitd.lib
+
+Project Performance Summary:
+    12869 ms  G:\githome\cppware\cppunit-1.12.1\vc90\cppunit\cppunit.vcxproj   1 calls
+              12869 ms  Build                                      1 calls
+
+Target Performance Summary:
+        0 ms  ResolveAssemblyReferences                  1 calls
+        0 ms  _PrepareForAssemblyReferenceResolution     1 calls
+        0 ms  MakeDirsForLib                             1 calls
+        0 ms  ResolvedXDCMake                            1 calls
+        0 ms  ResolveReferences                          1 calls
+        0 ms  SelectClCompile                            1 calls
+        0 ms  _CheckForCompileOutputs                    1 calls
+        0 ms  _Lib                                       1 calls
+        0 ms  _SelectedFiles                             1 calls
+        0 ms  _PrepareForBuild                           1 calls
+        0 ms  _Midl                                      1 calls
+        0 ms  BuildCompile                               1 calls
+        0 ms  SelectCustomBuild                          1 calls
+        0 ms  AfterBuildGenerateSourcesEvent             1 calls
+        0 ms  GetReferenceAssemblyPaths                  1 calls
+        0 ms  _GenerateXMLData                           1 calls
+        0 ms  ComputeCLInputPDBName                      1 calls
+        0 ms  _Manifest                                  1 calls
+        0 ms  AfterBuildGenerateSources                  1 calls
+        0 ms  BuildCompileTraverse                       1 calls
+        0 ms  _CopySourceItemsToOutputDirectory          1 calls
+        0 ms  CopyFilesToOutputDirectory                 1 calls
+        0 ms  GetCopyToOutputDirectoryXamlAppDefs        1 calls
+        0 ms  ComputeCLGeneratedLibInputs                1 calls
+        0 ms  GetFrameworkPaths                          1 calls
+        0 ms  AfterResourceCompile                       1 calls
+        0 ms  _Xsd                                       1 calls
+        0 ms  ComputeCustomBuildOutput                   1 calls
+        0 ms  ComputeLibInputsFromProject                1 calls
+        0 ms  BeforeLib                                  1 calls
+        0 ms  AfterBuild                                 1 calls
+        0 ms  PostBuildEvent                             1 calls
+        0 ms  _ResourceCompile                           1 calls
+        0 ms  Build                                      1 calls
+        0 ms  BuildLinkTraverse                          1 calls
+        0 ms  ComputeRCOutputs                           1 calls
+        0 ms  _GenerateSatelliteAssemblyInputs           1 calls
+        0 ms  _XdcMake                                   1 calls
+        0 ms  DoLibOutputFilesMatch                      1 calls
+        0 ms  CreateSatelliteAssemblies                  1 calls
+        0 ms  MakeDirsForResourceCompile                 1 calls
+        0 ms  AfterBuildCompileEvent                     1 calls
+        0 ms  ComputeMIDLGeneratedCompileInputs          1 calls
+        0 ms  PlatformToolsetPrepareForBuild             1 calls
+        0 ms  AfterResolveReferences                     1 calls
+        0 ms  BuildGenerateSourcesTraverse               1 calls
+        0 ms  BeforeResolveReferences                    1 calls
+        0 ms  ComputeReferenceCLInput                    1 calls
+        0 ms  _SplitProjectReferencesByFileExistence     1 calls
+        0 ms  ExpandSDKReferences                        1 calls
+        0 ms  PreBuildEvent                              1 calls
+        0 ms  MakeDirsForMidl                            1 calls
+        0 ms  _BscMake                                   1 calls
+        0 ms  _Appverifier                               1 calls
+        0 ms  _ClCompile                                 1 calls
+        0 ms  BuildLink                                  1 calls
+        0 ms  ComputeCLCompileGeneratedSbrFiles          1 calls
+        0 ms  _DetermineManagedStateFromCL               1 calls
+        0 ms  ResolveSDKReferences                       1 calls
+        0 ms  _ALink                                     1 calls
+        0 ms  BeforeClCompile                            1 calls
+        0 ms  ComputeLibAdditionalOptions                1 calls
+        0 ms  RegisterOutput                             1 calls
+        0 ms  BeforeResourceCompile                      1 calls
+        0 ms  AfterMidl                                  1 calls
+        0 ms  PreLinkEvent                               1 calls
+        0 ms  _Deploy                                    1 calls
+        0 ms  SetUserMacroEnvironmentVariables           1 calls
+        0 ms  BeforeBuildGenerateSources                 1 calls
+        0 ms  AfterClCompile                             1 calls
+        0 ms  MakeDirsForBscMake                         1 calls
+        0 ms  MakeDirsForXdcMake                         1 calls
+        0 ms  GetInstalledSDKLocations                   1 calls
+        0 ms  _GenerateWebServiceProxy                   1 calls
+        0 ms  BuildGenerateSources                       1 calls
+        0 ms  ComputeRCGeneratedLibInputs                1 calls
+        0 ms  AfterLib                                   1 calls
+        1 ms  GetCopyToOutputDirectoryItems              1 calls
+        1 ms  ComputeCLCompileGeneratedXDCFiles          1 calls
+        1 ms  AssignProjectConfiguration                 1 calls
+        1 ms  PrepareForBuild                            1 calls
+        1 ms  ResolveProjectReferences                   1 calls
+        1 ms  AssignTargetPaths                          1 calls
+        1 ms  PlatformPrepareForBuild                    1 calls
+        1 ms  FinalizeBuildStatus                        1 calls
+        2 ms  InitializeBuildStatus                      1 calls
+        2 ms  MakeDirsForCl                              1 calls
+        2 ms  SetBuildDefaultEnvironmentVariables        1 calls
+        3 ms  ComputeCLOutputs                           1 calls
+        4 ms  SetCABuildNativeEnvironmentVariables       1 calls
+        4 ms  _CheckForInvalidConfigurationAndPlatform   1 calls
+      111 ms  Lib                                        1 calls
+    12730 ms  ClCompile                                  1 calls
