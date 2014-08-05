@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AAB2ED1C-B225-45FC-BD31-08DCB241FA6C}</ProjectGuid>
+    <RootNamespace>syskit</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\lib-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\libd-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\lib-x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\libd-x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\zlib\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\zlib\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\zlib\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\zlib\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\BitVec32.cpp" />
+    <ClCompile Include="..\..\BitVec64.cpp" />
+    <ClCompile Include="..\..\Bom.cpp" />
+    <ClCompile Include="..\..\Bst.cpp" />
+    <ClCompile Include="..\..\BufArena.cpp" />
+    <ClCompile Include="..\..\BufPool.cpp" />
+    <ClCompile Include="..\..\CallStack.cpp" />
+    <ClCompile Include="..\..\D64Fifo.cpp" />
+    <ClCompile Include="..\..\D64Heap.cpp" />
+    <ClCompile Include="..\..\D64Lifo.cpp" />
+    <ClCompile Include="..\..\D64Vec.cpp" />
+    <ClCompile Include="..\..\F32Heap.cpp" />
+    <ClCompile Include="..\..\F32Vec.cpp" />
+    <ClCompile Include="..\..\Fifo.cpp" />
+    <ClCompile Include="..\..\Foundation.cpp" />
+    <ClCompile Include="..\..\Growable.cpp" />
+    <ClCompile Include="..\..\HashTable.cpp" />
+    <ClCompile Include="..\..\Heap.cpp" />
+    <ClCompile Include="..\..\HeapX.cpp" />
+    <ClCompile Include="..\..\ItemQ.cpp" />
+    <ClCompile Include="..\..\Lifo.cpp" />
+    <ClCompile Include="..\..\MappedFile.cpp" />
+    <ClCompile Include="..\..\MappedTxtFile.cpp" />
+    <ClCompile Include="..\..\Mutex.cpp" />
+    <ClCompile Include="..\..\Prime.cpp" />
+    <ClCompile Include="..\..\rational\pure_api.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\RefVec.cpp" />
+    <ClCompile Include="..\..\RoZipped.cpp" />
+    <ClCompile Include="..\..\SilentInputMode.cpp" />
+    <ClCompile Include="..\..\Singleton.cpp" />
+    <ClCompile Include="..\..\sys.cpp" />
+    <ClCompile Include="..\..\Tree.cpp" />
+    <ClCompile Include="..\..\Trie.cpp" />
+    <ClCompile Include="..\..\U16Heap.cpp" />
+    <ClCompile Include="..\..\U16Vec.cpp" />
+    <ClCompile Include="..\..\U32Fifo.cpp" />
+    <ClCompile Include="..\..\U32Heap.cpp" />
+    <ClCompile Include="..\..\U32Lifo.cpp" />
+    <ClCompile Include="..\..\U32Vec.cpp" />
+    <ClCompile Include="..\..\U64Fifo.cpp" />
+    <ClCompile Include="..\..\U64Heap.cpp" />
+    <ClCompile Include="..\..\U64Lifo.cpp" />
+    <ClCompile Include="..\..\U64Vec.cpp" />
+    <ClCompile Include="..\..\Utc.cpp" />
+    <ClCompile Include="..\..\Utf16Seq.cpp" />
+    <ClCompile Include="..\..\Utf8.cpp" />
+    <ClCompile Include="..\..\Utf8Seq.cpp" />
+    <ClCompile Include="..\..\UtfSeq.cpp" />
+    <ClCompile Include="..\..\Vec.cpp" />
+    <ClCompile Include="..\..\win32\Atomic64-win32.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\win32\BitVec64-win32.cpp" />
+    <ClCompile Include="..\..\win\CondVar-win.cpp" />
+    <ClCompile Include="..\..\CondVar.cpp" />
+    <ClCompile Include="..\..\win\Cpu-win.cpp" />
+    <ClCompile Include="..\..\Cpu.cpp" />
+    <ClCompile Include="..\..\win\CpuWatch-win.cpp" />
+    <ClCompile Include="..\..\CpuWatch.cpp" />
+    <ClCompile Include="..\..\win\CriSection-win.cpp" />
+    <ClCompile Include="..\..\CriSection.cpp" />
+    <ClCompile Include="..\..\Date.cpp" />
+    <ClCompile Include="..\..\DevNull.cpp" />
+    <ClCompile Include="..\..\win\Janitor-win.cpp" />
+    <ClCompile Include="..\..\win\MappedFile-win.cpp" />
+    <ClCompile Include="..\..\win\Module-win.cpp" />
+    <ClCompile Include="..\..\Module.cpp" />
+    <ClCompile Include="..\..\win\Mutex-win.cpp" />
+    <ClCompile Include="..\..\win\Process-win.cpp" />
+    <ClCompile Include="..\..\RefCounted.cpp" />
+    <ClCompile Include="..\..\win\RoZipped-win.cpp" />
+    <ClCompile Include="..\..\win\Semaphore-win.cpp" />
+    <ClCompile Include="..\..\Semaphore.cpp" />
+    <ClCompile Include="..\..\win\Shm-win.cpp" />
+    <ClCompile Include="..\..\win\SigTrap-win.cpp" />
+    <ClCompile Include="..\..\SpinSection.cpp" />
+    <ClCompile Include="..\..\StatWatch.cpp" />
+    <ClCompile Include="..\..\win\syskit-pch-win.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\win\Thread-win.cpp" />
+    <ClCompile Include="..\..\Thread.cpp" />
+    <ClCompile Include="..\..\win\ThreadKey-win.cpp" />
+    <ClCompile Include="..\..\TickTime.cpp" />
+    <ClCompile Include="..\..\win\Utc-win.cpp" />
+    <ClCompile Include="..\..\win\Zipped-win.cpp" />
+    <ClCompile Include="..\..\Zipped.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Atomic32.hpp" />
+    <ClInclude Include="..\..\Atomic64.hpp" />
+    <ClInclude Include="..\..\AtomicWord.hpp" />
+    <ClInclude Include="..\..\BitVec.hpp" />
+    <ClInclude Include="..\..\BitVec32.hpp" />
+    <ClInclude Include="..\..\BitVec64.hpp" />
+    <ClInclude Include="..\..\Bom.hpp" />
+    <ClInclude Include="..\..\Bst.hpp" />
+    <ClInclude Include="..\..\BufArena.hpp" />
+    <ClInclude Include="..\..\BufPool.hpp" />
+    <ClInclude Include="..\..\CallStack.hpp" />
+    <ClInclude Include="..\..\CondVar.hpp" />
+    <ClInclude Include="..\..\Cpu.hpp" />
+    <ClInclude Include="..\..\CpuWatch.hpp" />
+    <ClInclude Include="..\..\CriSection.hpp" />
+    <ClInclude Include="..\..\D64Fifo.hpp" />
+    <ClInclude Include="..\..\D64Heap.hpp" />
+    <ClInclude Include="..\..\D64Lifo.hpp" />
+    <ClInclude Include="..\..\D64Vec.hpp" />
+    <ClInclude Include="..\..\Date.hpp" />
+    <ClInclude Include="..\..\DevNull.hpp" />
+    <ClInclude Include="..\..\F32Heap.hpp" />
+    <ClInclude Include="..\..\F32Vec.hpp" />
+    <ClInclude Include="..\..\Fifo.hpp" />
+    <ClInclude Include="..\..\Foundation.hpp" />
+    <ClInclude Include="..\..\Growable.hpp" />
+    <ClInclude Include="..\..\HashTable.hpp" />
+    <ClInclude Include="..\..\Heap.hpp" />
+    <ClInclude Include="..\..\HeapX.hpp" />
+    <ClInclude Include="..\..\ItemQ.hpp" />
+    <ClInclude Include="..\..\Lifo.hpp" />
+    <ClInclude Include="..\..\macros.h" />
+    <ClInclude Include="..\..\MappedFile.hpp" />
+    <ClInclude Include="..\..\MappedTxtFile.hpp" />
+    <ClInclude Include="..\..\Module.hpp" />
+    <ClInclude Include="..\..\Mutex.hpp" />
+    <ClInclude Include="..\..\Prime.hpp" />
+    <ClInclude Include="..\..\Process.hpp" />
+    <ClInclude Include="..\..\RefCounted.hpp" />
+    <ClInclude Include="..\..\RefVec.hpp" />
+    <ClInclude Include="..\..\RoZipped.hpp" />
+    <ClInclude Include="..\..\Semaphore.hpp" />
+    <ClInclude Include="..\..\Shm.hpp" />
+    <ClInclude Include="..\..\SigTrap.hpp" />
+    <ClInclude Include="..\..\SilentInputMode.hpp" />
+    <ClInclude Include="..\..\Singleton.hpp" />
+    <ClInclude Include="..\..\SpinSection.hpp" />
+    <ClInclude Include="..\..\StatWatch.hpp" />
+    <ClInclude Include="..\..\sys.hpp" />
+    <ClInclude Include="..\..\syskit-pch.h" />
+    <ClInclude Include="..\..\Thread.hpp" />
+    <ClInclude Include="..\..\ThreadKey.hpp" />
+    <ClInclude Include="..\..\TickTime.hpp" />
+    <ClInclude Include="..\..\Tree.hpp" />
+    <ClInclude Include="..\..\Trie.hpp" />
+    <ClInclude Include="..\..\U16Heap.hpp" />
+    <ClInclude Include="..\..\U16Vec.hpp" />
+    <ClInclude Include="..\..\U32Fifo.hpp" />
+    <ClInclude Include="..\..\U32Heap.hpp" />
+    <ClInclude Include="..\..\U32Lifo.hpp" />
+    <ClInclude Include="..\..\U32Vec.hpp" />
+    <ClInclude Include="..\..\U64Fifo.hpp" />
+    <ClInclude Include="..\..\U64Heap.hpp" />
+    <ClInclude Include="..\..\U64Lifo.hpp" />
+    <ClInclude Include="..\..\U64Vec.hpp" />
+    <ClInclude Include="..\..\Utc.hpp" />
+    <ClInclude Include="..\..\Utf16.hpp" />
+    <ClInclude Include="..\..\Utf16Seq.hpp" />
+    <ClInclude Include="..\..\Utf8.hpp" />
+    <ClInclude Include="..\..\Utf8Seq.hpp" />
+    <ClInclude Include="..\..\UtfSeq.hpp" />
+    <ClInclude Include="..\..\Vec.hpp" />
+    <ClInclude Include="..\..\win32\Atomic64-win32.hpp" />
+    <ClInclude Include="..\..\win32\BitVec32-win32.hpp" />
+    <ClInclude Include="..\..\win32\BitVec64-win32.hpp" />
+    <ClInclude Include="..\..\win32\sys-win32.hpp" />
+    <ClInclude Include="..\..\win\Atomic32-win.hpp" />
+    <ClInclude Include="..\..\win\Atomic64-win.hpp" />
+    <ClInclude Include="..\..\win\CondVar-win.hpp" />
+    <ClInclude Include="..\..\win\Janitor-win.hpp" />
+    <ClInclude Include="..\..\win\link-with-syskit.h" />
+    <ClInclude Include="..\..\win\Semaphore-win.hpp" />
+    <ClInclude Include="..\..\win\sys-win.hpp" />
+    <ClInclude Include="..\..\x64\Atomic64-x64.hpp" />
+    <ClInclude Include="..\..\x64\BitVec32-x64.hpp" />
+    <ClInclude Include="..\..\x64\BitVec64-x64.hpp" />
+    <ClInclude Include="..\..\x64\sys-x64.hpp" />
+    <ClInclude Include="..\..\Zipped.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

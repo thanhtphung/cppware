@@ -1,2 +1,5 @@
+gcc46/
+gcc48/
 obj/
 *.suo
+*.vcxproj.user
