@@ -4,5 +4,5 @@
  containers, concurrency support, memory-mapped files, etc. Networking classes use the netkit
  namepace. Examples: IP/MAC addresses, sockets, etc. Application toolkit/framework classes
  use the appkit namespace. Examples: UTF-capable copy-on-write string, observer pattern,
- XML parasing, etc.
+ XML parsing, etc.
  */
