@@ -2,10 +2,10 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
+//! @file crt.hpp
+//! @namespace appkit
 #ifndef APPKIT_CRT_HPP
 #define APPKIT_CRT_HPP
-
-//! \file crt.hpp
 
 #include <cstdio>
 #include "syskit/sys.hpp"

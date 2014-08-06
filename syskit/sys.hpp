@@ -2,10 +2,10 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
+//! @file sys.hpp
+//! @namespace syskit
 #ifndef SYSKIT_SYS_HPP
 #define SYSKIT_SYS_HPP
-
-//! \file sys.hpp
 
 #include <string.h>
 #include "syskit/macros.h"

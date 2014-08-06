@@ -2,6 +2,8 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
+//! @file net.hpp
+//! @namespace netkit
 #ifndef NETKIT_NET_HPP
 #define NETKIT_NET_HPP
 

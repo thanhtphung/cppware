@@ -2,6 +2,7 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
+//! @file sys-x64.hpp
 #ifndef SYSKIT_SYS_X64_HPP
 #define SYSKIT_SYS_X64_HPP
 #ifndef SYSKIT_SYS_HPP

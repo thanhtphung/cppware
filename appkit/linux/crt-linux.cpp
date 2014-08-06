@@ -2,8 +2,7 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
-//! \file crt-linux.cpp
-
+//! @file crt-linux.cpp
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>

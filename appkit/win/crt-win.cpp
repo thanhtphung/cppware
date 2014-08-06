@@ -2,8 +2,7 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
-//! \file crt-win.cpp
-
+//! @file crt-win.cpp
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <cstdio>
