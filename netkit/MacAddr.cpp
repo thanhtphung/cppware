@@ -132,8 +132,8 @@ unsigned int MacAddr::toXDIGITS(char s[StrLength], char delim) const
     const unsigned char* p1 = addr_;
     for (const unsigned char* p1End = p1 + RawLength - 1; p1 < p1End; ++p1)
     {
-        *p0++ = syskit::XDIGIT[*p1 >> 4U];
-        *p0++ = syskit::XDIGIT[*p1 & 0x0fU];
+        *p0++ = XDIGIT[*p1 >> 4U];
+        *p0++ = XDIGIT[*p1 & 0x0fU];
         if (delim != 0)
         {
             *p0++ = delim;
@@ -141,8 +141,8 @@ unsigned int MacAddr::toXDIGITS(char s[StrLength], char delim) const
     }
 
     // Convert the last byte.
-    *p0++ = syskit::XDIGIT[*p1 >> 4U];
-    *p0++ = syskit::XDIGIT[*p1 & 0x0fU];
+    *p0++ = XDIGIT[*p1 >> 4U];
+    *p0++ = XDIGIT[*p1 & 0x0fU];
     size_t length = p0 - s;
     return static_cast<unsigned int>(length);
 }
@@ -160,8 +160,8 @@ unsigned int MacAddr::toXdigits(char s[StrLength], char delim) const
     const unsigned char* p1 = addr_;
     for (const unsigned char* p1End = p1 + RawLength - 1; p1 < p1End; ++p1)
     {
-        *p0++ = syskit::xdigit[*p1 >> 4U];
-        *p0++ = syskit::xdigit[*p1 & 0x0fU];
+        *p0++ = xdigit[*p1 >> 4U];
+        *p0++ = xdigit[*p1 & 0x0fU];
         if (delim != 0)
         {
             *p0++ = delim;
@@ -169,8 +169,8 @@ unsigned int MacAddr::toXdigits(char s[StrLength], char delim) const
     }
 
     // Convert the last byte.
-    *p0++ = syskit::xdigit[*p1 >> 4U];
-    *p0++ = syskit::xdigit[*p1 & 0x0fU];
+    *p0++ = xdigit[*p1 >> 4U];
+    *p0++ = xdigit[*p1 & 0x0fU];
     size_t length = p0 - s;
     return static_cast<unsigned int>(length);
 }

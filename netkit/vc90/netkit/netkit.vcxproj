@@ -91,10 +91,18 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\IcmpAddrMask.cpp" />
+    <ClCompile Include="..\..\IcmpEcho.cpp" />
+    <ClCompile Include="..\..\IcmpHdr.cpp" />
+    <ClCompile Include="..\..\IcmpInfo.cpp" />
+    <ClCompile Include="..\..\IcmpMsg.cpp" />
+    <ClCompile Include="..\..\IcmpTimestamp.cpp" />
     <ClCompile Include="..\..\IfSpeed.cpp" />
     <ClCompile Include="..\..\IpAddr.cpp" />
     <ClCompile Include="..\..\IpAddrSet.cpp" />
     <ClCompile Include="..\..\IpDevice.cpp" />
+    <ClCompile Include="..\..\IpFrag.cpp" />
+    <ClCompile Include="..\..\IpHdr.cpp" />
     <ClCompile Include="..\..\IpHlpApi.cpp" />
     <ClCompile Include="..\..\MacAddr.cpp" />
     <ClCompile Include="..\..\MacAddrVec.cpp" />
@@ -102,6 +110,11 @@
     <ClCompile Include="..\..\MacIntfVec.cpp" />
     <ClCompile Include="..\..\Paddr.cpp" />
     <ClCompile Include="..\..\PaddrVec.cpp" />
+    <ClCompile Include="..\..\RoEtherPkt.cpp" />
+    <ClCompile Include="..\..\RoIcmpPkt.cpp" />
+    <ClCompile Include="..\..\RoIpPkt.cpp" />
+    <ClCompile Include="..\..\RoTcpPkt.cpp" />
+    <ClCompile Include="..\..\RoUdpPkt.cpp" />
     <ClCompile Include="..\..\S32SocOpt.cpp" />
     <ClCompile Include="..\..\Subnet.cpp" />
     <ClCompile Include="..\..\UdpClient.cpp" />
@@ -117,6 +130,14 @@
     <ClCompile Include="..\..\win\Winsock-win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\IcmpAddrMask.hpp" />
+    <ClInclude Include="..\..\IcmpEcho.hpp" />
+    <ClInclude Include="..\..\IcmpHdr.hpp" />
+    <ClInclude Include="..\..\IcmpInfo.hpp" />
+    <ClInclude Include="..\..\IcmpMsg.hpp" />
+    <ClInclude Include="..\..\IcmpTimestamp.hpp" />
+    <ClInclude Include="..\..\IpFrag.hpp" />
+    <ClInclude Include="..\..\IpHdr.hpp" />
     <ClInclude Include="..\..\netkit-pch.h" />
     <ClInclude Include="..\..\IfSpeed.hpp" />
     <ClInclude Include="..\..\IpAddr.hpp" />
@@ -129,6 +150,11 @@
     <ClInclude Include="..\..\MacIntfVec.hpp" />
     <ClInclude Include="..\..\Paddr.hpp" />
     <ClInclude Include="..\..\PaddrVec.hpp" />
+    <ClInclude Include="..\..\RoEtherPkt.hpp" />
+    <ClInclude Include="..\..\RoIcmpPkt.hpp" />
+    <ClInclude Include="..\..\RoIpPkt.hpp" />
+    <ClInclude Include="..\..\RoTcpPkt.hpp" />
+    <ClInclude Include="..\..\RoUdpPkt.hpp" />
     <ClInclude Include="..\..\S32SocOpt.hpp" />
     <ClInclude Include="..\..\Subnet.hpp" />
     <ClInclude Include="..\..\UdpClient.hpp" />

@@ -174,7 +174,7 @@ void MacAddrSuite::testReset00()
 {
     bool ok = true;
     MacAddr macAddr;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if ((macAddr.reset(r.s, r.delim) != r.isValid) ||
@@ -239,13 +239,13 @@ void MacAddrSuite::testVec00()
     MacAddrVec vec0;
     String mac;
     StringVec macs;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if (r.isValid)
         {
             macAddr = r.addr;
-            unsigned long foundAt = vec0.numItems();
+            unsigned int foundAt = vec0.numItems();
             if ((!vec0.add(macAddr)) || (vec0.findIndex(macAddr) != foundAt))
             {
                 ok = false;

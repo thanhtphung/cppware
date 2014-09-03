@@ -329,8 +329,8 @@ void UdpClient::construct()
     WSAEVENT ev = WSACreateEvent();
     if ((soc != INVALID_SOCKET) && (ev != WSA_INVALID_EVENT))
     {
-        unsigned long arg = 1;
-        unsigned long bytesReturned;
+        DWORD arg = 1;
+        DWORD bytesReturned;
         if (WSAIoctl(soc, FIONBIO, &arg, sizeof(arg), 0, 0, &bytesReturned, 0, 0) != 0)
         {
             WSACloseEvent(ev);

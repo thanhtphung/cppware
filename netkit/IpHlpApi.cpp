@@ -36,7 +36,7 @@ IpHlpApi::IpHlpApi()
 
     if (lib_ != 0)
     {
-        for (long i = 0; i < NumProcs; ++i)
+        for (int i = 0; i < NumProcs; ++i)
         {
             procAddr_[i] = GetProcAddress(lib_, PROC_NAME[i]);
         }
@@ -73,14 +73,14 @@ void IpHlpApi::bePrimitive(bool primitive)
     }
 
     primitive_ = primitive;
-    long newerApi[] = {FreeMibTableI, GetIfEntry2I, GetIfTable2I};
-    long numNewerApis = sizeof(newerApi) / sizeof(newerApi[0]);
+    int newerApi[] = {FreeMibTableI, GetIfEntry2I, GetIfTable2I};
+    int numNewerApis = sizeof(newerApi) / sizeof(newerApi[0]);
 
     if (primitive_)
     {
-        for (long i = 0; i < numNewerApis; ++i)
+        for (int i = 0; i < numNewerApis; ++i)
         {
-            long j = newerApi[i];
+            int j = newerApi[i];
             savedAddr_[j] = procAddr_[j];
             procAddr_[j] = 0;
         }
@@ -88,9 +88,9 @@ void IpHlpApi::bePrimitive(bool primitive)
 
     else
     {
-        for (long i = 0; i < numNewerApis; ++i)
+        for (int i = 0; i < numNewerApis; ++i)
         {
-            long j = newerApi[i];
+            int j = newerApi[i];
             procAddr_[j] = savedAddr_[j];
             savedAddr_[j] = 0;
         }

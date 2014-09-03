@@ -29,7 +29,7 @@ static IP_ADAPTER_ADDRESSES_XP* getAdapterAddresses()
 
     // GetAdaptersAddresses() uses a significant amount of network resources,
     // so try invoking it once only with a reasonably-sized buffer to start.
-    unsigned long bufSize = 16384;
+    ULONG bufSize = 16384;
     adapter = reinterpret_cast<IP_ADAPTER_ADDRESSES_XP*>(new unsigned char[bufSize]);
     unsigned int errCode = GetAdaptersAddresses(family, flags, 0, adapter, &bufSize);
     if (errCode == ERROR_SUCCESS)
@@ -89,7 +89,6 @@ unsigned char IpDevice::mkDevice(IpDevice* device[MaxIndex + 1], const struct _I
     unsigned char numDevices = 0;
     for (const IP_ADAPTER_ADDRESSES_XP* p0 = adapter; p0 != 0; p0 = p0->Next)
     {
-
         unsigned int numAddrs = 0;
         unsigned int addr[MaxAddrIndex + 1];
         unsigned int mask[MaxAddrIndex + 1];
@@ -100,7 +99,7 @@ unsigned char IpDevice::mkDevice(IpDevice* device[MaxIndex + 1], const struct _I
             if (p2->Address.iSockaddrLength == sizeof(*socAddr))
             {
                 addr[numAddrs] = ntohl(socAddr->sin_addr.s_addr);
-                mask[numAddrs] = 0xffffffffUL << (32 - p1->PrefixLength);
+                mask[numAddrs] = 0xffffffffU << (32 - p1->PrefixLength);
                 if (numAddrs++ == MaxAddrIndex)
                 {
                     break;

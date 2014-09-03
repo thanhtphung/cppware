@@ -16,7 +16,7 @@ typedef struct
     const char* s;
     bool isValid;
     char delim;
-    unsigned long addr;
+    unsigned int addr;
     unsigned short port;
     unsigned long long n64;
 } sample_t;
@@ -117,7 +117,7 @@ void PaddrSuite::testReset00()
 {
     bool ok = true;
     Paddr paddr;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if ((paddr.reset(r.s, r.delim) != r.isValid) ||
@@ -167,13 +167,13 @@ void PaddrSuite::testVec00()
     PaddrVec vec0;
     String addr;
     StringVec addrs;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if (r.isValid)
         {
             paddr.reset(r.addr, r.port);
-            unsigned long foundAt = vec0.numItems();
+            unsigned int foundAt = vec0.numItems();
             if ((!vec0.add(paddr)) || (vec0.findIndex(paddr) != foundAt))
             {
                 ok = false;
