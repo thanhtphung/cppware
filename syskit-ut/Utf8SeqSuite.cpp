@@ -308,7 +308,7 @@ void Utf8SeqSuite::testApply03()
 void Utf8SeqSuite::testConvert00()
 {
     utf32_t sample[128];
-    for (unsigned long i = 0; i < 128; ++i)
+    for (unsigned int i = 0; i < 128; ++i)
     {
         sample[i] = i;
     }
@@ -330,7 +330,7 @@ void Utf8SeqSuite::testConvert00()
     CPPUNIT_ASSERT(ok);
     delete[] s;
 
-    for (unsigned long i = 0; i < 128; ++i)
+    for (unsigned int i = 0; i < 128; ++i)
     {
         if (seq8A[i] != sample[i])
         {
@@ -385,7 +385,7 @@ void Utf8SeqSuite::testConvert01()
     CPPUNIT_ASSERT(ok);
     delete[] s;
 
-    for (unsigned long i = 0; i < 8; ++i)
+    for (unsigned int i = 0; i < 8; ++i)
     {
         if (seq8A[i] != sample[i])
         {
@@ -420,14 +420,14 @@ Utf8SeqSuite::testConvert02()
         {0xdba8U, 0x0000U}, //2nd 2 bytes malformed
         {0xdba8U, 0xd800U}  //2nd 2 bytes malformed
     };
-    unsigned long numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
+    size_t numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
 
     Utf8Seq seq8A;
     Utf8Seq seq8B;
     utf16_t seq16A[128] = {0};
     utf16_t seq16B[128] = {0};
     bool ok = true;
-    for (unsigned long i = 0; i < numBadSeqs; ++i)
+    for (unsigned int i = 0; i < numBadSeqs; ++i)
     {
         seq16A[45] = someBadSeqs[i][0];
         seq16A[46] = someBadSeqs[i][1];
@@ -526,7 +526,7 @@ void Utf8SeqSuite::testCtor01()
 //
 void Utf8SeqSuite::testCtor02()
 {
-    unsigned long capacity = 0;
+    unsigned int capacity = 0;
     Utf8Seq seq(capacity);
     bool ok = ((seq.capacity() == 1) && (seq.growthFactor() < 0));
     CPPUNIT_ASSERT(ok);
@@ -560,7 +560,7 @@ void Utf8SeqSuite::testCtor03()
     CPPUNIT_ASSERT(ok);
 
     MyString str;
-    unsigned long length = 7;
+    size_t length = 7;
     str.reset("abc1234", length);
     str.addNull();
     ok = (memcmp(str.raw(), "abc1234", 7 + 1) == 0);
@@ -769,7 +769,7 @@ void Utf8SeqSuite::testOp02()
     CPPUNIT_ASSERT(ok);
 
     const utf8_t* p = seq.raw();
-    for (unsigned long i = 0; i < 8; ++i)
+    for (unsigned int i = 0; i < 8; ++i)
     {
         if (memcmp(p, seq0_->raw(), seq0_->byteSize()) != 0)
         {
@@ -825,7 +825,7 @@ void Utf8SeqSuite::testOp04()
 //
 void Utf8SeqSuite::testOp05()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     Utf8Seq s0(capacity);
     bool skipValidation = true;
     for (size_t i = 0; i < NUM_CHARS; ++i)
@@ -849,7 +849,7 @@ void Utf8SeqSuite::testOp05()
 //
 void Utf8SeqSuite::testOp06()
 {
-    unsigned long capacity = 9;
+    unsigned int capacity = 9;
     Utf8Seq s0(capacity);
     for (unsigned char c = 0;;)
     {
@@ -1098,7 +1098,7 @@ void Utf8SeqSuite::testReset02()
     Utf8Seq seq0;
     Utf8Seq seq1(*seq2_);
     const char* s = 0;
-    unsigned long length = 0;
+    size_t length = 0;
     seq1.reset(s, length);
     bool ok = (seq1 == seq0);
     CPPUNIT_ASSERT(ok);
@@ -1115,7 +1115,7 @@ void Utf8SeqSuite::testReset02()
     seq0.reset();
     seq1.reset();
     unsigned char ascii8[256];
-    for (long i = -1; ++i < 256; ascii8[i] = static_cast<unsigned char>(i));
+    for (int i = -1; ++i < 256; ascii8[i] = static_cast<unsigned char>(i));
     length = 256;
     seq0.reset(reinterpret_cast<const char*>(ascii8), length);
     seq1.append(reinterpret_cast<const char*>(ascii8), length);
@@ -1195,7 +1195,7 @@ void Utf8SeqSuite::testResize00()
 void Utf8SeqSuite::testSeek00()
 {
     MyString str;
-    unsigned long length = 7;
+    size_t length = 7;
     str.reset("abc1234", length);
     const utf8_t* p0 = str.raw();
     const utf8_t* p = str.seek(3);

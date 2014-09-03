@@ -48,7 +48,7 @@ void CriSectionSuite::testCtor01()
     // Create threads which will exercise some CriSection code.
     Semaphore sem(0U);
     Thread** threadVec = new Thread*[16];
-    long i;
+    int i;
     for (i = 0; i < 16; ++i)
     {
         Thread* t = new Thread(entry00, &sem);
@@ -87,7 +87,7 @@ void* CriSectionSuite::entry00(void* arg)
     sem->decrement(Semaphore::ETERNITY);
 
     bool ok = true;
-    for (unsigned long i = 0; i < 128; ++i)
+    for (unsigned int i = 0; i < 128; ++i)
     {
 
         // Validate shared resource.
@@ -99,7 +99,7 @@ void* CriSectionSuite::entry00(void* arg)
         }
 
         // Update shared resource.
-        for (unsigned long j = 0; j < 64; ++j)
+        for (unsigned int j = 0; j < 64; ++j)
         {
             u64_ >>= 1;
             Thread::yield();

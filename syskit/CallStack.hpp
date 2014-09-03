@@ -32,12 +32,12 @@ public:
         const wchar_t* module() const;
         const wchar_t* path() const;
         const wchar_t* sym() const;
-        unsigned long lineOff() const;
-        unsigned long lineNum() const;
+        unsigned int lineNum() const;
+        unsigned int lineOff() const;
         unsigned long long symOff() const;
         void setModule(bool ok, const wchar_t* module);
         void setNext(Frame* frame);
-        void setPath(bool ok, const wchar_t* path, unsigned long lineNum, unsigned long lineOff);
+        void setPath(bool ok, const wchar_t* path, unsigned int lineNum, unsigned int lineOff);
         void setSym(bool ok, const wchar_t* sym, unsigned long long off);
     private:
         Frame* next_;
@@ -46,8 +46,8 @@ public:
         const wchar_t* module_;
         const wchar_t* path_;
         const wchar_t* sym_;
-        unsigned long lineNum_;
-        unsigned long lineOff_;
+        unsigned int lineNum_;
+        unsigned int lineOff_;
         unsigned long long symOff_;
         Frame(const Frame&); //prohibit usage
         const Frame& operator =(const Frame&); //prohibit usage
@@ -146,12 +146,12 @@ inline const wchar_t* CallStack::Frame::sym() const
     return w;
 }
 
-inline unsigned long CallStack::Frame::lineNum() const
+inline unsigned int CallStack::Frame::lineNum() const
 {
     return lineNum_;
 }
 
-inline unsigned long CallStack::Frame::lineOff() const
+inline unsigned int CallStack::Frame::lineOff() const
 {
     return lineOff_;
 }

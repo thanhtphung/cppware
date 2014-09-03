@@ -31,7 +31,7 @@ Bst(U32::compareP, 64 /*capacity*/, 0 /*growBy*/)
 
 Sample0::~Sample0()
 {
-    for (size_t i = numItems(); i > 0; delete static_cast<unsigned long*>(peek(--i)));
+    for (size_t i = numItems(); i > 0; delete static_cast<unsigned int*>(peek(--i)));
 }
 
 
@@ -50,16 +50,16 @@ private:
 Sample1::Sample1():
 Bst(U32::compareP, 21 /*capacity*/, 13 /*growBy*/)
 {
-    for (unsigned long i = 1; i <= 32; i += 2)
+    for (unsigned int i = 1; i <= 32; i += 2)
     {
-        unsigned long* p = new unsigned long(i);
+        unsigned int* p = new unsigned int(i);
         add(p);
     }
 }
 
 Sample1::~Sample1()
 {
-    for (size_t i = numItems(); i > 0; delete static_cast<unsigned long*>(peek(--i)));
+    for (size_t i = numItems(); i > 0; delete static_cast<unsigned int*>(peek(--i)));
 }
 
 
@@ -82,7 +82,7 @@ Vec(64 /*capacity*/, 0 /*growBy*/)
         if (!added.isSet(*p))
         {
             added.set(*p);
-            unsigned long* item = new unsigned long(*p);
+            unsigned int* item = new unsigned int(*p);
             add(item);
         }
     }
@@ -90,7 +90,7 @@ Vec(64 /*capacity*/, 0 /*growBy*/)
 
 Sample2::~Sample2()
 {
-    for (item_t item; rmTail(item); delete static_cast<unsigned long*>(item));
+    for (item_t item; rmTail(item); delete static_cast<unsigned int*>(item));
 }
 
 END_NAMESPACE
@@ -118,7 +118,7 @@ void BstSuite::testAdd00()
     size_t numItems = 0;
     for (const char* p = ITEM; *p != 0; ++p, ++numItems)
     {
-        unsigned long* item = new unsigned long(*p);
+        unsigned int* item = new unsigned int(*p);
         if (bst0.find(item))
         {
             delete item;
@@ -134,7 +134,7 @@ void BstSuite::testAdd00()
 
     ok = (!bst0.addIfNotFound(bst0[0]));
     CPPUNIT_ASSERT(ok);
-    unsigned long* item = new unsigned long(0UL);
+    unsigned int* item = new unsigned int(0UL);
     ok = (bst0.findIndex(item) == Bst::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
     ok = bst0.addIfNotFound(item);
@@ -169,7 +169,7 @@ void BstSuite::testCtor00()
     ok = (compare != 0);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long item[3] = {3, 1, 2};
+    unsigned int item[3] = {3, 1, 2};
     ok = (compare(&item[0], &item[0]) == 0);
     CPPUNIT_ASSERT(ok);
     ok = (compare(&item[0], &item[1]) < 0);
@@ -206,9 +206,9 @@ void BstSuite::testFind00()
 {
     Sample1 bst1;
 
-    unsigned long i = 0;
+    unsigned int i = 0;
     bool ok = true;
-    for (unsigned long item = 1; item <= 32; item += 2, ++i)
+    for (unsigned int item = 1; item <= 32; item += 2, ++i)
     {
         if (!bst1.find(&item))
         {
@@ -237,7 +237,7 @@ void BstSuite::testFind00()
     }
     CPPUNIT_ASSERT(ok);
 
-    unsigned long nonExistent = 0;
+    unsigned int nonExistent = 0;
     size_t foundIndex = 999;
     Bst::item_t foundItem = 0;
     ok = (!bst1.find(&nonExistent)) &&
@@ -399,7 +399,7 @@ void BstSuite::testRm00()
     CPPUNIT_ASSERT(ok);
 
     // Last item.
-    unsigned long i = bst.numItems() - 1;
+    unsigned int i = bst.numItems() - 1;
     item = bst.peek(i);
     Bst::item_t removedItem = 0;
     ok = bst.rm(item, removedItem) && (!bst.find(item) && (removedItem == item));
@@ -414,7 +414,7 @@ void BstSuite::testRm00()
     CPPUNIT_ASSERT(ok);
 
     // Non-existent item.
-    unsigned long nonExistent = 0;
+    unsigned int nonExistent = 0;
     ok = (!bst.rm(&nonExistent));
     CPPUNIT_ASSERT(ok);
 }

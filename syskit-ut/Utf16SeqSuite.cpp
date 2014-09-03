@@ -275,7 +275,7 @@ void Utf16SeqSuite::testConvert01()
     CPPUNIT_ASSERT(ok);
     delete[] s;
 
-    for (unsigned long i = 0; i < 9; ++i)
+    for (unsigned int i = 0; i < 9; ++i)
     {
         if (seq16[i] != sample[i])
         {
@@ -323,12 +323,12 @@ void Utf16SeqSuite::testConvert02()
         {0xfcU, 0x80U, 0x80U, 0x80U, 0x80U, 0x80U}, //does not need 6 bytes
         {0xfcU, 0x83U, 0xbfU, 0xbfU, 0xbfU, 0xbfU}  //does not need 6 bytes
     };
-    unsigned long numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
+    size_t numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
 
     Utf16Seq seq16;
     utf8_t seq8[128] = {0};
     bool ok = true;
-    for (unsigned long i = 0; i < numBadSeqs; ++i)
+    for (unsigned int i = 0; i < numBadSeqs; ++i)
     {
         memcpy(seq8 + 13, someBadSeqs[i], 6);
         if (seq16.convert8(seq8, 128) == 0)
@@ -453,7 +453,7 @@ void Utf16SeqSuite::testCtor01()
 //
 void Utf16SeqSuite::testCtor02()
 {
-    unsigned long capacity = 0;
+    unsigned int capacity = 0;
     Utf16Seq seq(capacity);
     bool ok = ((seq.capacity() == 1) && (seq.growthFactor() < 0));
     CPPUNIT_ASSERT(ok);
@@ -592,7 +592,7 @@ void Utf16SeqSuite::testOp02()
     CPPUNIT_ASSERT(ok);
 
     const utf16_t* p = seq.raw();
-    for (unsigned long i = 0; i < 8; ++i)
+    for (unsigned int i = 0; i < 8; ++i)
     {
         if (memcmp(p, seq0_->raw(), seq0_->byteSize()) != 0)
         {

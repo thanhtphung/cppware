@@ -12,7 +12,7 @@ using namespace syskit;
 
 typedef struct
 {
-    unsigned long /*Bom::type_e*/ type;
+    unsigned int /*Bom::type_e*/ type;
     const char* file;
 } sample_t;
 
@@ -26,7 +26,7 @@ const sample_t SAMPLE[] =
     {Bom::Utf23, "bomed-23.txt"},
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 MappedTxtFileSuite::MappedTxtFileSuite()
@@ -89,7 +89,7 @@ void MappedTxtFileSuite::testCtor01()
 
     unsigned long long imageSize = 0x12345678ULL;
     const unsigned char* image = file.image(imageSize);
-    ok = ((imageSize == 6) && (memcmp(image, "122333", static_cast<unsigned long>(imageSize)) == 0));
+    ok = ((imageSize == 6) && (memcmp(image, "122333", static_cast<size_t>(imageSize)) == 0));
     CPPUNIT_ASSERT(ok);
 
     Directory dir("../../../etc/");
@@ -157,7 +157,7 @@ void MappedTxtFileSuite::testCtor04()
     s0.resetX(file0.image(), static_cast<size_t>(file0.imageSize()));
 
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         path = path0;

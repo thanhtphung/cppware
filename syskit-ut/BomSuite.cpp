@@ -7,7 +7,7 @@ using namespace syskit;
 
 typedef struct
 {
-    unsigned long /*Bom::type_e*/ type;
+    unsigned int /*Bom::type_e*/ type;
     size_t byteSize;
     const unsigned char seq[4];
 } sample_t;
@@ -38,8 +38,8 @@ const sample_t SAMPLE[] =
     {Bom::Utf23, 4, {0x00U, 0x00U, 0xfeU, 0xffU}}
 };
 
-const unsigned long NUM_DECODE_SAMPLES = sizeof(DECODE_SAMPLE) / sizeof(DECODE_SAMPLE[0]);
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_DECODE_SAMPLES = sizeof(DECODE_SAMPLE) / sizeof(DECODE_SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 BomSuite::BomSuite()
@@ -55,7 +55,7 @@ BomSuite::~BomSuite()
 void BomSuite::testCtor00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         Bom bom0(r.type);
@@ -85,7 +85,7 @@ void BomSuite::testDecode00()
     CPPUNIT_ASSERT(ok);
 
     ok = true;
-    for (unsigned long i = 0; i < NUM_DECODE_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_DECODE_SAMPLES; ++i)
     {
         const sample_t& r = DECODE_SAMPLE[i];
         bom.reset(r.type);

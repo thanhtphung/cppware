@@ -12,13 +12,13 @@ class Xema4: public Semaphore
 {
 public:
     Xema4(sem_t sem);
-    Xema4(unsigned long capacity);
+    Xema4(unsigned int capacity);
     ~Xema4();
     using Semaphore::handle;
     using Semaphore::reset;
 };
 
-Xema4::Xema4(unsigned long capacity):
+Xema4::Xema4(unsigned int capacity):
 Semaphore(capacity)
 {
 }
@@ -83,7 +83,7 @@ void SemaphoreSuite::testCtor01()
     // Create threads which will exercise some Semaphore code.
     Semaphore sem(0U /*capacity*/);
     Thread** threadVec = new Thread*[16];
-    long i;
+    int i;
     for (i = 0; i < 16; ++i)
     {
         Thread* t = new Thread(entry00, &sem);
@@ -144,7 +144,7 @@ void SemaphoreSuite::testDecrement00()
 //
 void SemaphoreSuite::testDecrement01()
 {
-    Semaphore sem(5UL /*capacity*/);
+    Semaphore sem(5U /*capacity*/);
     bool ok = (sem.decrementBy(5, 12) && sem.incrementBy(5));
     CPPUNIT_ASSERT(ok);
 
@@ -163,7 +163,7 @@ void SemaphoreSuite::testDecrement01()
 
 void SemaphoreSuite::testDetach00()
 {
-    Xema4 xem0(123UL);
+    Xema4 xem0(123U);
     Xema4 xem1(xem0.handle());
     bool ok = xem1.isOk();
     CPPUNIT_ASSERT(ok);
@@ -179,7 +179,7 @@ void SemaphoreSuite::testDetach00()
 //
 void SemaphoreSuite::testLock00()
 {
-    Semaphore sem(1UL /*capacity*/);
+    Semaphore sem(1U /*capacity*/);
 
     // Acquire/Release token using Lock.
     {
@@ -201,44 +201,44 @@ void SemaphoreSuite::testLock00()
 
 //
 // Interfaces under test:
-// - Semaphore::Lock::Lock(Semaphore&, unsigned long);
+// - Semaphore::Lock::Lock(Semaphore&, unsigned int);
 //
 void SemaphoreSuite::testLock01()
 {
-    Semaphore sem(3UL /*capacity*/);
+    Semaphore sem(3U /*capacity*/);
 
     // Locking zero or too many tokens.
     {
-        unsigned long numTokens = 0UL;
+        unsigned int numTokens = 0U;
         Semaphore::Lock lock0(sem, numTokens);
         bool ok = (!lock0.isOk());
         CPPUNIT_ASSERT(ok);
-        numTokens = Semaphore::MAX_CAP + 1UL;
+        numTokens = Semaphore::MAX_CAP + 1U;
         Semaphore::Lock lock1(sem, numTokens);
         ok = (!lock1.isOk());
         CPPUNIT_ASSERT(ok);
     }
 
     // Acquire/Release token using Lock.
-  {
-      unsigned long numTokens = 1UL;
-      Semaphore::Lock lock(sem, numTokens);
-      bool ok = lock.isOk();
-      CPPUNIT_ASSERT(ok);
-  }
+    {
+        unsigned int numTokens = 1U;
+        Semaphore::Lock lock(sem, numTokens);
+        bool ok = lock.isOk();
+        CPPUNIT_ASSERT(ok);
+    }
 
     // Acquire/Release tokens using Lock.
-  {
-      unsigned long numTokens = 3UL;
-      Semaphore::Lock lock(sem, numTokens);
-      bool ok = lock.isOk();
-      CPPUNIT_ASSERT(ok);
-  }
+    {
+        unsigned int numTokens = 3U;
+        Semaphore::Lock lock(sem, numTokens);
+        bool ok = lock.isOk();
+        CPPUNIT_ASSERT(ok);
+    }
 
     bool ok = (!sem.incrementBy(Semaphore::MAX_CAP));
     CPPUNIT_ASSERT(ok);
 
-    ok = sem.incrementBy(Semaphore::MAX_CAP - 3UL);
+    ok = sem.incrementBy(Semaphore::MAX_CAP - 3U);
     CPPUNIT_ASSERT(ok);
 
     ok = sem.decrementBy(Semaphore::MAX_CAP);
@@ -250,7 +250,7 @@ void SemaphoreSuite::testReset00()
 {
 
     // From zero.
-    Xema4 sem(0UL);
+    Xema4 sem(0U);
     sem.reset(5);
     bool ok = (sem.tryDecrementBy(5) && sem.incrementBy(5));
     CPPUNIT_ASSERT(ok);
@@ -276,13 +276,13 @@ void SemaphoreSuite::testReset00()
 
 void SemaphoreSuite::testWait00()
 {
-    Xema4* xem0 = new Xema4(1UL /*capacity*/);
+    Xema4* xem0 = new Xema4(1U /*capacity*/);
     bool ok = xem0->waitTilNonEmpty();
     CPPUNIT_ASSERT(ok);
 
     xem0->decrement();
     Thread thread(entry01, xem0);
-    Thread::takeANap(21UL);
+    Thread::takeANap(21U);
     xem0->increment();
     void* exitCode = 0;
     thread.waitTilDone(&exitCode);
@@ -299,7 +299,7 @@ void SemaphoreSuite::testWait00()
 
 void SemaphoreSuite::testWait01()
 {
-    Semaphore sem(123UL /*capacity*/);
+    Semaphore sem(123U /*capacity*/);
     bool ok = sem.waitTilFull(123);
     CPPUNIT_ASSERT(ok);
 

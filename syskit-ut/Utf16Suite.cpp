@@ -77,11 +77,11 @@ void Utf16Suite::testDecode00()
         {0xdba8U, 0x0000U}, //2nd 2 bytes malformed
         {0xdba8U, 0xd800U}  //2nd 2 bytes malformed
     };
-    unsigned long numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
+    size_t numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
 
     Utf16 c;
     bool ok = true;
-    for (unsigned long i = 0; i < numBadSeqs; ++i)
+    for (unsigned int i = 0; i < numBadSeqs; ++i)
     {
         const utf16_t* seq = someBadSeqs[i];
         if (c.decode(seq) != 0)
@@ -92,10 +92,10 @@ void Utf16Suite::testDecode00()
     }
     CPPUNIT_ASSERT(ok);
 
-    ok = (!Utf16::isValid(0x00dabcUL));
+    ok = (!Utf16::isValid(0x00dabcU));
     CPPUNIT_ASSERT(ok);
 
-    ok = (!Utf16::isValid(0xabcdefUL));
+    ok = (!Utf16::isValid(0xabcdefU));
     CPPUNIT_ASSERT(ok);
 }
 
@@ -109,24 +109,24 @@ void Utf16Suite::testEncode00()
         0x0abcdeU,
         0x10ffffU
     };
-    const unsigned long numValues = sizeof(someValues) / sizeof(*someValues);
+    const size_t numValues = sizeof(someValues) / sizeof(*someValues);
 
     Utf16 i0;
     Utf16 i1;
     Utf16 o0;
     bool ok = true;
-    for (unsigned long i = 0; i < numValues; ++i)
+    for (unsigned int i = 0; i < numValues; ++i)
     {
 
         unsigned int c = someValues[i];
-        size_t seqLength = (c <= 0xffffUL)? 1: 2;
+        size_t seqLength = (c <= 0xffffU)? 1: 2;
         if (!Utf16::isValid(c))
         {
             ok = false;
             break;
         }
 
-        utf32_t u32 = 0x12345678UL;
+        utf32_t u32 = 0x12345678U;
         utf16_t seq[2] = {0xdcbaU, 0xdcbaU};
         o0 = c;
         if ((o0.encode(seq) != seqLength) ||
@@ -166,7 +166,7 @@ void Utf16Suite::testReset00()
     ok = (utf16.asU32() == u16);
     CPPUNIT_ASSERT(ok);
 
-    unsigned int u32 = 0xabcdeUL;
+    unsigned int u32 = 0xabcdeU;
     utf16 = u32;
     ok = (utf16.asU32() == u32);
     CPPUNIT_ASSERT(ok);

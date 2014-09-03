@@ -137,16 +137,16 @@ void U32VecSuite::testAdd01()
 
 //
 // Interfaces under test:
-// - unsigned long U32Vec::add(size_t count, item_t item);
+// - unsigned int U32Vec::add(size_t count, item_t item);
 //
 void U32VecSuite::testAdd02()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     U32Vec vec(capacity, growBy);
-    unsigned long count = 0;
+    size_t count = 0;
     U32Vec::item_t item = 12;
-    unsigned long numAdds = vec.add(count, item);
+    unsigned int numAdds = vec.add(count, item);
     bool ok = ((numAdds == 0) && (vec.numItems() == 0));
     CPPUNIT_ASSERT(ok);
     count = 1;
@@ -195,16 +195,16 @@ void U32VecSuite::testAdd02()
 
 //
 // Interfaces under test:
-// - unsigned long U32Vec::add(const item_t* raw, size_t itemCount);
+// - unsigned int U32Vec::add(const item_t* raw, size_t itemCount);
 //
 void U32VecSuite::testAdd03()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     U32Vec vec(capacity, growBy);
-    unsigned long count = 0;
+    size_t count = 0;
     U32Vec::item_t item[] = {12, 34, 56, 78, 99};
-    unsigned long numAdds = vec.add(item, count);
+    unsigned int numAdds = vec.add(item, count);
     bool ok = ((numAdds == 0) && (vec.numItems() == 0));
     CPPUNIT_ASSERT(ok);
     count = 1;
@@ -254,7 +254,7 @@ void U32VecSuite::testAdd04()
     U32Vec vec;
     size_t startAt = 0;
     size_t itemCount = 1;
-    unsigned long numAdds = vec.add(vec0, startAt, itemCount);
+    unsigned int numAdds = vec.add(vec0, startAt, itemCount);
     bool ok = (numAdds == itemCount);
     CPPUNIT_ASSERT(ok);
     startAt = 1;
@@ -320,7 +320,7 @@ void U32VecSuite::testFind00()
 
 //
 // Interfaces under test:
-// - U32Vec::item_t* U32Vec::detachRaw(unsigned long& numItems);
+// - U32Vec::item_t* U32Vec::detachRaw(unsigned int& numItems);
 // - U32Vec::item_t U32Vec::findKthSmallest(item_t* item, size_t itemCount, size_t k);
 // - const U32Vec::item_t* U32Vec::raw() const;
 //
@@ -328,7 +328,7 @@ void U32VecSuite::testFindKthSmallest00()
 {
     Sample0 vec0;
 
-    unsigned long capacity = vec0.numItems();
+    unsigned int capacity = vec0.numItems();
     int growBy = 0;
     U32Vec vec1(capacity, growBy);
     bool reverseOrder = false;
@@ -339,7 +339,7 @@ void U32VecSuite::testFindKthSmallest00()
     bool ok = (item == p) && (itemCount == capacity);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long k = 0; k < capacity; ++k)
+    for (unsigned int k = 0; k < capacity; ++k)
     {
         U32Vec::item_t kth = U32Vec::findKthSmallest(item, itemCount, k);
         if (kth != vec1.peek(k))

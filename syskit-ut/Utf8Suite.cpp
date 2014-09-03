@@ -93,11 +93,11 @@ void Utf8Suite::testDecode00()
         {0xf0U, 0x8fU, 0xbfU, 0xbfU, 4}, //does not need 4 bytes
         {0xf4U, 0x90U, 0x80U, 0x80U, 4}  //too big
     };
-    unsigned long numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
+    size_t numBadSeqs = sizeof(someBadSeqs) / sizeof(*someBadSeqs);
 
     Utf8 c;
     bool ok = true;
-    for (unsigned long i = 0; i < numBadSeqs; ++i)
+    for (unsigned int i = 0; i < numBadSeqs; ++i)
     {
         const utf8_t* seq = someBadSeqs[i];
         if ((c.decode(seq, seq[Utf8::MaxSeqLength]) != 0) ||
@@ -113,10 +113,10 @@ void Utf8Suite::testDecode00()
     ok = ((c.decode(someBadSeqs[0]) == 0) && (!Utf8::isValid(someBadSeqs[0])));
     CPPUNIT_ASSERT(ok);
 
-    ok = (Utf8::isValid(0x00abcdUL) && Utf8::isValid(0x0abcdeUL));
+    ok = (Utf8::isValid(0x00abcdU) && Utf8::isValid(0x0abcdeU));
     CPPUNIT_ASSERT(ok);
 
-    ok = ((!Utf8::isValid(0x00dabcUL)) && (!Utf8::isValid(0xabcdefUL)));
+    ok = ((!Utf8::isValid(0x00dabcU)) && (!Utf8::isValid(0xabcdefU)));
     CPPUNIT_ASSERT(ok);
 }
 
@@ -233,14 +233,14 @@ void Utf8Suite::testEncode02()
         0x0000d7ffU,
         0x0000ffffU
     };
-    const unsigned long num3ByteValues = sizeof(some3ByteValues) / sizeof(*some3ByteValues);
+    const size_t num3ByteValues = sizeof(some3ByteValues) / sizeof(*some3ByteValues);
 
     Utf8 i0;
     Utf8 i1;
     Utf8 o0;
     unsigned char seq[Utf8::MaxSeqLength];
     bool ok = true;
-    for (unsigned long i = 0; i < num3ByteValues; ++i)
+    for (unsigned int i = 0; i < num3ByteValues; ++i)
     {
 
         unsigned int c = some3ByteValues[i];
@@ -291,14 +291,14 @@ void Utf8Suite::testEncode03()
         0x000abcdeU,
         0x0010ffffU
     };
-    const unsigned long num4ByteValues = sizeof(some4ByteValues) / sizeof(*some4ByteValues);
+    const size_t num4ByteValues = sizeof(some4ByteValues) / sizeof(*some4ByteValues);
 
     Utf8 i0;
     Utf8 i1;
     Utf8 o0;
     utf8_t seq[Utf8::MaxSeqLength];
     bool ok = true;
-    for (unsigned long i = 0; i < num4ByteValues; ++i)
+    for (unsigned int i = 0; i < num4ByteValues; ++i)
     {
 
         unsigned int c = some4ByteValues[i];

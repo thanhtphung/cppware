@@ -43,16 +43,16 @@ void ThreadSuite::crashCb0(void* arg)
 void ThreadSuite::testAffinity00()
 {
     size_t processAffinity = Process::affinityMask();
-    unsigned long numThreads = BitVec::countSetBits(processAffinity);
+    unsigned int numThreads = BitVec::countSetBits(processAffinity);
 
     Atomic64 counter;
     Thread** thread = new Thread*[numThreads];
     bool startSuspended = true;
-    unsigned long stackSizeInBytes = 4096;
-    for (unsigned long i = 0; i < numThreads; thread[i++] = new Thread(entrance05, &counter, stackSizeInBytes, startSuspended));
+    unsigned int stackSizeInBytes = 4096;
+    for (unsigned int i = 0; i < numThreads; thread[i++] = new Thread(entrance05, &counter, stackSizeInBytes, startSuspended));
 
     bool ok = true;
-    for (unsigned long i = 0; i < numThreads; ++i)
+    for (unsigned int i = 0; i < numThreads; ++i)
     {
         Thread* t = thread[i];
         if ((!t->resume()) || (!t->setAffinityMask(processAffinity)) || (t->affinityMask() != processAffinity))
@@ -65,7 +65,7 @@ void ThreadSuite::testAffinity00()
     ok = (Thread::takeANap(100), (counter > 0ULL));
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i < numThreads; ++i)
+    for (unsigned int i = 0; i < numThreads; ++i)
     {
         if (!thread[i]->suspend())
         {
@@ -78,7 +78,7 @@ void ThreadSuite::testAffinity00()
     ok = (Thread::takeANap(100), (counter == frozenAt));
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i < numThreads; thread[i++]->resume());
+    for (unsigned int i = 0; i < numThreads; thread[i++]->resume());
     BitVec affinityMask(numThreads, reinterpret_cast<const BitVec::word_t*>(&processAffinity), sizeof(processAffinity));
     for (size_t bit = affinityMask.firstSetBit(); bit != BitVec::INVALID_BIT; bit = affinityMask.nextSetBit(bit))
     {
@@ -95,15 +95,15 @@ void ThreadSuite::testAffinity00()
     ok = (counter > frozenAt);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i < numThreads; thread[i++]->kill());
-    for (unsigned long i = numThreads; i > 0; delete thread[--i]);
+    for (unsigned int i = 0; i < numThreads; thread[i++]->kill());
+    for (unsigned int i = numThreads; i > 0; delete thread[--i]);
     delete[] thread;
 }
 
 
 //
 // Interfaces under test:
-// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned long stackSizeInBytes=0, bool startSuspended=false);
+// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned int stackSizeInBytes=0, bool startSuspended=false);
 // - bool Thread::isOk() const;
 // - bool Thread::waitTilDone(void** exitCode=0);
 // - state_e Thread::state() const;
@@ -113,7 +113,7 @@ void ThreadSuite::testCtor00()
     Semaphore sem(0U);
     Thread** thread = new Thread*[10];
     bool ok = true;
-    long i;
+    int i;
     for (i = 0; i < 10; ++i)
     {
         Thread* t = new Thread(entrance00, &sem, 0);
@@ -149,7 +149,7 @@ void ThreadSuite::testCtor00()
 
 //
 // Interfaces under test:
-// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned long stackSizeInBytes=0, bool startSuspended=false);
+// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned int stackSizeInBytes=0, bool startSuspended=false);
 // - bool Thread::isOk() const;
 //
 // Invalid stack size (32-bit os).
@@ -160,7 +160,7 @@ void ThreadSuite::testCtor01()
     IsWow64Process(GetCurrentProcess(), &inWow64Mode);
 
     Semaphore sem(1UL);
-    unsigned long stackSizeInBytes = 0xffffffffUL;
+    unsigned int stackSizeInBytes = 0xffffffffU;
     Thread thread(entrance00, &sem, stackSizeInBytes);
     bool ok = (!thread.isOk()) || (sizeof(size_t) == 8) || inWow64Mode;
     CPPUNIT_ASSERT(ok);
@@ -169,7 +169,7 @@ void ThreadSuite::testCtor01()
 
 //
 // Interfaces under test:
-// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned long stackSizeInBytes=0, bool startSuspended=false);
+// - Thread::Thread(entrance_t entrance, void* arg=0, unsigned int stackSizeInBytes=0, bool startSuspended=false);
 // - bool Thread::isOk() const;
 // - bool Thread::resume();
 // - bool Thread::waitTilDone(void** exitCode=0);
@@ -180,13 +180,13 @@ void ThreadSuite::testCtor01()
 void ThreadSuite::testCtor02()
 {
     Semaphore sem(1UL);
-    unsigned long stackSizeInBytes = 0;
+    unsigned int stackSizeInBytes = 0;
     bool startSuspended = true;
     Thread thread(entrance00, &sem, stackSizeInBytes, startSuspended);
 
     // At this time, the thread must be in the Idle state.
     bool ok = true;
-    for (unsigned long i = 0; i < 5; ++i)
+    for (unsigned int i = 0; i < 5; ++i)
     {
         Thread::yield();
         if ((!thread.isOk()) || (thread.state() != Thread::Idle))
@@ -236,7 +236,7 @@ void ThreadSuite::testKill00()
     Semaphore sem(0U);
     Thread** thread = new Thread*[5];
     bool ok = true;
-    long i;
+    int i;
     for (i = 0; i < 5; ++i)
     {
         Thread* t = new Thread(entrance02, &sem);
@@ -260,7 +260,7 @@ void ThreadSuite::testKill00()
 
     // At this time, the threads must be in the Active state.
     // Kill them, one by one.
-    for (long j = i; j >= 0; --j)
+    for (int j = i; j >= 0; --j)
     {
         Thread* t = thread[j];
         if (t->state() != Thread::Active)
@@ -273,7 +273,7 @@ void ThreadSuite::testKill00()
     CPPUNIT_ASSERT(ok);
 
     // Validate kill results.
-    for (long j = i; j >= 0; --j)
+    for (int j = i; j >= 0; --j)
     {
         Thread* t = thread[j];
         void* exitCode = 0;
@@ -322,7 +322,7 @@ void ThreadSuite::testMonitorCrash00()
     Thread::monitorCrash(cb, arg, dump.path().widen());
 
     arg = 0;
-    unsigned long stackSizeInBytes = 0;
+    unsigned int stackSizeInBytes = 0;
     bool startSuspended = true;
     bool ok;
     {
@@ -349,8 +349,8 @@ void ThreadSuite::testMonitorCrash00()
 
 //
 // Interfaces under test:
-// - unsigned long Thread::id() const;
-// - static unsigned long Thread::myId();
+// - size_t Thread::id() const;
+// - static size_t Thread::myId();
 //
 void ThreadSuite::testMyId00()
 {
@@ -420,7 +420,7 @@ void* ThreadSuite::entrance03(void* arg)
 
 
 //
-// Look at given argument as a pointer to an unsigned long.
+// Look at given argument as a pointer to a size_t.
 // Save Thread::myId() in given argument. Yield, then return.
 //
 void* ThreadSuite::entrance04(void* arg)

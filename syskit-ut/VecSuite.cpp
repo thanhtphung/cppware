@@ -29,7 +29,7 @@ Vec(64 /*capacity*/, 0 /*growBy*/)
 
 Sample0::~Sample0()
 {
-    for (item_t item; rmTail(item); delete static_cast<unsigned long*>(item));
+    for (item_t item; rmTail(item); delete static_cast<unsigned int*>(item));
 }
 
 
@@ -48,16 +48,16 @@ private:
 Sample1::Sample1():
 Vec(21 /*capacity*/, 13 /*growBy*/)
 {
-    for (unsigned long i = 1; i <= 32; i += 2)
+    for (unsigned int i = 1; i <= 32; i += 2)
     {
-        unsigned long* p = new unsigned long(i);
+        unsigned int* p = new unsigned int(i);
         add(p);
     }
 }
 
 Sample1::~Sample1()
 {
-    for (item_t item; rmTail(item); delete static_cast<unsigned long*>(item));
+    for (item_t item; rmTail(item); delete static_cast<unsigned int*>(item));
 }
 
 END_NAMESPACE
@@ -85,7 +85,7 @@ void VecSuite::testAdd00()
     size_t i = 0;
     for (const char* p = ITEM; *p != 0; ++p, ++i)
     {
-        unsigned long* item = new unsigned long(*p);
+        unsigned int* item = new unsigned int(*p);
         if ((!vec0.add(item)) || (vec0.numItems() != (i + 1)) || (vec0.peek(i) != item))
         {
             ok = false;
@@ -96,7 +96,7 @@ void VecSuite::testAdd00()
 
     ok = (!vec0.addIfNotFound(vec0.peek(0), U32::compareP));
     CPPUNIT_ASSERT(ok);
-    unsigned long* item = new unsigned long(0UL);
+    unsigned int* item = new unsigned int(0U);
     ok = (vec0.findIndex(item) == Vec::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
     ok = vec0.addIfNotFound(item, U32::compareP);
@@ -122,7 +122,7 @@ void VecSuite::testAdd01()
     size_t i = 0;
     for (size_t item = 1; item <= 31; item += 2)
     {
-        const unsigned long* p = static_cast<const unsigned long*>(vec1.peek(i++));
+        const unsigned int* p = static_cast<const unsigned int*>(vec1.peek(i++));
         if (*p != item)
         {
             ok = false;
@@ -144,7 +144,7 @@ void VecSuite::testAdd01()
 //
 void VecSuite::testAdd02()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     Vec vec(capacity, growBy);
     size_t count = 0;
@@ -198,23 +198,23 @@ void VecSuite::testAdd02()
 
 //
 // Interfaces under test:
-// - unsigned long Vec::add(void* const* raw, size_t itemCount);
+// - unsigned int Vec::add(void* const* raw, size_t itemCount);
 //
 void VecSuite::testAdd03()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     Vec vec(capacity, growBy);
-    unsigned long count = 0;
+    unsigned int count = 0;
     Vec::item_t item[] =
     {
-        new unsigned long(12),
-        new unsigned long(34),
-        new unsigned long(56),
-        new unsigned long(78),
-        new unsigned long(99)
+        new unsigned int(12),
+        new unsigned int(34),
+        new unsigned int(56),
+        new unsigned int(78),
+        new unsigned int(99)
     };
-    unsigned long numAdds = vec.add(item, count);
+    unsigned int numAdds = vec.add(item, count);
     bool ok = ((numAdds == 0) && (vec.numItems() == 0));
     CPPUNIT_ASSERT(ok);
     count = 1;
@@ -256,7 +256,7 @@ void VecSuite::testAdd03()
     CPPUNIT_ASSERT(ok);
 
     vec.reset();
-    for (unsigned long i = 5; i > 0; delete static_cast<unsigned long*>(item[--i]));
+    for (unsigned int i = 5; i > 0; delete static_cast<unsigned int*>(item[--i]));
 }
 
 
@@ -265,14 +265,14 @@ void VecSuite::testAdd04()
     Sample0 vec0;
     for (const char* p = ITEM; *p != 0; ++p)
     {
-        unsigned long* item = new unsigned long(*p);
+        unsigned int* item = new unsigned int(*p);
         vec0.add(item);
     }
 
     Vec vec;
     size_t startAt = 0;
     size_t itemCount = 1;
-    unsigned long numAdds = vec.add(vec0, startAt, itemCount);
+    unsigned int numAdds = vec.add(vec0, startAt, itemCount);
     bool ok = (numAdds == itemCount);
     CPPUNIT_ASSERT(ok);
     startAt = 1;
@@ -341,7 +341,7 @@ void VecSuite::testFind00()
     Sample1 vec1;
 
     size_t foundIndex = 0;
-    unsigned long key = 5;
+    unsigned int key = 5;
     bool ok = (vec1.find(&key, U32::compareP, foundIndex) && (foundIndex == 2));
     CPPUNIT_ASSERT(ok);
 
@@ -353,7 +353,7 @@ void VecSuite::testFind00()
 
 //
 // Interfaces under test:
-// - Vec::item_t* Vec::detachRaw(unsigned long& numItems);
+// - Vec::item_t* Vec::detachRaw(unsigned int& numItems);
 // - Vec::item_t Vec::findKthSmallest(item_t* item, size_t itemCount, size_t k, compare_t compare);
 // - const Vec::item_t* Vec::raw() const;
 //
@@ -362,11 +362,11 @@ void VecSuite::testFindKthSmallest00()
     Sample0 vec0;
     for (const char* p = ITEM; *p != 0; ++p)
     {
-        unsigned long* item = new unsigned long(*p);
+        unsigned int* item = new unsigned int(*p);
         vec0.add(item);
     }
 
-    unsigned long capacity = vec0.numItems();
+    unsigned int capacity = vec0.numItems();
     int growBy = 0;
     Vec vec1(capacity, growBy);
     bool reverseOrder = false;
@@ -377,7 +377,7 @@ void VecSuite::testFindKthSmallest00()
     bool ok = (item == p) && (itemCount == capacity);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long k = 0; k < capacity; ++k)
+    for (unsigned int k = 0; k < capacity; ++k)
     {
         Vec::item_t kth = Vec::findKthSmallest(item, itemCount, k, U32::compareP);
         if (U32::compareP(kth, vec1.peek(k)))
@@ -387,7 +387,7 @@ void VecSuite::testFindKthSmallest00()
         }
     }
     CPPUNIT_ASSERT(ok);
-    for (unsigned long k = capacity; k > 0; delete static_cast<unsigned long*>(item[--k]));
+    for (unsigned int k = capacity; k > 0; delete static_cast<unsigned int*>(item[--k]));
     delete[] item;
 }
 
@@ -462,7 +462,7 @@ void VecSuite::testOp02()
     CPPUNIT_ASSERT(ok);
 
     // Also check setItem() and reset() here.
-    Vec::item_t item = new unsigned long(0);
+    Vec::item_t item = new unsigned int(0);
     vec.setItem(5, item);
     ok = (vec.peek(5) == item) && (vec != vec1) && (!vec.equals(vec1, U32::compareP));
     CPPUNIT_ASSERT(ok);
@@ -474,7 +474,7 @@ void VecSuite::testOp02()
     ok = (vec.numItems() == 0);
     CPPUNIT_ASSERT(ok);
 
-    delete static_cast<unsigned long*>(item);
+    delete static_cast<unsigned int*>(item);
 }
 
 
@@ -550,7 +550,7 @@ void VecSuite::testRm00()
     CPPUNIT_ASSERT(ok);
     ok = (!vec.rm(item, U32::compareP));
     CPPUNIT_ASSERT(ok);
-    unsigned long k = 0;
+    unsigned int k = 0;
     ok = (!vec.rm(&k, U32::compareP));
     CPPUNIT_ASSERT(ok);
 
@@ -651,11 +651,11 @@ void VecSuite::testSort00()
     Sample0 vec0;
     for (const char* p = ITEM; *p != 0; ++p)
     {
-        unsigned long* item = new unsigned long(*p);
+        unsigned int* item = new unsigned int(*p);
         vec0.add(item);
     }
 
-    unsigned long capacity = vec0.numItems();
+    unsigned int capacity = vec0.numItems();
     int growBy = 0;
     Vec vec1(capacity, growBy);
     Vec vec2(capacity, growBy);
@@ -665,11 +665,11 @@ void VecSuite::testSort00()
     vec0.sort(U32::compareP, vec2, reverseOrder);
 
     bool ok = true;
-    unsigned long item = 0;
-    for (unsigned long i = 0, numItems = vec1.numItems(), j = numItems - 1; i < numItems; ++i, --j)
+    unsigned int item = 0;
+    for (unsigned int i = 0, numItems = vec1.numItems(), j = numItems - 1; i < numItems; ++i, --j)
     {
-        unsigned long item1 = *static_cast<unsigned long*>(vec1.peek(i));
-        unsigned long item2 = *static_cast<unsigned long*>(vec2.peek(j));
+        unsigned int item1 = *static_cast<unsigned int*>(vec1.peek(i));
+        unsigned int item2 = *static_cast<unsigned int*>(vec2.peek(j));
         if ((item1 != item2) || (item >= item1))
         {
             ok = false;

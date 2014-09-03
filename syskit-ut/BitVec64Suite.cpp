@@ -202,8 +202,8 @@ void BitVec64Suite::testClear00()
     bool ok = (vec1_->clearBit(175) && (vec1_->countClearBits() == 1));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != (i == 175))
         {
@@ -228,10 +228,10 @@ void BitVec64Suite::testClear01()
     bool ok = ((*vec1_ == *vec0_) && vec1_->isClear() && (vec1_->countClearBits() == 1024));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long curBit = vec0_->firstClearBit();
+    unsigned int curBit = vec0_->firstClearBit();
     ok = (curBit == 0) && (vec0_->lastClearBit() == 1023 - curBit);
     CPPUNIT_ASSERT(ok);
-    for (unsigned long i = 1; curBit < 1023; curBit = i++)
+    for (unsigned int i = 1; curBit < 1023; curBit = i++)
     {
         if ((vec0_->nextClearBit(curBit) != i) || (vec0_->prevClearBit(1023 - curBit) != 1023 - i))
         {
@@ -285,8 +285,8 @@ void BitVec64Suite::testClear03()
     bool ok = (vec1_->clearBits(111, 9999) && (vec1_->countSetBits() == 111));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != (i >= 111))
         {
@@ -307,8 +307,8 @@ void BitVec64Suite::testClear04()
     bool ok = (vec1_->clearBits(100, 200) && (vec1_->countClearBits() == 101));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != ((i >= 100) && (i <= 200)))
         {
@@ -326,7 +326,7 @@ void BitVec64Suite::testClear04()
 //
 void BitVec64Suite::testClear05()
 {
-    size_t maxBits = vec1_->maxBits();
+    unsigned int maxBits = vec1_->maxBits();
     bool ok = (vec1_->clearBits(0, maxBits - 1) && (*vec1_ == *vec0_));
     CPPUNIT_ASSERT(ok);
     vec1_->setAll();
@@ -365,11 +365,11 @@ void BitVec64Suite::testCtor00()
     bool ok = ((vec.countClearBits() == BitVec64::DefaultMaxBits) && (vec.countSetBits() == 0));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
+    unsigned int maxBits = vec.maxBits();
     ok = (maxBits == BitVec64::DefaultMaxBits);
     CPPUNIT_ASSERT(ok);
 
-    for (size_t i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if ((!vec.isClear(i)) || vec.isSet(i))
         {
@@ -390,11 +390,11 @@ void BitVec64Suite::testCtor01()
     bool ok = ((vec.countClearBits() == 11) && (vec.countSetBits() == 0));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
+    unsigned int maxBits = vec.maxBits();
     ok = (maxBits == 11);
     CPPUNIT_ASSERT(ok);
 
-    for (size_t i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if ((!vec.isClear(i)) || vec.isSet(i))
         {
@@ -415,11 +415,11 @@ void BitVec64Suite::testCtor02()
     bool ok = ((vec0.countClearBits() == 0) && (vec0.countSetBits() == 222));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long maxBits = vec0.maxBits();
+    unsigned int maxBits = vec0.maxBits();
     ok = (maxBits == 222);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0.isClear(i) || (!vec0.isSet(i)))
         {
@@ -618,12 +618,12 @@ void BitVec64Suite::testItor03()
 void BitVec64Suite::testItor04()
 {
     BitVec64 vec(*vec3_);
-    size_t bit = vec.firstClearBit();
+    unsigned int bit = vec.firstClearBit();
     bool ok = (bit == 2);
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
-    for (size_t i = bit + 2; i < maxBits; i += 2)
+    unsigned int maxBits = vec.maxBits();
+    for (unsigned int i = bit + 2; i < maxBits; i += 2)
     {
         bit = vec.nextClearBit(bit);
         if (bit != i)
@@ -671,12 +671,12 @@ void BitVec64Suite::testItor05()
 void BitVec64Suite::testItor06()
 {
     BitVec64 vec(*vec2_);
-    size_t bit = vec.firstSetBit();
+    unsigned int bit = vec.firstSetBit();
     bool ok = (bit == 3);
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
-    for (size_t i = bit + 3; i < maxBits; i += 3)
+    unsigned int maxBits = vec.maxBits();
+    for (unsigned int i = bit + 3; i < maxBits; i += 3)
     {
         bit = vec.nextSetBit(bit);
         if (bit != i)
@@ -922,8 +922,8 @@ void BitVec64Suite::testSet00()
     bool ok = (vec0_->setBit(3) && (vec0_->countSetBits() == 1));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != (i == 3))
         {
@@ -948,10 +948,10 @@ void BitVec64Suite::testSet01()
     bool ok = ((*vec0_ == *vec1_) && vec0_->isSet() && (vec0_->countSetBits() == 1024));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long curBit = vec0_->firstSetBit();
+    unsigned int curBit = vec0_->firstSetBit();
     ok = (curBit == 0) && (vec0_->lastSetBit() == 1023 - curBit);
     CPPUNIT_ASSERT(ok);
-    for (unsigned long i = 1; curBit < 1023; curBit = i++)
+    for (unsigned int i = 1; curBit < 1023; curBit = i++)
     {
         if ((vec0_->nextSetBit(curBit) != i) || (vec0_->prevSetBit(1023 - curBit) != 1023 - i))
         {
@@ -1002,8 +1002,8 @@ void BitVec64Suite::testSet03()
     bool ok = (vec0_->setBits(123, 9999) && (vec0_->countClearBits() == 123));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != (i >= 123))
         {
@@ -1024,8 +1024,8 @@ void BitVec64Suite::testSet04()
     bool ok = (vec0_->setBits(10, 20) && (vec0_->countSetBits() == 11));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != ((i >= 10) && (i <= 20)))
         {
@@ -1043,7 +1043,7 @@ void BitVec64Suite::testSet04()
 //
 void BitVec64Suite::testSet05()
 {
-    size_t maxBits = vec0_->maxBits();
+    unsigned int maxBits = vec0_->maxBits();
     bool ok = (vec0_->setBits(0, maxBits - 1) && (*vec0_ == *vec1_));
     CPPUNIT_ASSERT(ok);
     vec0_->clearAll();

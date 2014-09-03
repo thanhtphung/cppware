@@ -8,7 +8,6 @@ using namespace syskit;
 
 BitVecSuite::BitVecSuite()
 {
-
     vec0_ = new BitVec(1024, false);
     vec1_ = new BitVec(1024, true);
     vec2_ = new BitVec(1000, false);
@@ -20,7 +19,6 @@ BitVecSuite::BitVecSuite()
 
 BitVecSuite::~BitVecSuite()
 {
-
     delete vec3_;
     delete vec2_;
     delete vec1_;
@@ -204,8 +202,8 @@ void BitVecSuite::testClear00()
     bool ok = (vec1_->clearBit(175) && (vec1_->countClearBits() == 1));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != (i == 175))
         {
@@ -230,10 +228,10 @@ void BitVecSuite::testClear01()
     bool ok = ((*vec1_ == *vec0_) && vec1_->isClear() && (vec1_->countClearBits() == 1024));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long curBit = vec0_->firstClearBit();
+    unsigned int curBit = vec0_->firstClearBit();
     ok = (curBit == 0) && (vec0_->lastClearBit() == 1023 - curBit);
     CPPUNIT_ASSERT(ok);
-    for (unsigned long i = 1; curBit < 1023; curBit = i++)
+    for (unsigned int i = 1; curBit < 1023; curBit = i++)
     {
         if ((vec0_->nextClearBit(curBit) != i) || (vec0_->prevClearBit(1023 - curBit) != 1023 - i))
         {
@@ -287,8 +285,8 @@ void BitVecSuite::testClear03()
     bool ok = (vec1_->clearBits(111, 9999) && (vec1_->countSetBits() == 111));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != (i >= 111))
         {
@@ -309,8 +307,8 @@ void BitVecSuite::testClear04()
     bool ok = (vec1_->clearBits(100, 200) && (vec1_->countClearBits() == 101));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec1_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec1_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec1_->isClear(i) != ((i >= 100) && (i <= 200)))
         {
@@ -328,7 +326,7 @@ void BitVecSuite::testClear04()
 //
 void BitVecSuite::testClear05()
 {
-    size_t maxBits = vec1_->maxBits();
+    unsigned int maxBits = vec1_->maxBits();
     bool ok = (vec1_->clearBits(0, maxBits - 1) && (*vec1_ == *vec0_));
     CPPUNIT_ASSERT(ok);
     vec1_->setAll();
@@ -367,11 +365,11 @@ void BitVecSuite::testCtor00()
     bool ok = ((vec.countClearBits() == BitVec::DefaultMaxBits) && (vec.countSetBits() == 0));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
+    unsigned int maxBits = vec.maxBits();
     ok = (maxBits == BitVec::DefaultMaxBits);
     CPPUNIT_ASSERT(ok);
 
-    for (size_t i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if ((!vec.isClear(i)) || vec.isSet(i))
         {
@@ -392,11 +390,11 @@ void BitVecSuite::testCtor01()
     bool ok = ((vec.countClearBits() == 11) && (vec.countSetBits() == 0));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
+    unsigned int maxBits = vec.maxBits();
     ok = (maxBits == 11);
     CPPUNIT_ASSERT(ok);
 
-    for (size_t i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if ((!vec.isClear(i)) || vec.isSet(i))
         {
@@ -413,22 +411,33 @@ void BitVecSuite::testCtor01()
 //
 void BitVecSuite::testCtor02()
 {
-    BitVec vec(222, true);
-    bool ok = ((vec.countClearBits() == 0) && (vec.countSetBits() == 222));
+    BitVec vec0(222, true);
+    bool ok = ((vec0.countClearBits() == 0) && (vec0.countSetBits() == 222));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
+    unsigned int maxBits = vec0.maxBits();
     ok = (maxBits == 222);
     CPPUNIT_ASSERT(ok);
 
-    for (size_t i = 0; i < maxBits; ++i)
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
-        if (vec.isClear(i) || (!vec.isSet(i)))
+        if (vec0.isClear(i) || (!vec0.isSet(i)))
         {
             ok = false;
             break;
         }
     }
+    CPPUNIT_ASSERT(ok);
+
+    BitVec vec1(maxBits, vec0.raw(), vec0.byteSize());
+    ok = (vec0 == vec1);
+    CPPUNIT_ASSERT(ok);
+
+    BitVec vec2(maxBits, vec0.raw(), 24);
+    ok = (vec0 != vec2);
+    CPPUNIT_ASSERT(ok);
+    vec2.setBits(192, 221);
+    ok = (vec0 == vec2);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -447,7 +456,7 @@ void BitVecSuite::testCtor03()
     CPPUNIT_ASSERT(ok);
 
     const BitVec::word_t* p = vec.raw();
-    vec = vec;
+    vec = vec; //no-op
     ok = (vec.raw() == p);
     CPPUNIT_ASSERT(ok);
 }
@@ -609,12 +618,12 @@ void BitVecSuite::testItor03()
 void BitVecSuite::testItor04()
 {
     BitVec vec(*vec3_);
-    size_t bit = vec.firstClearBit();
+    unsigned int bit = vec.firstClearBit();
     bool ok = (bit == 2);
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
-    for (size_t i = bit + 2; i < maxBits; i += 2)
+    unsigned int maxBits = vec.maxBits();
+    for (unsigned int i = bit + 2; i < maxBits; i += 2)
     {
         bit = vec.nextClearBit(bit);
         if (bit != i)
@@ -662,12 +671,12 @@ void BitVecSuite::testItor05()
 void BitVecSuite::testItor06()
 {
     BitVec vec(*vec2_);
-    size_t bit = vec.firstSetBit();
+    unsigned int bit = vec.firstSetBit();
     bool ok = (bit == 3);
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec.maxBits();
-    for (size_t i = bit + 3; i < maxBits; i += 3)
+    unsigned int maxBits = vec.maxBits();
+    for (unsigned int i = bit + 3; i < maxBits; i += 3)
     {
         bit = vec.nextSetBit(bit);
         if (bit != i)
@@ -893,6 +902,15 @@ void BitVecSuite::testResize00()
     BitVec vec1d(64 /*maxBits*/, true /*initialVal*/);
     ok = (vec1b.resize(64 /*maxBits*/, true /*initialVal*/) && (vec1b == vec1d));
     CPPUNIT_ASSERT(ok);
+
+    BitVec vec1e(255 /*maxBits*/, true /*initialVal*/);
+    ok = (vec1b.resize(255 /*maxBits*/, true /*initialVal*/) && (vec1b == vec1e));
+    CPPUNIT_ASSERT(ok);
+    ok = vec1e.resize(1024 /*maxBits*/, false /*initialVal*/) &&
+        vec1b.resize(1024 /*maxBits*/, false /*initialVal*/) &&
+        (vec1b == vec1e) &&
+        vec1e.isClear(1023);
+    CPPUNIT_ASSERT(ok);
 }
 
 
@@ -904,8 +922,8 @@ void BitVecSuite::testSet00()
     bool ok = (vec0_->setBit(3) && (vec0_->countSetBits() == 1));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != (i == 3))
         {
@@ -930,10 +948,10 @@ void BitVecSuite::testSet01()
     bool ok = ((*vec0_ == *vec1_) && vec0_->isSet() && (vec0_->countSetBits() == 1024));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long curBit = vec0_->firstSetBit();
+    unsigned int curBit = vec0_->firstSetBit();
     ok = (curBit == 0) && (vec0_->lastSetBit() == 1023 - curBit);
     CPPUNIT_ASSERT(ok);
-    for (unsigned long i = 1; curBit < 1023; curBit = i++)
+    for (unsigned int i = 1; curBit < 1023; curBit = i++)
     {
         if ((vec0_->nextSetBit(curBit) != i) || (vec0_->prevSetBit(1023 - curBit) != 1023 - i))
         {
@@ -984,8 +1002,8 @@ void BitVecSuite::testSet03()
     bool ok = (vec0_->setBits(123, 9999) && (vec0_->countClearBits() == 123));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != (i >= 123))
         {
@@ -1006,8 +1024,8 @@ void BitVecSuite::testSet04()
     bool ok = (vec0_->setBits(10, 20) && (vec0_->countSetBits() == 11));
     CPPUNIT_ASSERT(ok);
 
-    size_t maxBits = vec0_->maxBits();
-    for (size_t i = 0; i < maxBits; ++i)
+    unsigned int maxBits = vec0_->maxBits();
+    for (unsigned int i = 0; i < maxBits; ++i)
     {
         if (vec0_->isSet(i) != ((i >= 10) && (i <= 20)))
         {
@@ -1025,7 +1043,7 @@ void BitVecSuite::testSet04()
 //
 void BitVecSuite::testSet05()
 {
-    size_t maxBits = vec0_->maxBits();
+    unsigned int maxBits = vec0_->maxBits();
     bool ok = (vec0_->setBits(0, maxBits - 1) && (*vec0_ == *vec1_));
     CPPUNIT_ASSERT(ok);
     vec0_->clearAll();

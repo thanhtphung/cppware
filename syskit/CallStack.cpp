@@ -544,7 +544,7 @@ const wchar_t* CallStack::Frame::describe() const
     if (*path != 0)
     {
         bufSizeInChars -= n;
-        swprintf(buf + n, bufSizeInChars, L"%*s%s+%lu#%lu\r\n", ADDR_STRING_LENGTH + 2, L"", path, lineNum_, lineOff_);
+        swprintf(buf + n, bufSizeInChars, L"%*s%s+%u#%u\r\n", ADDR_STRING_LENGTH + 2, L"", path, lineNum_, lineOff_);
     }
 
     desc_ = strdup(buf);
@@ -561,7 +561,7 @@ void CallStack::Frame::setModule(bool ok, const wchar_t* module)
 }
 
 
-void CallStack::Frame::setPath(bool ok, const wchar_t* path, unsigned long lineNum, unsigned long lineOff)
+void CallStack::Frame::setPath(bool ok, const wchar_t* path, unsigned int lineNum, unsigned int lineOff)
 {
     if (ok && (path != 0) && (path[0] != 0))
     {

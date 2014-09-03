@@ -137,16 +137,16 @@ void D64VecSuite::testAdd01()
 
 //
 // Interfaces under test:
-// - unsigned long D64Vec::add(size_t count, item_t item);
+// - unsigned int D64Vec::add(size_t count, item_t item);
 //
 void D64VecSuite::testAdd02()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     D64Vec vec(capacity, growBy);
-    unsigned long count = 0;
+    size_t count = 0;
     D64Vec::item_t item = 12;
-    unsigned long numAdds = vec.add(count, item);
+    unsigned int numAdds = vec.add(count, item);
     bool ok = ((numAdds == 0) && (vec.numItems() == 0));
     CPPUNIT_ASSERT(ok);
     count = 1;
@@ -195,16 +195,16 @@ void D64VecSuite::testAdd02()
 
 //
 // Interfaces under test:
-// - unsigned long D64Vec::add(const item_t* raw, size_t itemCount);
+// - unsigned int D64Vec::add(const item_t* raw, size_t itemCount);
 //
 void D64VecSuite::testAdd03()
 {
-    unsigned long capacity = 3;
+    unsigned int capacity = 3;
     int growBy = 0;
     D64Vec vec(capacity, growBy);
-    unsigned long count = 0;
+    size_t count = 0;
     D64Vec::item_t item[] = {12, 34, 56, 78, 99};
-    unsigned long numAdds = vec.add(item, count);
+    unsigned int numAdds = vec.add(item, count);
     bool ok = ((numAdds == 0) && (vec.numItems() == 0));
     CPPUNIT_ASSERT(ok);
     count = 1;
@@ -254,7 +254,7 @@ void D64VecSuite::testAdd04()
     D64Vec vec;
     size_t startAt = 0;
     size_t itemCount = 1;
-    unsigned long numAdds = vec.add(vec0, startAt, itemCount);
+    unsigned int numAdds = vec.add(vec0, startAt, itemCount);
     bool ok = (numAdds == itemCount);
     CPPUNIT_ASSERT(ok);
     startAt = 1;
@@ -320,14 +320,14 @@ void D64VecSuite::testFind00()
 
 //
 // Interfaces under test:
-// - D64Vec::item_t* D64Vec::detachRaw(unsigned long& numItems);
+// - D64Vec::item_t* D64Vec::detachRaw(unsigned int& numItems);
 // - D64Vec::item_t D64Vec::findKthSmallest(item_t* item, size_t itemCount, size_t k);
 // - const D64Vec::item_t* D64Vec::raw() const;
 //
 void D64VecSuite::testFindKthSmallest00()
 {
     Sample0 vec0;
-    unsigned long capacity = vec0.numItems();
+    unsigned int capacity = vec0.numItems();
     int growBy = 0;
     D64Vec vec1(capacity, growBy);
     bool reverseOrder = false;
@@ -338,7 +338,7 @@ void D64VecSuite::testFindKthSmallest00()
     bool ok = (item == p) && (itemCount == capacity);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long k = 0; k < capacity; ++k)
+    for (unsigned int k = 0; k < capacity; ++k)
     {
         D64Vec::item_t kth = D64Vec::findKthSmallest(item, itemCount, k);
         if (kth != vec1.peek(k))
