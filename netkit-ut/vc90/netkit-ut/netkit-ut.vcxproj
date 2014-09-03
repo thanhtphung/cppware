@@ -129,6 +129,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CapConfigSuite.cpp" />
     <ClCompile Include="..\..\IpAddrSetSuite.cpp" />
     <ClCompile Include="..\..\IpAddrSuite.cpp" />
     <ClCompile Include="..\..\IpDeviceSuite.cpp" />
@@ -157,6 +158,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\CapConfigSuite.hpp" />
     <ClInclude Include="..\..\netkit-ut-pch.h" />
     <ClInclude Include="..\..\IpAddrSetSuite.hpp" />
     <ClInclude Include="..\..\IpAddrSuite.hpp" />

@@ -8,6 +8,7 @@
 #include "syskit/sys.hpp"
 
 #include "netkit-ut-pch.h"
+#include "CapConfigSuite.hpp"
 #include "IpAddrSetSuite.hpp"
 #include "IpAddrSuite.hpp"
 #include "IpDeviceSuite.hpp"
@@ -21,6 +22,7 @@ using namespace appkit;
 using namespace netkit;
 using namespace syskit;
 
+CPPUNIT_TEST_SUITE_REGISTRATION(CapConfigSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(IpAddrSetSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(IpAddrSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(IpDeviceSuite);
@@ -37,7 +39,7 @@ using namespace syskit;
 int wmain()
 {
     Singleton::create_t create = 0;
-    unsigned long initialRefCount = 0UL;
+    unsigned int initialRefCount = 0U;
     void* createArg = 0;
     App* app = App::instance(create, initialRefCount, createArg);
     RefCounted::Count lock(*app);
@@ -45,6 +47,5 @@ int wmain()
     Winsock winsock;
     UnitTestBed unitTestBed;
     bool ok = unitTestBed.runAll();
-
     return ok? 0: 1;
 }

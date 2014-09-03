@@ -2,11 +2,13 @@
 // Precompiled headers for the netkit-ut project.
 //
 #include "appkit/App.hpp"
+#include "appkit/CmdLine.hpp"
 #include "appkit/Str.hpp"
 #include "appkit/String.hpp"
 #include "appkit/StringVec.hpp"
 #include "appkit/U32.hpp"
 #include "appkit/UnitTestBed.hpp"
+#include "netkit/CapConfig.hpp"
 #include "netkit/IpAddr.hpp"
 #include "netkit/IpAddrSet.hpp"
 #include "netkit/IpDevice.hpp"

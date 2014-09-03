@@ -12,7 +12,8 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include "appkit/crt.hpp"
+#include "appkit/Bool.hpp"
+#include "appkit/CmdLine.hpp"
 #include "appkit/D64.hpp"
 #include "appkit/DelimitedTxt.hpp"
 #include "appkit/S32.hpp"
@@ -23,6 +24,7 @@
 #include "appkit/U32.hpp"
 #include "appkit/U32Set.hpp"
 #include "appkit/U8.hpp"
+#include "appkit/crt.hpp"
 #include "syskit/BufPool.hpp"
 #include "syskit/Foundation.hpp"
 #include "syskit/RefCounted.hpp"

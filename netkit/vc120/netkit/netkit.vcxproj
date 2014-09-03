@@ -91,6 +91,7 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CapConfig.cpp" />
     <ClCompile Include="..\..\IcmpAddrMask.cpp" />
     <ClCompile Include="..\..\IcmpEcho.cpp" />
     <ClCompile Include="..\..\IcmpHdr.cpp" />
@@ -100,6 +101,7 @@
     <ClCompile Include="..\..\IfSpeed.cpp" />
     <ClCompile Include="..\..\IpAddr.cpp" />
     <ClCompile Include="..\..\IpAddrSet.cpp" />
+    <ClCompile Include="..\..\IpCap.cpp" />
     <ClCompile Include="..\..\IpDevice.cpp" />
     <ClCompile Include="..\..\IpFrag.cpp" />
     <ClCompile Include="..\..\IpHdr.cpp" />
@@ -130,12 +132,14 @@
     <ClCompile Include="..\..\win\Winsock-win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\CapConfig.hpp" />
     <ClInclude Include="..\..\IcmpAddrMask.hpp" />
     <ClInclude Include="..\..\IcmpEcho.hpp" />
     <ClInclude Include="..\..\IcmpHdr.hpp" />
     <ClInclude Include="..\..\IcmpInfo.hpp" />
     <ClInclude Include="..\..\IcmpMsg.hpp" />
     <ClInclude Include="..\..\IcmpTimestamp.hpp" />
+    <ClInclude Include="..\..\IpCap.hpp" />
     <ClInclude Include="..\..\IpFrag.hpp" />
     <ClInclude Include="..\..\IpHdr.hpp" />
     <ClInclude Include="..\..\netkit-pch.h" />
