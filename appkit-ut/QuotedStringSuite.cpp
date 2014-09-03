@@ -108,15 +108,15 @@ void QuotedStringSuite::testDequote02()
     CPPUNIT_ASSERT(ok);
 
     str = "\\uD7FF";
-    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0xd7ffUL));
+    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0xd7ffU));
     CPPUNIT_ASSERT(ok);
 
     str = "\\ue000";
-    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0xe000UL));
+    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0xe000U));
     CPPUNIT_ASSERT(ok);
 
     str = "\"\\u0010ffff\"";
-    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0x0010ffffUL));
+    ok = (str.dequote() && (str.length() == 1) && (str[0] == 0x0010ffffU));
     CPPUNIT_ASSERT(ok);
 }
 

@@ -82,7 +82,7 @@ using namespace syskit;
 int wmain()
 {
     Singleton::create_t create = 0;
-    unsigned long initialRefCount = 0UL;
+    unsigned int initialRefCount = 0U;
     void* createArg = 0;
     App* app = App::instance(create, initialRefCount, createArg);
     RefCounted::Count lock(*app);
@@ -90,6 +90,5 @@ int wmain()
     Winsock winsock;
     UnitTestBed unitTestBed;
     bool ok = unitTestBed.runAll();
-
     return ok? 0: 1;
 }

@@ -182,16 +182,16 @@ unsigned int U32::numDigits(item_t item)
 {
     static const item_t s_boundary[] =
     {
-        9UL,         //1 --digits
-        99UL,        //2
-        999UL,       //3
-        9999UL,      //4
-        99999UL,     //5
-        999999UL,    //6
-        9999999UL,   //7
-        99999999UL,  //8
-        999999999UL, //9
-        0xffffffffUL //10
+        9U,         //1 --digits
+        99U,        //2
+        999U,       //3
+        9999U,      //4
+        99999U,     //5
+        999999U,    //6
+        9999999U,   //7
+        99999999U,  //8
+        999999999U, //9
+        0xffffffffU //10
     };
 
     size_t i = (item <= s_boundary[4])? 0: 5;
@@ -256,7 +256,7 @@ void U32::bswap(item_t* item, size_t numItems)
 
 //!
 //! Convert 32-bit number to uppercase hex digits.
-//! For example, item=0xa1b2c3d4UL --> xdigit[0]='A' xdigit[1]='1' xdigit[2]='B'
+//! For example, item=0xa1b2c3d4U --> xdigit[0]='A' xdigit[1]='1' xdigit[2]='B'
 //! xdigit[3]='2' xdigit[4]='C' xdigit[5]='3' xdigit[6]='D' xdigit[7]='4'.
 //!
 void U32::toXDIGITS(item_t item, char xdigit[NumXdigits])
@@ -271,7 +271,7 @@ void U32::toXDIGITS(item_t item, char xdigit[NumXdigits])
 
 //!
 //! Convert 32-bit number to lowercase hex digits.
-//! For example, item=0xa1b2c3d4UL --> xdigit[0]='a' xdigit[1]='1' xdigit[2]='b'
+//! For example, item=0xa1b2c3d4U --> xdigit[0]='a' xdigit[1]='1' xdigit[2]='b'
 //! xdigit[3]='2' xdigit[4]='c' xdigit[5]='3' xdigit[6]='d' xdigit[7]='4'.
 //!
 void U32::toXdigits(item_t item, char xdigit[NumXdigits])

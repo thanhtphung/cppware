@@ -356,7 +356,7 @@ void StringVecSuite::testCtor01()
     CPPUNIT_ASSERT(ok);
 
     StringVec vec2(&vec);
-    ok = (vec2.stringify() == "13579") && (vec.capacity() == 0UL - 1);
+    ok = (vec2.stringify() == "13579") && (vec.capacity() == 0U - 1);
     CPPUNIT_ASSERT(ok);
 }
 

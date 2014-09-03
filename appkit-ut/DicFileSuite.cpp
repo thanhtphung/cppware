@@ -102,7 +102,7 @@ void DicFileSuite::testSave00()
     copy(srcPath, dstPath);
 
     void* arg = &dstPath;
-    unsigned long stackSizeInBytes = 0;
+    unsigned int stackSizeInBytes = 0;
     bool startSuspended = true;
     Thread t0(entry00, arg, stackSizeInBytes, startSuspended);
     Thread t1(entry00, arg, stackSizeInBytes, startSuspended);

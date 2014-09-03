@@ -394,7 +394,7 @@ void StringDicSuite::testRm00()
 {
     Sample0 dic0;
     StringVec keys;
-    StringVec values(1UL /*capacity*/, -1 /*growBy*/);
+    StringVec values(1U /*capacity*/, -1 /*growBy*/);
     dic0.vectorize(keys, values);
 
     StringDic dic1(dic0);
@@ -427,7 +427,7 @@ void StringDicSuite::testRm01()
 {
     Sample0 dic0;
     StringVec keys;
-    StringVec values(1UL /*capacity*/, -1 /*growBy*/);
+    StringVec values(1U /*capacity*/, -1 /*growBy*/);
     dic0.vectorize(keys, values);
 
     StringDic dic1(dic0);

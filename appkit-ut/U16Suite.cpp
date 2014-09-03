@@ -8,11 +8,10 @@ using namespace appkit;
 typedef struct
 {
     const char* s;
-    unsigned short v;
+    U16::item_t v;
 } sample_t;
 
-const sample_t
-SAMPLE[] =
+const sample_t SAMPLE[] =
 {
     {"0", 0},
     {"123", 123},
@@ -25,8 +24,7 @@ SAMPLE[] =
     {"0000000000000000000000000000000000076543", 076543U}
 };
 
-const unsigned long
-NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 U16Suite::U16Suite()
@@ -112,7 +110,7 @@ void U16Suite::testCtor00()
     String s0;
     bool ok = true;
     U16::item_t defaultV = 12345;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;

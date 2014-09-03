@@ -9,7 +9,7 @@ using namespace appkit;
 typedef struct
 {
     const char* s;
-    unsigned long v;
+    unsigned char v;
 } sample_t;
 
 const sample_t SAMPLE[] =
@@ -25,7 +25,7 @@ const sample_t SAMPLE[] =
     {"0000000000000000000000000000000000054", 054U}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 U8Suite::U8Suite()
@@ -43,7 +43,7 @@ void U8Suite::testCtor00()
     String s0;
     bool ok = true;
     U8::item_t defaultV = 45;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;
@@ -66,7 +66,7 @@ void U8Suite::testCtor00()
 void U8Suite::testIsValid00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         size_t length = strlen(r.s);

@@ -54,7 +54,7 @@ private:
     static void cb4a(void*, const char*, size_t);
     static void cb4b(void*, const char*, size_t);
 
-    static appkit::String formExpectedCol(unsigned long);
+    static appkit::String formExpectedCol(size_t);
 
 };
 

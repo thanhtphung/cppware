@@ -31,7 +31,7 @@ static const stripCase_t s_stripCase[] =
     {"", ""},
     {"abc", "abc"}
 };
-const unsigned long NUM_STRIP_CASES = sizeof(s_stripCase) / sizeof(*s_stripCase);
+const size_t NUM_STRIP_CASES = sizeof(s_stripCase) / sizeof(*s_stripCase);
 
 static const trimCase_t s_trimCase[] =
 {
@@ -45,7 +45,7 @@ static const trimCase_t s_trimCase[] =
     {false, true, " \t\n\r\v\f", ""},
     {false, true, "  a,b-c  ", "  a,b-c"}
 };
-const unsigned long NUM_TRIM_CASES = sizeof(s_trimCase) / sizeof(*s_trimCase);
+const size_t NUM_TRIM_CASES = sizeof(s_trimCase) / sizeof(*s_trimCase);
 
 
 StrSuite::StrSuite()
@@ -166,7 +166,7 @@ void StrSuite::testStripSpace00()
 {
     String result;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_STRIP_CASES; ++i)
+    for (unsigned int i = 0; i < NUM_STRIP_CASES; ++i)
     {
         const stripCase_t* p = &s_stripCase[i];
         String* rc = &Str::stripSpace(result, p->i);
@@ -185,7 +185,7 @@ void StrSuite::testStripSpace01()
     char s[127 + 1];
     String result;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_STRIP_CASES; ++i)
+    for (unsigned int i = 0; i < NUM_STRIP_CASES; ++i)
     {
         const stripCase_t* p = &s_stripCase[i];
         size_t length = strlen(p->i);
@@ -207,7 +207,7 @@ void StrSuite::testStripSpace02()
 {
     char s[63 + 1];
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_STRIP_CASES; ++i)
+    for (unsigned int i = 0; i < NUM_STRIP_CASES; ++i)
     {
         const stripCase_t* p = &s_stripCase[i];
         size_t length = strlen(p->i);
@@ -227,7 +227,7 @@ void StrSuite::testTrimSpace00()
 {
     String result;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_TRIM_CASES; ++i)
+    for (unsigned int i = 0; i < NUM_TRIM_CASES; ++i)
     {
         const trimCase_t* p = &s_trimCase[i];
         String* rc = &Str::trimSpace(result, p->i, p->trimL, p->trimR);
@@ -247,7 +247,7 @@ void StrSuite::testTrimSpace01()
     char s[127 + 1];
     String result;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_TRIM_CASES; ++i)
+    for (unsigned int i = 0; i < NUM_TRIM_CASES; ++i)
     {
         const trimCase_t* p = &s_trimCase[i];
         size_t length = strlen(p->i);

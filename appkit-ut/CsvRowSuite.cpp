@@ -30,7 +30,7 @@ CsvRowSuite::~CsvRowSuite()
 }
 
 
-String CsvRowSuite::formExpectedCol(unsigned long i)
+String CsvRowSuite::formExpectedCol(size_t i)
 {
     char c = static_cast<char>('0' + i);
     String expectedCol(i, c);
@@ -53,7 +53,7 @@ bool CsvRowSuite::cb0(void* arg, const String& col)
 
 bool CsvRowSuite::cb1a(void* arg, const char* col, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedCol = formExpectedCol(i);
     bool ok = (String(col, length) == expectedCol);
@@ -65,7 +65,7 @@ bool CsvRowSuite::cb1a(void* arg, const char* col, size_t length)
 
 bool CsvRowSuite::cb1b(void* arg, const char* col, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedCol = formExpectedCol(i);
     bool ok = (String(col, length) == expectedCol);
@@ -92,7 +92,7 @@ void CsvRowSuite::cb3(void* arg, const String& col)
 
 void CsvRowSuite::cb4a(void* arg, const char* col, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedCol = formExpectedCol(i);
     bool ok = (String(col, length) == expectedCol);
@@ -138,7 +138,7 @@ void CsvRowSuite::testApply01()
     CsvRow row1(SAMPLE1, sizeof(SAMPLE1) - 1, COMMA);
     CsvRow row2(SAMPLE2, sizeof(SAMPLE2) - 1, COMMA);
 
-    unsigned long i = 0;
+    unsigned int i = 0;
     bool ok = row0.apply(cb1a, &i);
     CPPUNIT_ASSERT(ok);
 
@@ -146,11 +146,11 @@ void CsvRowSuite::testApply01()
     ok = ((!row0.apply(cb1b, &i)) && (i == 4));
     CPPUNIT_ASSERT(ok);
 
-    i = 0xffffffffUL;
+    i = 0xffffffffU;
     ok = row1.apply(cb1a, &i);
     CPPUNIT_ASSERT(ok);
 
-    i = 0xffffffffUL;
+    i = 0xffffffffU;
     ok = ((!row1.apply(cb1b, &i)) && (i == 4));
     CPPUNIT_ASSERT(ok);
 
@@ -248,7 +248,7 @@ void CsvRowSuite::testCtor00()
     csv.reset();
     while (csv.next(s, length))
     {
-        unsigned long i = *s - '0';
+        unsigned int i = *s - '0';
         if (i + 1 != length)
         {
             ok = false;
@@ -319,7 +319,7 @@ void CsvRowSuite::testNext00()
 
     const char* col;
     size_t length;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 0; row0.next(col, length);)
     {
@@ -335,7 +335,7 @@ void CsvRowSuite::testNext00()
     ok = ((i == 5) && (!row0.next(col, length)) && (col == 0) && (length == 0));
     CPPUNIT_ASSERT(ok);
 
-    for (i = 0xffffffffUL; row1.next(col, length);)
+    for (i = 0xffffffffU; row1.next(col, length);)
     {
         ++i;
         String expectedCol = formExpectedCol(i);
@@ -372,7 +372,7 @@ void CsvRowSuite::testNext01()
     CsvRow row2(SAMPLE2, sizeof(SAMPLE2) - 1, COMMA);
 
     String col;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 0; row0.next(col);)
     {
@@ -388,7 +388,7 @@ void CsvRowSuite::testNext01()
     ok = ((i == 5) && (!row0.next(col)) && col.empty());
     CPPUNIT_ASSERT(ok);
 
-    for (i = 0xffffffffUL; row1.next(col);)
+    for (i = 0xffffffffU; row1.next(col);)
     {
         ++i;
         String expectedCol = formExpectedCol(i);
@@ -492,7 +492,7 @@ void CsvRowSuite::testTrim00()
     CPPUNIT_ASSERT(ok);
 
     // Non-ASCII.
-    const utf32_t CENT = 0xA2UL;
+    const utf32_t CENT = 0xA2U;
     Utf8Seq seq;
     utf32_t col32[2] = {CENT, VERT_BAR};
     seq.shrink(col32, 1);

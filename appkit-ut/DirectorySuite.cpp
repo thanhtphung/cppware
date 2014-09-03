@@ -31,7 +31,7 @@ bool DirectorySuite::cb0a(void* arg, const Directory& /*parent*/, const String& 
 
 bool DirectorySuite::cb0b(void* arg, const Directory& /*parent*/, const String& /*childName*/)
 {
-    size_t& i = *static_cast<size_t*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     return (i-- > 0);
 }
 
@@ -105,12 +105,12 @@ void DirectorySuite::testApply02()
 void DirectorySuite::testApply03()
 {
     Directory dir("../../../etc/");
-    size_t i = 99999UL;
+    unsigned int i = 99999U;
     bool ok = dir.apply(cb0b, &i);
     CPPUNIT_ASSERT(ok);
-    size_t numEntries = 99999UL - i - 1;
+    unsigned int numEntries = 99999U - i - 1;
 
-    for (size_t i = numEntries; i > 0; --i)
+    for (unsigned int i = numEntries; i > 0; --i)
     {
         size_t j = i;
         if (dir.apply(cb0b, &j))
@@ -126,15 +126,15 @@ void DirectorySuite::testApply03()
 void DirectorySuite::testApply04()
 {
     Directory dir("../../../etc/");
-    size_t i = 99999UL;
+    unsigned int i = 99999U;
     bool ok = dir.applyChildFirst(cb0b, &i);
     CPPUNIT_ASSERT(ok);
-    size_t numEntries = 99999UL - i - 1;
+    unsigned int numEntries = 99999U - i - 1;
 
-    for (size_t i = numEntries; i > 0; --i)
+    for (unsigned int i = numEntries; i > 0; --i)
     {
-        size_t j = i;
-        size_t k = i;
+        unsigned int j = i;
+        unsigned int k = i;
         if (dir.applyChildFirst(cb0b, &j) || dir.applyParentFirst(cb0b, &k))
         {
             ok = false;
@@ -147,7 +147,7 @@ void DirectorySuite::testApply04()
 
 void DirectorySuite::testAttr00()
 {
-    Utc zero(0UL, 0UL);
+    Utc zero(0U, 0U);
     Directory::Attr attr0;
     bool ok = (!attr0.isDir()) &&
         (attr0.accessTime() == zero) &&

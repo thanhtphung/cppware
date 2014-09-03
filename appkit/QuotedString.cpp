@@ -375,9 +375,9 @@ utf32_t QuotedString::unescapeU(const utf8_t* p1, const utf8_t* p2, size_t& byte
                 // 10-byte escape sequence.
                 if (S32::isXdigit(p[4]) && S32::isXdigit(p[5]) && S32::isXdigit(p[6]) && S32::isXdigit(p[7]))
                 {
-                    esc = (U8::xdigitsToU8(p[0], p[1]) << 24UL) +
-                        (U8::xdigitsToU8(p[2], p[3]) << 16UL) +
-                        (U8::xdigitsToU8(p[4], p[5]) << 8UL) +
+                    esc = (U8::xdigitsToU8(p[0], p[1]) << 24U) +
+                        (U8::xdigitsToU8(p[2], p[3]) << 16U) +
+                        (U8::xdigitsToU8(p[4], p[5]) << 8U) +
                         U8::xdigitsToU8(p[6], p[7]);
                     bytesUsed = 10;
                     return esc;
@@ -385,7 +385,7 @@ utf32_t QuotedString::unescapeU(const utf8_t* p1, const utf8_t* p2, size_t& byte
             }
 
             // 6-byte escape sequence.
-            esc = (U8::xdigitsToU8(p[0], p[1]) << 8UL) + U8::xdigitsToU8(p[2], p[3]);
+            esc = (U8::xdigitsToU8(p[0], p[1]) << 8U) + U8::xdigitsToU8(p[2], p[3]);
             bytesUsed = 6;
             return esc;
         }

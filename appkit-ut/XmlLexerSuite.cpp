@@ -53,7 +53,7 @@ void XmlLexerSuite::testEscape00()
     String native;
     String xml;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         native = SAMPLE[i].native;
         xml = XmlLexer::escape(native);
@@ -229,7 +229,7 @@ void XmlLexerSuite::testUnescape00()
     String native;
     String xml;
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         xml = SAMPLE[i].xml;
         native = XmlLexer::unescape(xml);
@@ -252,13 +252,13 @@ void XmlLexerSuite::testUnescape00()
 //
 void XmlLexerSuite::testUnescape01()
 {
-    const utf32_t RESULT[] = {0x1UL, 0x23UL, 0x456UL, 0x789abUL};
+    const utf32_t RESULT[] = {0x1U, 0x23U, 0x456U, 0x789abU};
     const size_t NUM_RESULTS = sizeof(RESULT) / sizeof(RESULT[0]);
     String xml("&#x1;&#X23;&#x456;&#x789ab;");
     String native = XmlLexer::unescape(xml);
 
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_RESULTS; ++i)
+    for (unsigned int i = 0; i < NUM_RESULTS; ++i)
     {
         if (native[i] != RESULT[i])
         {

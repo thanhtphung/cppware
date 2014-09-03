@@ -507,7 +507,7 @@ bool U16Set::addNear(size_t i, key_t loKey, key_t hiKey)
         {
             r.hiKey = hiKey;
         }
-        numKeys_ += (r.hiKey - r.loKey + 1UL) - oldNumKeys;
+        numKeys_ += (r.hiKey - r.loKey + 1U) - oldNumKeys;
     }
 
     // Remove overlaps and return status.
@@ -742,7 +742,7 @@ bool U16Set::pick(key_t& removedKey)
         unsigned long long rand64 = rdtsc();
         size_t i = static_cast<size_t>(rand64 % numRanges_);
         const range_t& r = rangeVec_[i];
-        key_t key = r.loKey + static_cast<key_t>((rand64 >> 3) % (r.hiKey - r.loKey + 1UL));
+        key_t key = r.loKey + static_cast<key_t>((rand64 >> 3) % (r.hiKey - r.loKey + 1U));
         ok = rmAt(i, key, key);
         if (ok)
         {
@@ -919,7 +919,7 @@ bool U16Set::rmAt(size_t i, key_t loKey, key_t hiKey)
         else
         {
             r.loKey = hiKey + 1;
-            numKeys_ += (r.hiKey - r.loKey + 1UL) - numKeys;
+            numKeys_ += (r.hiKey - r.loKey + 1U) - numKeys;
         }
     }
 
@@ -932,12 +932,12 @@ bool U16Set::rmAt(size_t i, key_t loKey, key_t hiKey)
             ok = addAt(i + 1, hiKey + 1, r.hiKey);
             range_t& r1 = rangeVec_[i]; //r might have been invalidated by addAt()
             r1.hiKey = loKey - 1;
-            numKeys_ += (r1.hiKey - r1.loKey + 1UL) - numKeys;
+            numKeys_ += (r1.hiKey - r1.loKey + 1U) - numKeys;
         }
         else
         {
             r.hiKey = loKey - 1;
-            numKeys_ += (r.hiKey - r.loKey + 1UL) - numKeys;
+            numKeys_ += (r.hiKey - r.loKey + 1U) - numKeys;
         }
     }
 

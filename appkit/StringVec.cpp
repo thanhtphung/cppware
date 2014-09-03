@@ -572,7 +572,7 @@ unsigned int StringVec::findMinLength(bool useByteSize) const
         }
     }
 
-    return (minLength == 0xffffffffUL)? 0: minLength;
+    return (minLength == 0xffffffffU)? 0: minLength;
 }
 
 

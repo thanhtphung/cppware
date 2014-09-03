@@ -9,7 +9,7 @@ using namespace appkit;
 typedef struct
 {
     const char* s;
-    int v;
+    S32::item_t v;
 } sample_t;
 
 const sample_t SAMPLE[] =
@@ -28,7 +28,7 @@ const sample_t SAMPLE[] =
     {"0000000000000000000000000000000000076543210", 076543210}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 S32Suite::S32Suite()
@@ -46,7 +46,7 @@ void S32Suite::testCtor00()
     String s0;
     bool ok = true;
     S32::item_t defaultV = 12345;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;

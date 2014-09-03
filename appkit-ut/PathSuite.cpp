@@ -68,7 +68,7 @@ PathSuite::~PathSuite()
 void PathSuite::testCtor00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         bool skipNormalization = (strcmp(r.path, r.normalized) == 0);
@@ -90,7 +90,7 @@ void PathSuite::testCtor00()
 void PathSuite::testCtor01()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         bool skipNormalization = (strcmp(r.path, r.normalized) == 0);
@@ -112,7 +112,7 @@ void PathSuite::testCtor01()
 void PathSuite::testCtor02()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         bool skipNormalization = (strcmp(r.path, r.normalized) == 0);

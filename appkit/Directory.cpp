@@ -279,7 +279,7 @@ bool Directory::formList0b(void* arg, const Directory& /*parent*/, const String&
 //
 bool Directory::formList0c(void* arg, const Directory& /*parent*/, const String& childName)
 {
-    unsigned long i = nameIsDir(childName)? 1: 0;
+    unsigned int i = nameIsDir(childName)? 1: 0;
     StringVec** pp = static_cast<StringVec**>(arg);
     StringVec* p = pp[i];
     bool keepGoing = p->add(childName);
@@ -423,7 +423,7 @@ void Directory::formList1b(void* arg, const Directory& /*parent*/, const String&
 
 void Directory::formList1c(void* arg, const Directory& /*parent*/, const String& childName)
 {
-    unsigned long i = nameIsDir(childName)? 1: 0;
+    unsigned int i = nameIsDir(childName)? 1: 0;
     String** pp = static_cast<String**>(arg);
     String* p = pp[i];
     *p += childName;

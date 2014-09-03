@@ -255,8 +255,9 @@ void NetDemon::runStartUpCmds(const MappedFile& rcFile) const
 {
 
     // Run start-up commands from rc3 file using loopback agent.
+    size_t index = 0U;
     bool makeCopy = false;
-    DelimitedTxt rcTxt(reinterpret_cast<const char*>(rcFile.map(0UL /*index*/)), static_cast<size_t>(rcFile.size()), makeCopy);
+    DelimitedTxt rcTxt(reinterpret_cast<const char*>(rcFile.map(index)), static_cast<size_t>(rcFile.size()), makeCopy);
     String cmd;
     bool doTrimLine = true;
     while (rcTxt.next(cmd, doTrimLine))

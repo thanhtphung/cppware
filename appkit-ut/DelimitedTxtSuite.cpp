@@ -51,7 +51,7 @@ bool DelimitedTxtSuite::cb0b(void* arg, const String& line)
 
 bool DelimitedTxtSuite::cb1a(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -64,7 +64,7 @@ bool DelimitedTxtSuite::cb1a(void* arg, const char* line, size_t length)
 bool
 DelimitedTxtSuite::cb1b(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -76,7 +76,7 @@ DelimitedTxtSuite::cb1b(void* arg, const char* line, size_t length)
 
 bool DelimitedTxtSuite::cb1c(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -88,7 +88,7 @@ bool DelimitedTxtSuite::cb1c(void* arg, const char* line, size_t length)
 
 bool DelimitedTxtSuite::cb1d(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -98,7 +98,7 @@ bool DelimitedTxtSuite::cb1d(void* arg, const char* line, size_t length)
 }
 
 
-String DelimitedTxtSuite::formExpectedLine(unsigned long i)
+String DelimitedTxtSuite::formExpectedLine(size_t i)
 {
     char c = static_cast<char>('0' + i);
     String expectedLine(i, c);
@@ -129,7 +129,7 @@ void DelimitedTxtSuite::cb3b(void* arg, const String& line)
 
 void DelimitedTxtSuite::cb4a(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -139,7 +139,7 @@ void DelimitedTxtSuite::cb4a(void* arg, const char* line, size_t length)
 
 void DelimitedTxtSuite::cb4b(void* arg, const char* line, size_t length)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     String expectedLine = formExpectedLine(i);
     bool ok = (String(line, length) == expectedLine);
@@ -178,7 +178,7 @@ void DelimitedTxtSuite::testApply01()
     DelimitedTxt txt1(SAMPLE1, sizeof(SAMPLE1) - 1, true /*makeCopy*/, NEW_LINE);
     DelimitedTxt txt2(SAMPLE2, sizeof(SAMPLE2) - 1, false /*makeCopy*/, SEMICOLON);
 
-    unsigned long i = 6;
+    unsigned int i = 6;
     bool ok = txt0.applyHiToLo(cb1a, &i);
     CPPUNIT_ASSERT(ok);
 
@@ -202,11 +202,11 @@ void DelimitedTxtSuite::testApply01()
     ok = ((!txt1.applyHiToLo(cb1b, &i)) && (i == 3));
     CPPUNIT_ASSERT(ok);
 
-    i = 0xffffffffUL;
+    i = 0xffffffffU;
     ok = txt1.applyLoToHi(cb1c, &i);
     CPPUNIT_ASSERT(ok);
 
-    i = 0xffffffffUL;
+    i = 0xffffffffU;
     ok = ((!txt1.applyLoToHi(cb1d, &i)) && (i == 4));
     CPPUNIT_ASSERT(ok);
 
@@ -259,7 +259,7 @@ void DelimitedTxtSuite::testApply04()
 {
     DelimitedTxt txt0(SAMPLE0, sizeof(SAMPLE0) - 1, false /*makeCopy*/, NEW_LINE);
 
-    unsigned long i = 6;
+    unsigned int i = 6;
     txt0.applyHiToLo(cb4a, &i);
 
     DelimitedTxt txt;
@@ -355,7 +355,7 @@ void DelimitedTxtSuite::testCtor02()
     it1.reset();
     while (it1.next(s, length))
     {
-        unsigned long i = *s - '0';
+        unsigned int i = *s - '0';
         if (i + 1 != length)
         {
             ok = false;
@@ -385,7 +385,7 @@ void DelimitedTxtSuite::testNext00()
 
     const char* line;
     size_t length;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 0; txt0.next(line, length);)
     {
@@ -401,7 +401,7 @@ void DelimitedTxtSuite::testNext00()
     ok = ((i == 5) && (!txt0.next(line, length)) && (line == 0) && (length == 0));
     CPPUNIT_ASSERT(ok);
 
-    for (i = 0xffffffffUL; txt1.next(line, length);)
+    for (i = 0xffffffffU; txt1.next(line, length);)
     {
         ++i;
         String expectedLine = formExpectedLine(i);
@@ -441,7 +441,7 @@ void DelimitedTxtSuite::testNext01()
     DelimitedTxt txt2(SAMPLE2, sizeof(SAMPLE2) - 1, false /*makeCopy*/, SEMICOLON);
 
     String line;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 0; txt0.next(line);)
     {
@@ -457,7 +457,7 @@ void DelimitedTxtSuite::testNext01()
     ok = ((i == 5) && (!txt0.next(line)) && line.empty());
     CPPUNIT_ASSERT(ok);
 
-    for (i = 0xffffffffUL; txt1.next(line);)
+    for (i = 0xffffffffU; txt1.next(line);)
     {
         ++i;
         String expectedLine = formExpectedLine(i);
@@ -724,7 +724,7 @@ void DelimitedTxtSuite::testPrev00()
 
     const char* line;
     size_t length;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 5; txt0.prev(line, length); --i)
     {
@@ -749,7 +749,7 @@ void DelimitedTxtSuite::testPrev00()
         }
     }
     CPPUNIT_ASSERT(ok);
-    ok = ((i == 0xffffffffUL) && (!txt1.prev(line, length)) && (line == 0) && (length == 0));
+    ok = ((i == 0xffffffffU) && (!txt1.prev(line, length)) && (line == 0) && (length == 0));
     CPPUNIT_ASSERT(ok);
 
     for (i = 6; txt2.prev(line, length); --i)
@@ -777,7 +777,7 @@ void DelimitedTxtSuite::testPrev01()
     DelimitedTxt txt2(SAMPLE2, sizeof(SAMPLE2) - 1, false /*makeCopy*/, SEMICOLON);
 
     String line;
-    unsigned long i;
+    unsigned int i;
     bool ok = true;
     for (i = 5; txt0.prev(line); --i)
     {
@@ -802,7 +802,7 @@ void DelimitedTxtSuite::testPrev01()
         }
     }
     CPPUNIT_ASSERT(ok);
-    ok = ((i == 0xffffffffUL) && (!txt1.prev(line)) && line.empty());
+    ok = ((i == 0xffffffffU) && (!txt1.prev(line)) && line.empty());
     CPPUNIT_ASSERT(ok);
 
     for (i = 6; txt2.prev(line); --i)
@@ -899,7 +899,7 @@ void DelimitedTxtSuite::testVectorize00()
     bool ok = txt.vectorize(vec, doTrimLine) && (vec.numItems() == 5);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 5; i > 0;)
+    for (unsigned int i = 5; i > 0;)
     {
         --i;
         if (vec[i] != formExpectedLine(i + 1))
@@ -924,7 +924,7 @@ void DelimitedTxtSuite::testVectorize01()
     bool ok = txt.vectorize(vec, doTrimLine) && (vec.numItems() == 5);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 5; i > 0;)
+    for (unsigned int i = 5; i > 0;)
     {
         --i;
         if ((vec[i] + "\n") != formExpectedLine(i + 1))

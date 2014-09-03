@@ -27,7 +27,7 @@ const sample_t SAMPLE[] =
     {".123", 0.123}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 D64Suite::D64Suite()
@@ -65,7 +65,7 @@ void D64Suite::testCtor01()
     bool ok = (item0 == 0.0);
     CPPUNIT_ASSERT(ok);
 
-    size_t bytesUsed = 123UL;
+    size_t bytesUsed = 123U;
     D64 item1(s0, length, &bytesUsed);
     ok = ((item1 == 0.0) && (bytesUsed == 0));
     CPPUNIT_ASSERT(ok);
@@ -89,7 +89,7 @@ void D64Suite::testCtor02()
     String s0;
     bool ok = true;
     D64::item_t defaultV = 1.2345;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;
@@ -146,7 +146,7 @@ void D64Suite::testDoublet00()
 void D64Suite::testIsValid00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if (!D64::isValid(r.s))
@@ -172,7 +172,7 @@ void D64Suite::testOp00()
     D64 item;
     String s;
     bool ok = true;
-    for (unsigned long i = 0; i < 9; ++i)
+    for (unsigned int i = 0; i < 9; ++i)
     {
         const sample_t& r = SAMPLE[i];
         item = r.v;

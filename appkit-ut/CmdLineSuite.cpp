@@ -189,7 +189,7 @@ void CmdLineSuite::testCtor05()
     // 1000 options.
     String longCmd("0");
     const char* optMarker[2] = {"-", "--"};
-    for (unsigned long i = 0; i <= 999; ++i)
+    for (unsigned int i = 0; i <= 999; ++i)
     {
         char opt[U32::MaxDigits];
         size_t optLength = U32::toDigits(i, opt);
@@ -201,7 +201,7 @@ void CmdLineSuite::testCtor05()
     }
 
     // 1000 arguments.
-    for (unsigned long i = 1; i <= 999; ++i)
+    for (unsigned int i = 1; i <= 999; ++i)
     {
         char arg[U32::MaxDigits];
         size_t argLength = U32::toDigits(i, arg);
@@ -215,7 +215,7 @@ void CmdLineSuite::testCtor05()
     bool ok = ((cmdLine0.numArgs() == 1000) && (cmdLine0.numOpts() == 1000));
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i <= 999; ++i)
+    for (unsigned int i = 0; i <= 999; ++i)
     {
         char arg[U32::MaxDigits + 1];
         size_t argLength = U32::toDigits(i, arg);
@@ -228,7 +228,7 @@ void CmdLineSuite::testCtor05()
     }
 
     CPPUNIT_ASSERT(ok);
-    for (unsigned long i = 0; i <= 999; ++i)
+    for (unsigned int i = 0; i <= 999; ++i)
     {
         char opt[U32::MaxDigits + 1];
         size_t optLength = U32::toDigits(i, opt);

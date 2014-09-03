@@ -17,10 +17,10 @@ const size_t NUM_CHARS = 4;
 
 const utf32_t SAMPLE[NUM_CHARS] =
 {
-    0x0000abcdUL, //3-byte value
-    0x00000001UL, //1-byte value
-    0x000000abUL, //2-byte value
-    0x000abcdeUL  //4-byte value
+    0x0000abcdU, //3-byte value
+    0x00000001U, //1-byte value
+    0x000000abU, //2-byte value
+    0x000abcdeU  //4-byte value
 };
 
 
@@ -36,7 +36,7 @@ TokenizerSuite::~TokenizerSuite()
 
 bool TokenizerSuite::cb0a(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -49,7 +49,7 @@ bool TokenizerSuite::cb0a(void* arg, const String& token)
 
 bool TokenizerSuite::cb0b(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -62,7 +62,7 @@ bool TokenizerSuite::cb0b(void* arg, const String& token)
 
 bool TokenizerSuite::cb0c(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -75,7 +75,7 @@ bool TokenizerSuite::cb0c(void* arg, const String& token)
 
 bool TokenizerSuite::cb0d(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -88,7 +88,7 @@ bool TokenizerSuite::cb0d(void* arg, const String& token)
 
 void TokenizerSuite::cb1a(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     --i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -100,7 +100,7 @@ void TokenizerSuite::cb1a(void* arg, const String& token)
 
 void TokenizerSuite::cb1b(void* arg, const String& token)
 {
-    unsigned long& i = *static_cast<unsigned long*>(arg);
+    unsigned int& i = *static_cast<unsigned int*>(arg);
     ++i;
     bool ok = (token.length() == i);
     CPPUNIT_ASSERT(ok);
@@ -119,7 +119,7 @@ void TokenizerSuite::testApply00()
     Tokenizer tokenizer1(TOKENIZEE1);
     tokenizer1.setDelim(DELIM1);
 
-    unsigned long i = 0;
+    unsigned int i = 0;
     bool ok = tokenizer0.apply(cb0c, &i);
     CPPUNIT_ASSERT(ok);
 
@@ -230,9 +230,8 @@ void TokenizerSuite::testCtor04()
     String s8(seq);
 
     const char* delim[3] = {DELIM0, DELIM1, MY_WHITE_SPACE};
-    for (long i = 0; i < 3; ++i)
+    for (int i = 0; i < 3; ++i)
     {
-
         String tokenizee(s8);
         tokenizee += delim[i];
         String s("token");
@@ -275,7 +274,7 @@ void TokenizerSuite::testNext00()
 {
     Tokenizer tokenizer0(TOKENIZEE0, Tokenizer::WHITE_SPACE);
 
-    unsigned long i = 0;
+    unsigned int i = 0;
     String token;
     bool ok = true;
     while (tokenizer0.next(token))
@@ -299,7 +298,7 @@ void TokenizerSuite::testNext01()
     Tokenizer tokenizer1(TOKENIZEE1);
     tokenizer1.setDelim(DELIM1);
 
-    unsigned long i = 10;
+    unsigned int i = 10;
     String token;
     bool ok = true;
     while (tokenizer1.next(token))

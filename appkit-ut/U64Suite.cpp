@@ -8,7 +8,7 @@ using namespace appkit;
 typedef struct
 {
     const char* s;
-    unsigned long long v;
+    U64::item_t v;
 } sample_t;
 
 const sample_t SAMPLE[] =
@@ -21,13 +21,14 @@ const sample_t SAMPLE[] =
     {"-0x123456", 0ULL - 0x123456},
     {"+0Xabcdef01", +0Xabcdef01},
     {"01234567", 01234567},
+    {"012345676543210", 012345676543210ULL},
     {"-076", 0ULL - 076},
     {"+0765", +0765},
-    {"0x000000000000000000000000000000000001234ABCD", 0x1234ABCDull},
-    {"0000000000000000000000000000000000076543210", 076543210ULL}
+    {"0x00000000000000000000000000000000ABC1234ABCD", 0xABC1234ABCDull},
+    {"0000000000000000000000000000012345676543210", 012345676543210ULL}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 U64Suite::U64Suite()
@@ -141,7 +142,7 @@ void U64Suite::testCtor02()
     String s0;
     bool ok = true;
     U64::item_t defaultV = 12345;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;
@@ -164,8 +165,8 @@ void U64Suite::testCtor02()
 void U64Suite::testHash00()
 {
     U64::item_t u64 = 0xf415b1e43ULL;
-    size_t numBuckets = 65521UL;
-    unsigned long bucket = U64::hashP(&u64, numBuckets);
+    size_t numBuckets = 65521U;
+    unsigned int bucket = U64::hashP(&u64, numBuckets);
     bool ok = (bucket == 3);
     CPPUNIT_ASSERT(ok);
 
@@ -179,7 +180,7 @@ void U64Suite::testHash00()
 void U64Suite::testIsValid00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         size_t length = strlen(r.s);
@@ -204,8 +205,8 @@ void U64Suite::testIsValid00()
 void U64Suite::testNumDigits00()
 {
     bool ok = true;
-    unsigned long long u64 = 1223334444ULL;
-    for (size_t numDigits = 10; u64 > 0; --numDigits, u64 /= 10)
+    unsigned long long u64 = 1223334444555556666ULL;
+    for (unsigned int numDigits = 19; u64 > 0; --numDigits, u64 /= 10)
     {
         if (U64::numDigits(u64) != numDigits)
         {
@@ -222,9 +223,9 @@ void U64Suite::testToDigits00()
 {
     U64 u64A;
     bool ok = true;
-    const char* good = "4294967295";
-    unsigned long u64B = 4294967295ULL;
-    for (size_t numDigits = 10; u64B > 0; --numDigits, u64B /= 10)
+    const char* good = "9223372036854775807"; //"4294967295";
+    unsigned long long u64B = 9223372036854775807ULL; //4294967295ULL;
+    for (unsigned int numDigits = 19; u64B > 0; --numDigits, u64B /= 10)
     {
         u64A = u64B;
         String s = u64A;

@@ -121,7 +121,7 @@ bool Cmd::formRsp(const CmdLine& req, const char* format, ...)
 {
     bool ok;
     const tag_t& tag = *static_cast<const tag_t*>(req.tag());
-    if (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffUL))
+    if (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffU))
     {
         va_list marker;
         va_start(marker, format);
@@ -149,7 +149,7 @@ bool Cmd::formRsp(const CmdLine& req, const char* format, ...)
 bool Cmd::respond(const CmdLine& req, const char* rsp)
 {
     const tag_t& tag = *static_cast<const tag_t*>(req.tag());
-    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffUL))?
+    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffU))?
         tag.cmd->sndRsp(req, rsp, strlen(rsp) + 1):
         false;
 
@@ -167,7 +167,7 @@ bool Cmd::respond(const CmdLine& req, const char* rsp)
 bool Cmd::respond(const CmdLine& req, const char* rsp, size_t rspLength)
 {
     const tag_t& tag = *static_cast<const tag_t*>(req.tag());
-    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffUL))?
+    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffU))?
         tag.cmd->sndRsp(req, rsp, rspLength):
         false;
 
@@ -183,7 +183,7 @@ bool Cmd::respond(const CmdLine& req, const char* rsp, size_t rspLength)
 bool Cmd::respond(const CmdLine& req, const String& rsp)
 {
     const tag_t& tag = *static_cast<const tag_t*>(req.tag());
-    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffUL))?
+    bool ok = (tag.rspPort == (tag.ioPort->asWord() & 0x0000ffffU))?
         tag.cmd->sndRsp(req, rsp.raw(), rsp.byteSize()):
         false;
 

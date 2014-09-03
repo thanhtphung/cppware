@@ -56,7 +56,7 @@ ObservableSubject* ObservableSubject::instance0()
 {
     static ObservableSubject* s_subject = dynamic_cast<ObservableSubject*>(getSingleton(OBSERVABLE_SUBJECT0_ID1,
         create,
-        0UL /*initialRefCount*/,
+        0U /*initialRefCount*/,
         0 /*createArg*/));
     static ObservableSubject::Count s_lock(*s_subject);
     return s_subject;
@@ -66,7 +66,7 @@ ObservableSubject* ObservableSubject::instance1()
 {
     static ObservableSubject* s_subject = dynamic_cast<ObservableSubject*>(getSingleton(OBSERVABLE_SUBJECT1_ID1,
         create,
-        0UL /*initialRefCount*/,
+        0U /*initialRefCount*/,
         0 /*createArg*/));
     static ObservableSubject::Count s_lock(*s_subject);
     return s_subject;
@@ -108,7 +108,7 @@ News1::~News1()
 
 News1* News1::instance()
 {
-    static News1* s_news = dynamic_cast<News1*>(getSingleton(NEWS_ID1, create, 0UL /*initialRefCount*/, 0 /*createArg*/));
+    static News1* s_news = dynamic_cast<News1*>(getSingleton(NEWS_ID1, create, 0U /*initialRefCount*/, 0 /*createArg*/));
     static News1::Count s_lock(*s_news);
     return s_news;
 }
@@ -136,8 +136,8 @@ private:
 };
 
 News::News(const char* name):
-RefCounted(1UL /*initialRefCount*/),
-NewsSubject(name, 1UL /*initialRefCount*/)
+RefCounted(1U /*initialRefCount*/),
+NewsSubject(name, 1U /*initialRefCount*/)
 {
 }
 
@@ -170,8 +170,8 @@ inline const String& SubjectObserver::updatesObserved() const
 }
 
 SubjectObserver::SubjectObserver(const char* name, Observable& subject):
-RefCounted(1UL /*initialRefCount*/),
-Observer(name, 1UL /*initialRefCount*/),
+RefCounted(1U /*initialRefCount*/),
+Observer(name, 1U /*initialRefCount*/),
 updatesObserved_()
 {
     subject_ = &subject;
@@ -330,37 +330,37 @@ void ObserverSuite::testCtor00()
         (String(subject->name()) == OBSERVABLE_SUBJECT0_ID1) &&
         (subject->updateSummary().empty()) &&
         (subject->updateTime() == Utc::ZERO) &&
-        (subject->notifyCount() == 0UL) &&
-        (subject->numAttachedObservers() == 0UL) &&
-        (subject->updateCount() == 0UL);
+        (subject->notifyCount() == 0U) &&
+        (subject->numAttachedObservers() == 0U) &&
+        (subject->updateCount() == 0U);
     CPPUNIT_ASSERT(ok);
 
     String updateSummary("0");
     unsigned long long updateTime = subject->update(updateSummary);
     Utc updateUtc(updateTime);
-    ok = (updateUtc == subject->updateTime()) && (subject->updateSummary() == updateSummary) && (subject->updateCount() == 1UL);
+    ok = (updateUtc == subject->updateTime()) && (subject->updateSummary() == updateSummary) && (subject->updateCount() == 1U);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long observerCount = subject->notify(updateTime, updateSummary);
-    ok = (observerCount == 0UL);
+    unsigned int observerCount = subject->notify(updateTime, updateSummary);
+    ok = (observerCount == 0U);
     CPPUNIT_ASSERT(ok);
 
     SubjectObserver* observer = new SubjectObserver("observer", *subject);
-    ok = (!subject->attach(observer)) && (subject->numAttachedObservers() == 1UL);
+    ok = (!subject->attach(observer)) && (subject->numAttachedObservers() == 1U);
     CPPUNIT_ASSERT(ok);
     Thread::takeANap(10);
     updateSummary = "1";
     observerCount = subject->notify(subject->update(updateSummary), updateSummary);
     ok = (updateUtc < subject->updateTime()) &&
         (subject->updateSummary() == updateSummary) &&
-        (observerCount == 1UL) &&
+        (observerCount == 1U) &&
         (observer->updatesObserved() == updateSummary);
     CPPUNIT_ASSERT(ok);
 
     subject = ObservableSubject::instance1();
-    ok = subject->attach(observer) && (!subject->attach(observer)) && (subject->numAttachedObservers() == 1UL);
+    ok = subject->attach(observer) && (!subject->attach(observer)) && (subject->numAttachedObservers() == 1U);
     CPPUNIT_ASSERT(ok);
-    ok = subject->detach(observer) && (!subject->detach(observer)) && (subject->numAttachedObservers() == 0UL);
+    ok = subject->detach(observer) && (!subject->detach(observer)) && (subject->numAttachedObservers() == 0U);
     CPPUNIT_ASSERT(ok);
 
     observer->rmRef();
@@ -371,7 +371,7 @@ void ObserverSuite::testCtor01()
 {
     News1* news1 = News1::instance();
     SubjectObserver* observer = new SubjectObserver("observer", *news1);
-    bool ok = (observer->updateCount() == 0UL);
+    bool ok = (observer->updateCount() == 0U);
     CPPUNIT_ASSERT(ok);
 
     // Flood the news room.

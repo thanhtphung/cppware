@@ -8,26 +8,26 @@ using namespace appkit;
 typedef struct
 {
     const char* s;
-    unsigned long v;
+    U32::item_t v;
 } sample_t;
 
 const sample_t SAMPLE[] =
 {
     {"0", 0},
     {"12", 12},
-    {"-123", 0UL - 123},
+    {"-123", 0U - 123},
     {"+1234", +1234},
     {"0x12345", 0x12345},
-    {"-0x123456", 0UL - 0x123456},
+    {"-0x123456", 0U - 0x123456},
     {"+0Xabcdef01", +0Xabcdef01},
     {"01234567", 01234567},
-    {"-076", 0UL - 076},
+    {"-076", 0U - 076},
     {"+0765", +0765},
-    {"0x000000000000000000000000000000000001234ABCD", 0x1234ABCDul},
-    {"0000000000000000000000000000000000076543210", 076543210UL}
+    {"0x000000000000000000000000000000000001234ABCD", 0x1234ABCDu},
+    {"0000000000000000000000000000000000076543210", 076543210U}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 U32Suite::U32Suite()
@@ -42,8 +42,8 @@ U32Suite::~U32Suite()
 
 void U32Suite::testCompare00()
 {
-    unsigned long u32A = 0x12345678UL;
-    unsigned long u32B = 0xfedcba98UL;
+    unsigned int u32A = 0x12345678U;
+    unsigned int u32B = 0xfedcba98U;
     unsigned char* p = 0;
     const void* item0 = p + u32A;
     const void* item1 = p + u32B;
@@ -52,8 +52,8 @@ void U32Suite::testCompare00()
     ok = ((U32::compareKR(item0, item1) > 0) && (U32::comparePR(&u32A, &u32B) > 0));
     CPPUNIT_ASSERT(ok);
 
-    u32A = 0xdadUL;
-    u32B = 0xbadUL;
+    u32A = 0xdadU;
+    u32B = 0xbadU;
     p = 0;
     item0 = p + u32A;
     item1 = p + u32B;
@@ -62,8 +62,8 @@ void U32Suite::testCompare00()
     ok = ((U32::compareKR(item0, item1) < 0) && (U32::comparePR(&u32A, &u32B) < 0));
     CPPUNIT_ASSERT(ok);
 
-    u32A = 0x13579bdfUL;
-    u32B = 0x13579bdfUL;
+    u32A = 0x13579bdfU;
+    u32B = 0x13579bdfU;
     p = 0;
     item0 = p + u32A;
     item1 = p + u32B;
@@ -103,7 +103,7 @@ void U32Suite::testCtor01()
     ok = (u32b == 0);
     CPPUNIT_ASSERT(ok);
 
-    size_t bytesUsed = 123UL;
+    size_t bytesUsed = 123U;
     U32 u32c(s, length, &bytesUsed);
     ok = ((u32c == 0) && (bytesUsed == 0));
     CPPUNIT_ASSERT(ok);
@@ -115,7 +115,7 @@ void U32Suite::testCtor02()
     String s0;
     bool ok = true;
     U32::item_t defaultV = 12345;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;
@@ -147,7 +147,7 @@ void U32Suite::testCtor03()
 void U32Suite::testIsValid00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         size_t length = strlen(r.s);
@@ -171,9 +171,9 @@ void U32Suite::testIsValid00()
 
 void U32Suite::testHash00()
 {
-    unsigned long u32 = 396;
+    unsigned int u32 = 396;
     size_t numBuckets = 131;
-    unsigned long bucket = U32::hashP(&u32, numBuckets);
+    unsigned int bucket = U32::hashP(&u32, numBuckets);
     bool ok = (bucket == 3);
     CPPUNIT_ASSERT(ok);
 
@@ -187,7 +187,7 @@ void U32Suite::testHash00()
 void U32Suite::testNumDigits00()
 {
     bool ok = true;
-    unsigned long u32 = 1223334444UL;
+    unsigned int u32 = 1223334444U;
     for (size_t numDigits = 10; u32 > 0; --numDigits, u32 /= 10)
     {
         if (U32::numDigits(u32) != numDigits)
@@ -206,7 +206,7 @@ void U32Suite::testToDigits00()
     U32 u32A;
     bool ok = true;
     const char* good = "4294967295";
-    unsigned long u32B = 4294967295UL;
+    unsigned int u32B = 4294967295U;
     for (size_t numDigits = 10; u32B > 0; --numDigits, u32B /= 10)
     {
         u32A = u32B;
@@ -229,14 +229,14 @@ void U32Suite::testToDigits00()
 void U32Suite::testToXdigits00()
 {
     char xdigit[U32::NumXdigits] = {0};
-    U32 u32(0x10FEDCBAul);
+    U32 u32(0x10FEDCBAu);
     U32::toXDIGITS(u32, xdigit);
     bool ok = (memcmp(xdigit, "10FEDCBA", U32::NumXdigits) == 0);
     CPPUNIT_ASSERT(ok);
     ok = (u32.toXDIGITS() == "10FEDCBA");
     CPPUNIT_ASSERT(ok);
 
-    u32 = 0xabcdef01UL;
+    u32 = 0xabcdef01U;
     U32::toXdigits(u32, xdigit);
     ok = (memcmp(xdigit, "abcdef01", U32::NumXdigits) == 0);
     CPPUNIT_ASSERT(ok);

@@ -599,9 +599,9 @@ void StringSuite::testFind00()
     CPPUNIT_ASSERT(ok);
     ok = (str.find('f', 16) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (str.find(0xabcdeUL) == String::INVALID_INDEX);
+    ok = (str.find(0xabcdeU) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (str.find(0xabcdeUL, 999) == String::INVALID_INDEX);
+    ok = (str.find(0xabcdeU, 999) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -610,14 +610,14 @@ void StringSuite::testFind01()
 {
     Sample1 sample1;
 
-    utf32_t invalidChar = 0xffffffffUL;
+    utf32_t invalidChar = 0xffffffffU;
     bool ok = (sample1.find(invalidChar) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
     ok = (sample1.find('a', 999) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (sample1.find(0x0aUL) == 1);
+    ok = (sample1.find(0x0aU) == 1);
     CPPUNIT_ASSERT(ok);
-    ok = (sample1.find(0x10000UL, 10) == String::INVALID_INDEX);
+    ok = (sample1.find(0x10000U, 10) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -1219,9 +1219,9 @@ void StringSuite::testRfind00()
     CPPUNIT_ASSERT(ok);
     ok = (str.rfind('j', 5) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (str.rfind(0xabcdeUL) == String::INVALID_INDEX);
+    ok = (str.rfind(0xabcdeU) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (str.rfind(0xabcdeUL, 999) == String::INVALID_INDEX);
+    ok = (str.rfind(0xabcdeU, 999) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -1230,14 +1230,14 @@ void StringSuite::testRfind01()
 {
     Sample1 sample1;
 
-    utf32_t invalidChar = 0xffffffffUL;
+    utf32_t invalidChar = 0xffffffffU;
     bool ok = (sample1.rfind(invalidChar) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
     ok = (sample1.rfind('a', 999) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
-    ok = (sample1.rfind(0x0aUL) == 14);
+    ok = (sample1.rfind(0x0aU) == 14);
     CPPUNIT_ASSERT(ok);
-    ok = (sample1.rfind(0x10000UL, 8) == String::INVALID_INDEX);
+    ok = (sample1.rfind(0x10000U, 8) == String::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -1330,7 +1330,7 @@ void StringSuite::testVec00()
     vec.add(2, v[1]);
     vec.add(3, v[0]);
     const char* delim = 0;
-    size_t maxItems = 0xffffffffUL;
+    size_t maxItems = 0xffffffffU;
     String s(vec.stringify(delim, maxItems));
     ok = (s == "abc123123123abcabcabc");
     CPPUNIT_ASSERT(ok);

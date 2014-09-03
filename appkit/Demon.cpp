@@ -121,7 +121,7 @@ int Demon::onRun()
 //!
 int Demon::run()
 {
-    long rc;
+    int rc;
     __try
     {
         rc = showUsage()? Ok: walk();
@@ -161,8 +161,8 @@ int Demon::walk()
     // Stop service?
     const char* const k[3] = {"remove", "start", "stop"};
     controlSvc_t const control[3] = {&Demon::rmSvc, &Demon::startSvc, &Demon::stopSvc};
-    long const failureRc[3] = {RmSvcFailed, StartSvcFailed, StopSvcFailed};
-    for (long i = 0; i < 3; ++i)
+    int const failureRc[3] = {RmSvcFailed, StartSvcFailed, StopSvcFailed};
+    for (int i = 0; i < 3; ++i)
     {
         optK = k[i];
         v = Bool(cmdLine.opt(optK), false /*defaultV*/);

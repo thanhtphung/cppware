@@ -16,7 +16,7 @@ const char TYPE[] = "U32";
 
 BEGIN_NAMESPACE1(appkit)
 
-const U32Set::key_t U32Set::VALID_MAX = 0xffffffffUL;
+const U32Set::key_t U32Set::VALID_MAX = 0xffffffffU;
 const U32Set::key_t U32Set::VALID_MIN = 0;
 
 

@@ -157,7 +157,7 @@ void U32SetSuite::testAdd05()
     // Add all keys to an empty set.
     U32Set tmp;
     U32Set::key_t lo = 0;
-    U32Set::key_t hi = 0xffffffffUL;
+    U32Set::key_t hi = 0xffffffffU;
     bool ok = tmp.add(lo, hi) && (tmp.numKeys() == 0x100000000ULL) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
 
@@ -651,7 +651,7 @@ void U32SetSuite::testOp05()
     U32Set set2;
     for (U32Set::key_t i = 0; i < 100; set2.add(i), i += 2);
 
-    unsigned long capacity = 8;
+    unsigned int capacity = 8;
     U32Set set(U32Set::VALID_MIN, U32Set::VALID_MAX, capacity);
     set = set2;
     bool ok = (set == set2) && (set.capacity() == 64) && (set.initialCap() == 8);
@@ -754,7 +754,7 @@ void U32SetSuite::testRm02()
     // Remove all keys from a full set.
     U32Set tmp;
     U32Set::key_t lo = 0;
-    U32Set::key_t hi = 0xffffffffUL;
+    U32Set::key_t hi = 0xffffffffU;
     tmp.add(lo, hi);
     bool ok = tmp.rm(lo, hi) && (tmp.numKeys() == 0) && (tmp.numRanges() == 0);
     CPPUNIT_ASSERT(ok);
@@ -765,8 +765,8 @@ void U32SetSuite::testRm02()
     CPPUNIT_ASSERT(ok);
     ok = tmp.rm(hi, hi) && (tmp.numKeys() == 0xfffffffeULL) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
-    lo = 0x12345678UL;
-    hi = 0x12345679UL;
+    lo = 0x12345678U;
+    hi = 0x12345679U;
     ok = tmp.rm(lo, hi) && (tmp.numKeys() == 0xfffffffcULL) && (tmp.numRanges() == 2);
     CPPUNIT_ASSERT(ok);
 }

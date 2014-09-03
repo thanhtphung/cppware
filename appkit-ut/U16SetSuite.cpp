@@ -158,7 +158,7 @@ void U16SetSuite::testAdd05()
     U16Set tmp;
     U16Set::key_t lo = 0;
     U16Set::key_t hi = 0xffffU;
-    bool ok = tmp.add(lo, hi) && (tmp.numKeys() == 0x10000UL) && (tmp.numRanges() == 1);
+    bool ok = tmp.add(lo, hi) && (tmp.numKeys() == 0x10000U) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
 
     // Adding to a full set.
@@ -168,7 +168,7 @@ void U16SetSuite::testAdd05()
     // Add all keys to a non-empty set.
     tmp.reset();
     for (U16Set::key_t i = 0; i < 100; tmp.add(i), i += 2);
-    ok = tmp.add(lo, hi) && (tmp.numKeys() == 0x10000UL) && (tmp.numRanges() == 1);
+    ok = tmp.add(lo, hi) && (tmp.numKeys() == 0x10000U) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -364,7 +364,7 @@ void U16SetSuite::testCtor04()
 
     // Set of all valid keys.
     U16Set set2("0x0000-0xffff");
-    ok = ((set2.numKeys() == 0x10000UL) && (set2.numRanges() == 1));
+    ok = ((set2.numKeys() == 0x10000U) && (set2.numRanges() == 1));
     CPPUNIT_ASSERT(ok);
 }
 
@@ -651,7 +651,7 @@ void U16SetSuite::testOp05()
     U16Set set2;
     for (U16Set::key_t i = 0; i < 100; set2.add(i), i += 2);
 
-    unsigned long capacity = 8;
+    unsigned int capacity = 8;
     U16Set set(U16Set::VALID_MIN, U16Set::VALID_MAX, capacity);
     set = set2;
     bool ok = (set == set2) && (set.capacity() == 64) && (set.initialCap() == 8);
@@ -761,13 +761,13 @@ void U16SetSuite::testRm02()
 
     // Remove some keys from a full set.
     tmp.add(lo, hi);
-    ok = tmp.rm(lo, lo) && (tmp.numKeys() == 0xffffUL) && (tmp.numRanges() == 1);
+    ok = tmp.rm(lo, lo) && (tmp.numKeys() == 0xffffU) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
     ok = tmp.rm(hi, hi) && (tmp.numKeys() == 0xfffeLL) && (tmp.numRanges() == 1);
     CPPUNIT_ASSERT(ok);
     lo = 0x1234U;
     hi = 0x1235U;
-    ok = tmp.rm(lo, hi) && (tmp.numKeys() == 0xfffcUL) && (tmp.numRanges() == 2);
+    ok = tmp.rm(lo, hi) && (tmp.numKeys() == 0xfffcU) && (tmp.numRanges() == 2);
     CPPUNIT_ASSERT(ok);
 }
 

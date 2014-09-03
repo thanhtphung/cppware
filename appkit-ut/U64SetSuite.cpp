@@ -651,7 +651,7 @@ void U64SetSuite::testOp05()
     U64Set set2;
     for (U64Set::key_t i = 0; i < 100; set2.add(i), i += 2);
 
-    unsigned long capacity = 8;
+    unsigned int capacity = 8;
     U64Set set(U64Set::VALID_MIN, U64Set::VALID_MAX, capacity);
     set = set2;
     bool ok = (set == set2) && (set.capacity() == 64) && (set.initialCap() == 8);

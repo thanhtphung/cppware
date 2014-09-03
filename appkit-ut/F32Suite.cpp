@@ -27,7 +27,7 @@ const sample_t SAMPLE[] =
     {".123", 0.123f}
 };
 
-const unsigned long NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
+const size_t NUM_SAMPLES = sizeof(SAMPLE) / sizeof(SAMPLE[0]);
 
 
 F32Suite::F32Suite()
@@ -65,7 +65,7 @@ void F32Suite::testCtor01()
     bool ok = (item0 == 0.0);
     CPPUNIT_ASSERT(ok);
 
-    size_t bytesUsed = 123UL;
+    size_t bytesUsed = 123U;
     F32 item1(s0, length, &bytesUsed);
     ok = ((item1 == 0.0) && (bytesUsed == 0));
     CPPUNIT_ASSERT(ok);
@@ -89,7 +89,7 @@ void F32Suite::testCtor02()
     String s0;
     bool ok = true;
     F32::item_t defaultV = 1.2345f;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         s0 = r.s;
@@ -146,7 +146,7 @@ void F32Suite::testDoublet00()
 void F32Suite::testIsValid00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if (!F32::isValid(r.s))
@@ -172,7 +172,7 @@ void F32Suite::testOp00()
     F32 item;
     String s;
     bool ok = true;
-    for (unsigned long i = 0; i < 9; ++i)
+    for (unsigned int i = 0; i < 9; ++i)
     {
         const sample_t& r = SAMPLE[i];
         item = r.v;
@@ -188,7 +188,7 @@ void F32Suite::testOp00()
     float real = 0.123456f;
     ok = (F32::compareP(&SAMPLE[3].v, &real) == 0);
     CPPUNIT_ASSERT(ok);
-    ok = (F32::compareK((void*)(long)(SAMPLE[3].v), (void*)(long)(real)) == 0);
+    ok = (F32::compareK((void*)(int)(SAMPLE[3].v), (void*)(int)(real)) == 0);
     CPPUNIT_ASSERT(ok);
 }
 

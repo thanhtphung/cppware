@@ -127,7 +127,7 @@ void CmdSuite::onCmdMapUpdate(void* arg, const String& cmdName, bool available)
 void CmdSuite::testCtor00()
 {
     Singleton::create_t create = 0;
-    unsigned long initialRefCount = 0UL;
+    unsigned int initialRefCount = 0U;
     void* createArg = 0;
     App* app = App::instance(create, initialRefCount, createArg);
     RefCounted::Count lock(*app);
@@ -227,7 +227,7 @@ void CmdSuite::testCtor01()
 
     delete cmd;
     String tooMany;
-    for (unsigned long i = 260; i > 0;)
+    for (unsigned int i = 260; i > 0;)
     {
         tooMany += U32(--i).toString();
         tooMany += ' ';
@@ -249,7 +249,7 @@ void CmdSuite::testCtor02()
     unsigned int pkts = 999;
     unsigned int fails = 999;
     unsigned long long bytes = 999;
-    unsigned long numRuns = cmd->numRuns(0U, bytes, pkts, fails);
+    unsigned int numRuns = cmd->numRuns(0U, bytes, pkts, fails);
     ok = (numRuns == 0) && (bytes == 0) && (pkts == 0) && (fails == 0);
     CPPUNIT_ASSERT(ok);
 

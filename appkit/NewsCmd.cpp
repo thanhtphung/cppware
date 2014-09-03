@@ -601,7 +601,7 @@ void NewsCmd::formSubjectLine9(void* arg, NewsSubject* source)
     Tree::compare_t compare = 0;
     KnownAudience observers(compare);
     source->apply(getAudience, &observers);
-    String audience = observers.stringify(", " /*delim*/, 0UL - 1 /*maxItems*/);
+    String audience = observers.stringify(", " /*delim*/, 0U - 1 /*maxItems*/);
 
     String buf;
     ItemQ::Stat stat(source->storyQ());
