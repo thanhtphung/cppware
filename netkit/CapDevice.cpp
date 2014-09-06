@@ -2,25 +2,38 @@
  * Software by Thanh Phung -- thanhtphung@yahoo.com.
  * No copyrights. No warranties. No restrictions in reuse.
  */
+#define WIN32_LEAN_AND_MEAN
+#include <winsock2.h>
 #include <string.h>
 #include "syskit/Foundation.hpp"
 #include "syskit/sys.hpp"
 
 #include "netkit-pch.h"
+
+#include <pcap.h>
+#ifdef strdup
+#undef strdup
+#endif
+
+#include "netkit/CapDevice.hpp"
 #include "netkit/IpAddr.hpp"
-#include "netkit/IpDevice.hpp"
 #include "netkit/IpHlpApi.hpp"
+#include "netkit/net.hpp"
+
+#if _DEBUG
+#pragma comment(lib,"packetd")
+#pragma comment(lib,"wpcapd")
+#else
+#pragma comment(lib,"packet")
+#pragma comment(lib,"wpcap")
+#endif
 
 using namespace syskit;
 
-const unsigned int LINK_LOCAL_LO = 0xa9fe0000U; //169.254.0.0
-const unsigned int LINK_LOCAL_HI = 0xa9feffffU; //169.254.255.255
-
 BEGIN_NAMESPACE1(netkit)
 
-IpDevice::Instance::Count IpDevice::instanceRef_(initialize());
-
-const char* const IpDevice::ADDR_CATEGORY_E[] =
+CapDevice::Instance::Count CapDevice::instanceRef_(initialize());
+const char* const CapDevice::ADDR_CATEGORY_E[] =
 {
     STRINGIFY(Broadcast),
     STRINGIFY(Far),
@@ -29,19 +42,18 @@ const char* const IpDevice::ADDR_CATEGORY_E[] =
     STRINGIFY(Near),
     0
 };
+CapDevice* CapDevice::device_[MaxIndex + 1] = {0};
+unsigned char CapDevice::numDevices_ = 0;
 
-IpDevice* IpDevice::device_[MaxIndex + 1] = {0};
-unsigned char IpDevice::numDevices_ = 0;
 
-
-IpDevice::IpDevice(const IpDevice& device):
+CapDevice::CapDevice(const CapDevice& device):
 macAddr_(device.macAddr_)
 {
     copyFrom(device);
 }
 
 
-const IpDevice& IpDevice::operator =(const IpDevice& device)
+const CapDevice& CapDevice::operator =(const CapDevice& device)
 {
     if (this != &device)
     {
@@ -57,7 +69,7 @@ const IpDevice& IpDevice::operator =(const IpDevice& device)
 }
 
 
-IpDevice::~IpDevice()
+CapDevice::~CapDevice()
 {
     delete[] netMask_;
     delete[] name_;
@@ -71,16 +83,16 @@ IpDevice::~IpDevice()
 // Look for it in the given array (numDevices in device).
 // Return zero if not found.
 //
-IpDevice* IpDevice::findByMac(IpDevice* device[MaxIndex + 1], unsigned char numDevices, const unsigned char* macAddr)
+CapDevice* CapDevice::findByMac(CapDevice* device[MaxIndex + 1], unsigned char numDevices, const unsigned char* macAddr)
 {
     initialize();
 
-    IpDevice* found = 0;
-    IpDevice* const* p = device;
-    const IpDevice* const* pEnd = p + numDevices;
+    CapDevice* found = 0;
+    CapDevice* const* p = device;
+    const CapDevice* const* pEnd = p + numDevices;
     for (; p < pEnd; ++p)
     {
-        IpDevice* d = *p;
+        CapDevice* d = *p;
         if (d->macAddr_ == macAddr)
         {
             found = d;
@@ -95,7 +107,7 @@ IpDevice* IpDevice::findByMac(IpDevice* device[MaxIndex + 1], unsigned char numD
 //!
 //! Return true if given address is near (part of a connected subnet).
 //!
-bool IpDevice::addrIsNear(unsigned int addr) const
+bool CapDevice::addrIsNear(unsigned int addr) const
 {
     bool isNear = false;
     unsigned int numAddrs = numAddrs_;
@@ -125,13 +137,13 @@ bool IpDevice::addrIsNear(unsigned int addr) const
 // Renew device with current characteristics if necessary
 // (if some changes occurred). Return true if modified.
 //
-bool IpDevice::renew(const IpDevice& cur)
+bool CapDevice::renew(const CapDevice& cur)
 {
-
-    // In the singleton, IpDevice instances can be added but cannot be removed.
+    // In the singleton, CapDevice instances can be added but cannot be removed.
     // Obsolete ones are marked old. The index_ value does not change.
     bool modified;
     if ((isOld_ != 0) ||
+        (ifIndex_ != cur.ifIndex_) ||
         (numAddrs_ != cur.numAddrs_) ||
         (memcmp(addr_, cur.addr_, numAddrs_ * sizeof(*addr_)) != 0) ||
         (memcmp(netMask_, cur.netMask_, numAddrs_ * sizeof(*netMask_)) != 0) ||
@@ -156,32 +168,16 @@ bool IpDevice::renew(const IpDevice& cur)
 //! Return any device (loopback is okay if nothing else is available).
 //! Return zero if none.
 //!
-const IpDevice* IpDevice::any()
+const CapDevice* CapDevice::any()
 {
     initialize();
 
     // More than one available.
     // The non-loopback one is preferred.
-    // The link-local one is less preferred.
-    const IpDevice* found;
+    const CapDevice* found;
     if (numDevices_ > 1)
     {
-        found = device_[0];
-        const IpDevice* const* p = device_;
-        const IpDevice* const* pEnd = p + numDevices_;
-        for (; p < pEnd; ++p)
-        {
-            const IpDevice* device = *p;
-            if (device->numAddrs_ > 0)
-            {
-                unsigned int addr = device->addr_[0];
-                if (((addr >> 24) != LoopbackNet) && ((addr < LINK_LOCAL_LO) || (addr > LINK_LOCAL_HI)))
-                {
-                    found = device;
-                    break;
-                }
-            }
-        }
+        found = device_[0]->isLoopback()? device_[1]: device_[0];
     }
 
     // Only one available.
@@ -203,10 +199,10 @@ const IpDevice* IpDevice::any()
 //!
 //! Locate the device w/ given key. Given key can be a MAC address (e.g.,
 //! "00:23:AE:6A:DA:57"), an IPv4 address (e.g., "192.168.60.166"), or a
-//! device name (e.g., "{136B6AAF-4F98-4831-9C77-CB1AC36F1EA6}"). Return
-//! zero if not found.
+//! device name (e.g., "\\Device\\NPF_{136B6AAF-4F98-4831-9C77-CB1AC36F1EA6}").
+//! Return zero if not found.
 //!
-const IpDevice* IpDevice::find(const char* key)
+const CapDevice* CapDevice::find(const char* key)
 {
     initialize();
 
@@ -215,7 +211,7 @@ const IpDevice* IpDevice::find(const char* key)
     bool ok = macAddr.reset(key);
     if (ok)
     {
-        const IpDevice* found = find(macAddr.asRawBytes());
+        const CapDevice* found = find(macAddr.asRawBytes());
         return found;
     }
 
@@ -224,17 +220,17 @@ const IpDevice* IpDevice::find(const char* key)
     ok = ipAddr.reset(key);
     if (ok)
     {
-        const IpDevice* found = find(ipAddr.asU32());
+        const CapDevice* found = find(ipAddr.asU32());
         return found;
     }
 
     // Assume key is a device name.
-    const IpDevice* found = 0;
-    const IpDevice* const* p = device_;
-    const IpDevice* const* pEnd = p + numDevices_;
+    const CapDevice* found = 0;
+    const CapDevice* const* p = device_;
+    const CapDevice* const* pEnd = p + numDevices_;
     for (; p < pEnd; ++p)
     {
-        const IpDevice* device = *p;
+        const CapDevice* device = *p;
         if (strcmp(key, device->name_) == 0)
         {
             found = device;
@@ -250,16 +246,16 @@ const IpDevice* IpDevice::find(const char* key)
 //! Locate the device w/ given address.
 //! Return zero if not found.
 //!
-const IpDevice* IpDevice::find(unsigned int addr)
+const CapDevice* CapDevice::find(unsigned int addr)
 {
     initialize();
 
-    const IpDevice* found = 0;
-    const IpDevice* const* p = device_;
-    const IpDevice* const* pEnd = p + numDevices_;
+    const CapDevice* found = 0;
+    const CapDevice* const* p = device_;
+    const CapDevice* const* pEnd = p + numDevices_;
     for (; p < pEnd; ++p)
     {
-        const IpDevice* device = *p;
+        const CapDevice* device = *p;
         for (unsigned int i = 0; i < device->numAddrs_; ++i)
         {
             if (addr == device->addr_[i])
@@ -278,9 +274,8 @@ const IpDevice* IpDevice::find(unsigned int addr)
 //!
 //! Categorize given address.
 //!
-unsigned int /*IpDevice::addrCategory_e*/ IpDevice::categorize(unsigned int addr)
+unsigned int /*CapDevice::addrCategory_e*/ CapDevice::categorize(unsigned int addr)
 {
-
     // Loopback?
     // Broadcast?
     initialize();
@@ -289,17 +284,17 @@ unsigned int /*IpDevice::addrCategory_e*/ IpDevice::categorize(unsigned int addr
         return ((addr == 0x7f000000U) || (addr == 0x7fffffffU))? Broadcast: Loopback;
     }
 
-    const IpDevice* const* p = device_;
-    const IpDevice* const* pEnd = p + numDevices_;
+    const CapDevice* const* p = device_;
+    const CapDevice* const* pEnd = p + numDevices_;
     unsigned int category = Far;
     for (; p < pEnd; ++p)
     {
-        const IpDevice* device = *p;
+        const CapDevice* device = *p;
         unsigned int numAddrs = device->numAddrs_;
         for (unsigned int i = 0; i < numAddrs; ++i)
         {
 
-            // Local? (home address of one of the IP devices)
+            // Local? (home address of one of the capturing devices)
             if (addr == device->addr_[i])
             {
                 return Local;
@@ -327,8 +322,11 @@ unsigned int /*IpDevice::addrCategory_e*/ IpDevice::categorize(unsigned int addr
 }
 
 
-void IpDevice::copyFrom(const IpDevice& device)
+void CapDevice::copyFrom(const CapDevice& device)
 {
+    ifIndex_ = device.ifIndex_;
+    ifSpeed_ = device.ifSpeed_;
+    ifType_ = device.ifType_;
     index_ = device.index_;
     isOld_ = device.isOld_;
     numAddrs_ = device.numAddrs_;
@@ -346,16 +344,88 @@ void IpDevice::copyFrom(const IpDevice& device)
 }
 
 
-const IpDevice::Instance& IpDevice::initialize()
+const CapDevice::Instance& CapDevice::initialize()
 {
     static const Instance* s_instance = new Instance;
     return *s_instance;
 }
 
 
-IpDevice::Instance::~Instance()
+//!
+//! Changes to capture devices likely have occurred. Refresh singleton.
+//! Return the number of changes that were effective.
+//!
+unsigned char CapDevice::refresh()
 {
-    IpDevice** p = device_ + numDevices_ - 1;
+    CapDevice* curDevice[MaxIndex + 1];
+    unsigned char numCurDevices = mkDevice(curDevice);
+
+    // Find old devices.
+    unsigned char numChanges = 0;
+    for (unsigned char i = 0; i < numDevices_; ++i)
+    {
+        CapDevice* p = device_[i];
+        CapDevice* found = findByMac(curDevice, numCurDevices, p->macAddr_);
+        if (found == 0)
+        {
+            p->age();
+            ++numChanges;
+        }
+    }
+
+    // Find new/renewed devices.
+    for (unsigned char i = 0; i < numCurDevices; ++i)
+    {
+        CapDevice* p = curDevice[i];
+        CapDevice* found = findByMac(device_, numDevices_, p->macAddr_);
+        if (found == 0)
+        {
+            if (numDevices_ <= MaxIndex)
+            {
+                device_[numDevices_] = p;
+                ++numDevices_;
+                curDevice[i] = 0;
+                ++numChanges;
+            }
+        }
+        else if (found->renew(*p))
+        {
+            ++numChanges;
+        }
+    }
+
+    for (CapDevice* const* p = curDevice + numCurDevices - 1; p >= curDevice; delete *p--);
+    return numChanges;
+}
+
+
+unsigned int CapDevice::normalizeAddrs(const struct pcap_addr* pcapAddr,
+    unsigned int addr[MaxAddrIndex + 1],
+    unsigned int mask[MaxAddrIndex + 1])
+{
+    unsigned int numAddrs = 0;
+    for (const pcap_addr_t* p = pcapAddr; p != 0; p = p->next)
+    {
+        if (p->addr->sa_family == AF_INET)
+        {
+            const struct sockaddr_in* socAddr = reinterpret_cast<const struct sockaddr_in*>(p->addr);
+            addr[numAddrs] = ntohl(socAddr->sin_addr.s_addr);
+            socAddr = reinterpret_cast<const struct sockaddr_in*>(p->netmask);
+            mask[numAddrs] = (socAddr != 0)? ntohl(socAddr->sin_addr.s_addr): addr[numAddrs];
+            if (numAddrs++ == CapDevice::MaxAddrIndex)
+            {
+                break;
+            }
+        }
+    }
+
+    return numAddrs;
+}
+
+
+CapDevice::Instance::~Instance()
+{
+    CapDevice** p = device_ + numDevices_ - 1;
     numDevices_ = 0;
     for (; p >= device_; --p)
     {

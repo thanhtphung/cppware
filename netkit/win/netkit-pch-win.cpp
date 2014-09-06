@@ -27,6 +27,7 @@
 #include "appkit/crt.hpp"
 #include "syskit/BufPool.hpp"
 #include "syskit/Foundation.hpp"
+#include "syskit/Process.hpp"
 #include "syskit/RefCounted.hpp"
 #include "syskit/Thread.hpp"
 #include "syskit/U64Vec.hpp"

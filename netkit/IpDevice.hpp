@@ -44,10 +44,10 @@ public:
         NumAddrCategories = Near + 1
     };
 
-    IpDevice(const IpDevice& ipDevice);
+    IpDevice(const IpDevice& device);
     ~IpDevice();
 
-    const IpDevice& operator =(const IpDevice& ipDevice);
+    const IpDevice& operator =(const IpDevice& device);
 
     const MacAddr& macAddr() const;
     bool addrIsNear(unsigned int addr) const;
@@ -158,6 +158,12 @@ inline const char* IpDevice::name() const
     return name_;
 }
 
+//! Return the interface description.
+inline const wchar_t* IpDevice::ifDesc() const
+{
+    return ifDesc_;
+}
+
 //! Return the device index (0..numDevices()-1).
 inline unsigned char IpDevice::index() const
 {
@@ -194,12 +200,6 @@ inline unsigned int IpDevice::numAddrs() const
 inline void IpDevice::age()
 {
     isOld_ = 1;
-}
-
-//! Return the interface description.
-inline const wchar_t* IpDevice::ifDesc() const
-{
-    return ifDesc_;
 }
 
 END_NAMESPACE1
