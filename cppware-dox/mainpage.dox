@@ -1,8 +1,13 @@
 /**
  @mainpage
- Low-level system classes use the syskit namespace. Examples: atomic numbers, buffer pool,
- containers, concurrency support, memory-mapped files, etc. Networking classes use the netkit
- namepace. Examples: IP/MAC addresses, sockets, etc. Application toolkit/framework classes
- use the appkit namespace. Examples: UTF-capable copy-on-write string, observer pattern,
- XML parsing, etc.
+c++ gallery by thanhtphung@yahoo.com. No copyrights. No warranties. No restrictions in reuse.
+Some code in the gallery utilizes the following thirdparty libraries: cppunit-1.12.1, winpcap-4.1.3,
+and zlib-1.2.8. Refer to the libraries' READMEs for licensing details. All code resides
+[here-on-github](https://github.com/thanhtphung/cppware).
+
+Low-level system classes use the syskit namespace. Examples: atomic numbers, buffer pool,
+containers, concurrency support, memory-mapped files, etc. Networking classes use the netkit
+namepace. Examples: network capturing, IP/MAC addresses, sockets, etc. Application toolkit/framework
+classes use the appkit namespace. Examples: UTF-capable copy-on-write string, observer pattern,
+XML parsing, etc.
  */
