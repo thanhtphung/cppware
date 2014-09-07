@@ -18,8 +18,8 @@ TrieSuite::~TrieSuite()
 
 bool TrieSuite::validateOrder(void* arg, const unsigned char* k, void* /*v*/)
 {
-    unsigned long* k0 = (unsigned long*)(arg);
-    unsigned long k1 = Trie::U32Key::decode(k);
+    unsigned int* k0 = (unsigned int*)(arg);
+    unsigned int k1 = Trie::U32Key::decode(k);
     bool ok = (*k0 < k1);
     *k0 = k1;
     return ok;
@@ -28,14 +28,14 @@ bool TrieSuite::validateOrder(void* arg, const unsigned char* k, void* /*v*/)
 
 void TrieSuite::deleteV(void* /*arg*/, const unsigned char* /*k*/, void* v)
 {
-    delete (unsigned long*)(v);
+    delete (unsigned int*)(v);
 }
 
 
 void TrieSuite::rmKv(void* arg, const unsigned char* k, void* v)
 {
     Trie& trie = *static_cast<Trie*>(arg);
-    unsigned long numKvPairs = trie.numKvPairs() - 1;
+    unsigned int numKvPairs = trie.numKvPairs() - 1;
     void* removedV = 0;
     bool ok = trie.rm(k, removedV) && (v == removedV) && (trie.numKvPairs() == numKvPairs) && (!trie.find(k));
     CPPUNIT_ASSERT(ok);
@@ -51,15 +51,15 @@ void TrieSuite::testAdd00()
     unsigned char maxDigit = 0x0fU;
     Trie trie(maxDigit);
     const char* s = "aRandomStringUsedForTriePopulation!!!~@#$%^&*()_+=-`{}|][:;'<>?/.,";
-    unsigned long numKvPairs = 0;
+    unsigned int numKvPairs = 0;
     bool ok = true;
     for (const char* p = s; *p; ++p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
             void* foundV = 0;
             Trie::U32Key k(u32);
-            unsigned long* v = new unsigned long(u32);
+            unsigned int* v = new unsigned int(u32);
             ++numKvPairs;
             if (trie.find(k, foundV))
             {
@@ -81,7 +81,7 @@ void TrieSuite::testAdd00()
     ok = (trie.numKvPairs() == numKvPairs) && (trie.numNodes() > numKvPairs);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long arg = 0;
+    unsigned int arg = 0;
     ok = trie.applyChildFirst(validateOrder, &arg);
     CPPUNIT_ASSERT(ok);
     arg = 0;
@@ -124,7 +124,7 @@ void TrieSuite::testAdd01()
     char s[] = "aRandomStringUsedForTriePopulation!!!";
     unsigned char n[] = {1, 2, 3, 5, 10, 9, 7, 17, 18, 16};
     bool ok = true;
-    for (unsigned long i = 0; i < 10; ++i)
+    for (unsigned int i = 0; i < 10; ++i)
     {
         Trie::StrKey key(Trie::StrKey::Ascii, s, n[i]);
         char* value = s + n[i];
@@ -175,7 +175,7 @@ void TrieSuite::testAdd01()
     ok = (clone1 != trie) && (clone1.numKvPairs() == 3) && (clone1.numNodes() == 4);
     CPPUNIT_ASSERT(ok);
 
-    for (unsigned long i = 0; i < 3; ++i)
+    for (unsigned int i = 0; i < 3; ++i)
     {
         Trie::StrKey key(Trie::StrKey::Ascii, s, n[i]);
         if (!clone1.find(key))
@@ -205,7 +205,7 @@ void TrieSuite::testAdd02()
     CPPUNIT_ASSERT(ok);
 
     // Adding an invalid key should fail.
-    for (unsigned long i = 1; i <= 3; ++i)
+    for (unsigned int i = 1; i <= 3; ++i)
     {
         unsigned char badKey[1 + 3] = {3, 0, 0, 0};
         badKey[i] = trie.maxDigit() + 1;
@@ -274,7 +274,7 @@ void TrieSuite::testKey00()
     CPPUNIT_ASSERT(ok);
 
     unsigned char rawKey2[1 + 4];
-    Trie::U16Key::encode(rawKey2, 0x1234UL);
+    Trie::U16Key::encode(rawKey2, 0x1234U);
     ok = (Trie::U16Key::decode(rawKey2) == 0x1234U);
     CPPUNIT_ASSERT(ok);
     ok = (Trie::U16Key::decode(key) == 0x1234U);
@@ -298,19 +298,19 @@ void TrieSuite::testKey01()
     CPPUNIT_ASSERT(ok);
 
     const unsigned char rawKey1[1 + 7] = {7U, 1U, 2U, 3U, 4U, 5U, 6U, 7U};
-    key = 0x01234567UL;
+    key = 0x01234567U;
     ok = (memcmp(rawKey1, key.asBytes(), sizeof(rawKey1)) == 0);
     CPPUNIT_ASSERT(ok);
 
     unsigned char rawKey2[1 + 7];
-    Trie::U28Key::encode(rawKey2, 0x01234567UL);
-    ok = (Trie::U28Key::decode(rawKey2) == 0x01234567UL);
+    Trie::U28Key::encode(rawKey2, 0x01234567U);
+    ok = (Trie::U28Key::decode(rawKey2) == 0x01234567U);
     CPPUNIT_ASSERT(ok);
-    ok = (Trie::U28Key::decode(key) == 0x01234567UL);
+    ok = (Trie::U28Key::decode(key) == 0x01234567U);
     CPPUNIT_ASSERT(ok);
 
     key = 0;
-    key.reset(0x01234567UL);
+    key.reset(0x01234567U);
     ok = (memcmp(rawKey1, key.asBytes(), sizeof(rawKey1)) == 0);
     CPPUNIT_ASSERT(ok);
 }
@@ -327,19 +327,19 @@ void TrieSuite::testKey02()
     CPPUNIT_ASSERT(ok);
 
     const unsigned char rawKey1[1 + 8] = {8U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U};
-    key = 0x12345678UL;
+    key = 0x12345678U;
     ok = (memcmp(rawKey1, key.asBytes(), sizeof(rawKey1)) == 0);
     CPPUNIT_ASSERT(ok);
 
     unsigned char rawKey2[1 + 8];
-    Trie::U32Key::encode(rawKey2, 0x12345678UL);
-    ok = (Trie::U32Key::decode(rawKey2) == 0x12345678UL);
+    Trie::U32Key::encode(rawKey2, 0x12345678U);
+    ok = (Trie::U32Key::decode(rawKey2) == 0x12345678U);
     CPPUNIT_ASSERT(ok);
-    ok = (Trie::U32Key::decode(key) == 0x12345678UL);
+    ok = (Trie::U32Key::decode(key) == 0x12345678U);
     CPPUNIT_ASSERT(ok);
 
     key = 0;
-    key.reset(0x12345678UL);
+    key.reset(0x12345678U);
     ok = (memcmp(rawKey1, key.asBytes(), sizeof(rawKey1)) == 0);
     CPPUNIT_ASSERT(ok);
 }
@@ -701,10 +701,10 @@ void TrieSuite::testRm03()
     const char* s = "aRandomStringUsedForTriePopulation!!!~@#$%^&*()_+=-`{}|][:;'<>?/.,";
     for (const char* p = s; *p; ++p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
             Trie::U32Key key(u32);
-            unsigned long* value = new unsigned long(u32);
+            unsigned int* value = new unsigned int(u32);
             if (!trie0.add(key.asBytes(), value))
             {
                 delete value;
@@ -734,14 +734,14 @@ void TrieSuite::testRm03()
     const char* p0 = s + 23;
     for (const char* p = p0;;)
     {
-        unsigned long u32a = *p << 5;
-        for (unsigned long u32 = u32a;;)
+        unsigned int u32a = *p << 5;
+        for (unsigned int u32 = u32a;;)
         {
             void *removedV;
             Trie::U32Key key(u32);
             if (trie0.rm(key.asBytes(), removedV))
             {
-                delete static_cast<unsigned long*>(removedV);
+                delete static_cast<unsigned int*>(removedV);
             }
             if ((u32 <<= 1) == 0) { u32 = *p; continue; }
             if (u32 == u32a) break;

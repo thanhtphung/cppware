@@ -513,7 +513,7 @@ void FifoSuite::testOp02()
 
     // Wrapped queue.
     Fifo q2(NUM_ITEMS, 0);
-    for (unsigned long i = 0; i++ < 5; q2.add(0));
+    for (unsigned int i = 0; i++ < 5; q2.add(0));
     for (const char* p = ITEM; *p != 0; q2.addCircularly(const_cast<char*>(p++)));
 
     // Assignment operator. Source queue has too many entries.

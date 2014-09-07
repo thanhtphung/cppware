@@ -17,7 +17,7 @@ static bool exeIsPurified(const StringVec& modules)
 {
 
     bool isPurified = false;
-    for (unsigned long i = modules.numItems(); i > 0;)
+    for (unsigned int i = modules.numItems(); i > 0;)
     {
         const String& module = modules.peek(--i);
         if (module.endsWith(".exe", true /*ignoreCase*/))
@@ -91,7 +91,7 @@ void ProcessSuite::testAffinityMask00()
 void ProcessSuite::testApply00()
 {
     UwordSet pids;
-    unsigned long maxPids = 4096;
+    unsigned int maxPids = 4096;
     bool ok = Process::apply(maxPids, cb1a, &pids) && pids.contains(Process::myId());
     CPPUNIT_ASSERT(ok);
 

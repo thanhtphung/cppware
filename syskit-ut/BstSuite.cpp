@@ -134,7 +134,7 @@ void BstSuite::testAdd00()
 
     ok = (!bst0.addIfNotFound(bst0[0]));
     CPPUNIT_ASSERT(ok);
-    unsigned int* item = new unsigned int(0UL);
+    unsigned int* item = new unsigned int(0U);
     ok = (bst0.findIndex(item) == Bst::INVALID_INDEX);
     CPPUNIT_ASSERT(ok);
     ok = bst0.addIfNotFound(item);

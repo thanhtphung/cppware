@@ -327,7 +327,7 @@ void VecSuite::testCtor01()
     Vec vec2;
     vec2 = &vec; //disable vec and move its guts to vec2
     vec2 = vec2; //no-op
-    ok = (vec.capacity() == 0UL - 1) &&
+    ok = (vec.capacity() == 0U - 1) &&
         ((vec2.numItems() == numItems) && (memcmp(vec2.raw(), vec1.raw(), numItems * sizeof(Vec::item_t)) == 0));
     CPPUNIT_ASSERT(ok);
 }
@@ -497,7 +497,7 @@ void VecSuite::testOp03()
 
     // Disable vec2 and move its guts to vec3.
     Vec vec3(&vec2);
-    ok = (vec2.capacity() == 0UL - 1) &&
+    ok = (vec2.capacity() == 0U - 1) &&
         vec3.equals(vec, U32::compareP) && vec3.equals(Vec(vec1, 0, 3), U32::compareP);
     CPPUNIT_ASSERT(ok);
 }

@@ -101,7 +101,7 @@ void RefCountedSuite::testCtor00()
     One* one1 = new One;
     one1->addRef();
     one1->addRef();
-    ok = ((!one1->rmRef()) && (one1->refCount() == 1UL) && (one1->clone() == 0));
+    ok = ((!one1->rmRef()) && (one1->refCount() == 1U) && (one1->clone() == 0));
     CPPUNIT_ASSERT(ok);
     ok = one1->rmRef();
     CPPUNIT_ASSERT(ok);
@@ -109,7 +109,7 @@ void RefCountedSuite::testCtor00()
     One* one2 = new One;
     one2->incrementRefBy(7);
     one2->decrementRefBy(3);
-    ok = ((!one2->rmRef(2)) && (one2->refCount() == 2UL));
+    ok = ((!one2->rmRef(2)) && (one2->refCount() == 2U));
     CPPUNIT_ASSERT(ok);
     ok = one2->rmRef(2);
     CPPUNIT_ASSERT(ok);

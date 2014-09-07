@@ -18,77 +18,77 @@ Atomic32Suite::~Atomic32Suite()
 
 void Atomic32Suite::testDecrement00()
 {
-    Atomic32 a(0xdcba9876UL);
-    a.decrementBy(0x10101010UL);
-    bool ok = (a == 0xccaa8866UL);
+    Atomic32 a(0xdcba9876U);
+    a.decrementBy(0x10101010U);
+    bool ok = (a == 0xccaa8866U);
     CPPUNIT_ASSERT(ok);
 
-    unsigned int old = 0x11223344UL;
-    a.decrementBy(0x01010101UL, old);
-    ok = ((a == 0xcba98765UL) && (old == 0xccaa8866UL));
+    unsigned int old = 0x11223344U;
+    a.decrementBy(0x01010101U, old);
+    ok = ((a == 0xcba98765U) && (old == 0xccaa8866U));
     CPPUNIT_ASSERT(ok);
 
     a.decrement();
-    ok = (a == 0xcba98764UL);
+    ok = (a == 0xcba98764U);
     CPPUNIT_ASSERT(ok);
 
     a.decrement(old);
-    ok = ((a == 0xcba98763UL) && (old == 0xcba98764UL));
+    ok = ((a == 0xcba98763U) && (old == 0xcba98764U));
     CPPUNIT_ASSERT(ok);
 }
 
 
 void Atomic32Suite::testIncrement00()
 {
-    Atomic32 a(0x87654321UL);
-    a.incrementBy(0x22222222UL);
-    bool ok = (a == 0xa9876543UL);
+    Atomic32 a(0x87654321U);
+    a.incrementBy(0x22222222U);
+    bool ok = (a == 0xa9876543U);
     CPPUNIT_ASSERT(ok);
 
-    unsigned int old = 0x11223344UL;
-    a.incrementBy(0x33333333UL, old);
-    ok = ((a == 0xdcba9876UL) && (old == 0xa9876543UL));
+    unsigned int old = 0x11223344U;
+    a.incrementBy(0x33333333U, old);
+    ok = ((a == 0xdcba9876U) && (old == 0xa9876543U));
     CPPUNIT_ASSERT(ok);
 
     a.increment();
-    CPPUNIT_ASSERT(a == 0xdcba9877UL);
+    CPPUNIT_ASSERT(a == 0xdcba9877U);
     a.increment(old);
-    CPPUNIT_ASSERT((a == 0xdcba9878UL) && (old == 0xdcba9877UL));
+    CPPUNIT_ASSERT((a == 0xdcba9878U) && (old == 0xdcba9877U));
 }
 
 
 void Atomic32Suite::testOp00()
 {
-    Atomic32 a(0x12345678UL);
-    bool ok = (a.asWord() == 0x12345678UL);
+    Atomic32 a(0x12345678U);
+    bool ok = (a.asWord() == 0x12345678U);
     CPPUNIT_ASSERT(ok);
 
     unsigned int rc = ++a;
-    ok = ((rc == 0x12345679UL) && (a == 0x12345679UL));
+    ok = ((rc == 0x12345679U) && (a == 0x12345679U));
     CPPUNIT_ASSERT(ok);
 
     rc = a++;
-    ok = ((rc == 0x12345679UL) && (a == 0x1234567aUL));
+    ok = ((rc == 0x12345679U) && (a == 0x1234567aU));
     CPPUNIT_ASSERT(ok);
 
     rc = --a;
-    ok = ((rc == 0x12345679UL) && (a == 0x12345679UL));
+    ok = ((rc == 0x12345679U) && (a == 0x12345679U));
     CPPUNIT_ASSERT(ok);
 
     rc = a--;
-    ok = ((rc == 0x12345679UL) && (a == 0x12345678UL));
+    ok = ((rc == 0x12345679U) && (a == 0x12345678U));
     CPPUNIT_ASSERT(ok);
 
-    a += 0x11111111UL;
-    ok = (a == 0x23456789UL);
+    a += 0x11111111U;
+    ok = (a == 0x23456789U);
     CPPUNIT_ASSERT(ok);
 
-    a -= 0x11111111UL;
-    ok = (a == 0x12345678UL);
+    a -= 0x11111111U;
+    ok = (a == 0x12345678U);
     CPPUNIT_ASSERT(ok);
 
-    a = 0x87654321UL;
-    ok = (a == 0x87654321UL);
+    a = 0x87654321U;
+    ok = (a == 0x87654321U);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -99,28 +99,28 @@ void Atomic32Suite::testSet00()
     bool ok = (a.asWord() == 0);
     CPPUNIT_ASSERT(ok);
 
-    a.set(0x56789abcUL);
-    ok = (a == 0x56789abcUL);
+    a.set(0x56789abcU);
+    ok = (a == 0x56789abcU);
     CPPUNIT_ASSERT(ok);
 
-    unsigned int old = 0x12233344UL;
-    a.set(0xabcd1234UL, old);
-    ok = ((a == 0xabcd1234UL) && (old == 0x56789abcUL));
+    unsigned int old = 0x12233344U;
+    a.set(0xabcd1234U, old);
+    ok = ((a == 0xabcd1234U) && (old == 0x56789abcU));
     CPPUNIT_ASSERT(ok);
 
-    a.setIfEqual(0x11122333UL, 0xabcd1234UL);
-    ok = (a == 0x11122333UL);
+    a.setIfEqual(0x11122333U, 0xabcd1234U);
+    ok = (a == 0x11122333U);
     CPPUNIT_ASSERT(ok);
 
-    a.setIfEqual(0x22233444UL, 0xabcd1234UL);
-    ok = (a == 0x11122333UL);
+    a.setIfEqual(0x22233444U, 0xabcd1234U);
+    ok = (a == 0x11122333U);
     CPPUNIT_ASSERT(ok);
 
-    a.setIfEqual(0x22233444UL, 0x11122333UL, old);
-    ok = ((a == 0x22233444UL) && (old == 0x11122333UL));
+    a.setIfEqual(0x22233444U, 0x11122333U, old);
+    ok = ((a == 0x22233444U) && (old == 0x11122333U));
     CPPUNIT_ASSERT(ok);
 
-    a.setIfEqual(0x11122333UL, 0x11122333UL, old);
-    ok = ((a == 0x22233444UL) && (old == 0x22233444UL));
+    a.setIfEqual(0x11122333U, 0x11122333U, old);
+    ok = ((a == 0x22233444U) && (old == 0x22233444U));
     CPPUNIT_ASSERT(ok);
 }

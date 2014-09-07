@@ -23,8 +23,8 @@ HeapXSuite::~HeapXSuite()
 //
 int HeapXSuite::compare(const void* item0, const void* item1)
 {
-    long c0 = *static_cast<const char*>(item0);
-    long c1 = *static_cast<const char*>(item1);
+    int c0 = *static_cast<const char*>(item0);
+    int c1 = *static_cast<const char*>(item1);
     return c0 - c1;
 }
 
@@ -34,8 +34,8 @@ int HeapXSuite::compare(const void* item0, const void* item1)
 //
 int HeapXSuite::compareR(const void* item0, const void* item1)
 {
-    long c0 = *static_cast<const char*>(item0);
-    long c1 = *static_cast<const char*>(item1);
+    int c0 = *static_cast<const char*>(item0);
+    int c1 = *static_cast<const char*>(item1);
     return c1 - c0;
 }
 
@@ -169,7 +169,7 @@ void HeapXSuite::testCtor02()
     bool ok = (compare != 0);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long item[3] = {3, 1, 2};
+    unsigned int item[3] = {3, 1, 2};
     ok = (compare(&item[0], &item[0]) == 0);
     CPPUNIT_ASSERT(ok);
     ok = (compare(&item[0], &item[1]) < 0);
@@ -304,7 +304,7 @@ void HeapXSuite::testRm00()
     CPPUNIT_ASSERT(ok);
 
     // Invalid index.
-    ok = (!heap.rmFromIndex(9999UL));
+    ok = (!heap.rmFromIndex(9999U));
     CPPUNIT_ASSERT(ok);
 }
 

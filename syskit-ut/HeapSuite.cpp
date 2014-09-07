@@ -83,7 +83,7 @@ void HeapSuite::testCtor00()
     // Zero capacity.
     Heap heap1(compareR, 256 /*capacity*/, 0 /*growBy*/);
     for (const char* p = ITEMS; *p != 0; heap1.add(const_cast<char*>(p++)));
-    Heap heapB(0, 0UL /*capacity*/, 0 /*growBy*/);
+    Heap heapB(0, 0U /*capacity*/, 0 /*growBy*/);
     heapB = heap1;
     ok = (heapB.numItems() == 0);
     CPPUNIT_ASSERT(ok);
@@ -125,7 +125,7 @@ void HeapSuite::testCtor02()
     bool ok = (compare != 0);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long item[3] = {3, 1, 2};
+    unsigned int item[3] = {3, 1, 2};
     ok = (compare(&item[0], &item[0]) == 0);
     CPPUNIT_ASSERT(ok);
     ok = (compare(&item[0], &item[1]) < 0);
@@ -244,7 +244,7 @@ void HeapSuite::testRm00()
     CPPUNIT_ASSERT(ok);
 
     // Invalid index.
-    ok = (!heap.rmFromIndex(9999UL));
+    ok = (!heap.rmFromIndex(9999U));
     CPPUNIT_ASSERT(ok);
 }
 

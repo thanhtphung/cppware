@@ -159,7 +159,7 @@ void ThreadSuite::testCtor01()
     int inWow64Mode = 0;
     IsWow64Process(GetCurrentProcess(), &inWow64Mode);
 
-    Semaphore sem(1UL);
+    Semaphore sem(1U);
     unsigned int stackSizeInBytes = 0xffffffffU;
     Thread thread(entrance00, &sem, stackSizeInBytes);
     bool ok = (!thread.isOk()) || (sizeof(size_t) == 8) || inWow64Mode;
@@ -179,7 +179,7 @@ void ThreadSuite::testCtor01()
 //
 void ThreadSuite::testCtor02()
 {
-    Semaphore sem(1UL);
+    Semaphore sem(1U);
     unsigned int stackSizeInBytes = 0;
     bool startSuspended = true;
     Thread thread(entrance00, &sem, stackSizeInBytes, startSuspended);
@@ -355,7 +355,7 @@ void ThreadSuite::testMonitorCrash00()
 void ThreadSuite::testMyId00()
 {
     size_t tid = 0;
-    Thread* thread = new Thread(entrance04, &tid, 1234UL /*stackSizeInBytes*/);
+    Thread* thread = new Thread(entrance04, &tid, 1234U /*stackSizeInBytes*/);
     thread->waitTilDone();
     bool ok = (thread->id() == tid);
     CPPUNIT_ASSERT(ok);
@@ -404,7 +404,7 @@ void* ThreadSuite::entrance02(void* arg)
     sem->decrement(Semaphore::ETERNITY);
 
     sem->increment();
-    bool ok = ((!Thread::takeANap(12345678UL /*napTimeInMsecs*/)) && Thread::isTerminating());
+    bool ok = ((!Thread::takeANap(12345678U /*napTimeInMsecs*/)) && Thread::isTerminating());
     return ok? arg: 0;
 }
 

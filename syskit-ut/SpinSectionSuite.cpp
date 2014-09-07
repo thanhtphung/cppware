@@ -41,7 +41,7 @@ void SpinSectionSuite::testCtor00()
 
     // Make sure spin count can be set if allowed.
     bool spinAllowed = (ss.spinCount() == SpinSection::DefaultSpinCount);
-    ok = (ss.setSpinCount(12345UL) == spinAllowed);
+    ok = (ss.setSpinCount(12345U) == spinAllowed);
     CPPUNIT_ASSERT(ok);
 }
 

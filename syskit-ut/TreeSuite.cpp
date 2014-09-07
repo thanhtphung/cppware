@@ -9,7 +9,7 @@ using namespace syskit;
 
 typedef union
 {
-    unsigned long* item;
+    unsigned int* item;
     void* opaque;
 } item_t;
 
@@ -29,14 +29,14 @@ TreeSuite::~TreeSuite()
 
 //
 // This method is invoke when iterating items in order. Given argument
-// is a pointer to an unsigned long for temporary use to check if the
+// is a pointer to an unsigned int for temporary use to check if the
 // iterated items are in the expected ascending order.
 //
 bool TreeSuite::checkItem(void* arg, void* item)
 {
-    unsigned long lo = *static_cast<unsigned long*>(arg);
-    unsigned long hi = *static_cast<unsigned long*>(item);
-    *static_cast<unsigned long*>(arg) = hi;
+    unsigned int lo = *static_cast<unsigned int*>(arg);
+    unsigned int hi = *static_cast<unsigned int*>(item);
+    *static_cast<unsigned int*>(arg) = hi;
     return (lo < hi);
 }
 
@@ -57,7 +57,7 @@ bool TreeSuite::rmItem(void* arg, void* item)
 
 void TreeSuite::deleteItem(void* /*arg*/, void* item)
 {
-    delete static_cast<unsigned long*>(item);
+    delete static_cast<unsigned int*>(item);
 }
 
 
@@ -73,8 +73,8 @@ void TreeSuite::deleteItem(void* /*arg*/, void* item)
 //
 void TreeSuite::testAdd00()
 {
-    unsigned long maxItem = 0UL;
-    unsigned long minItem = 0xffffffffUL;
+    unsigned int maxItem = 0U;
+    unsigned int minItem = 0xffffffffU;
 
     // Add random items.
     // This sample should cover all node configurations.
@@ -84,10 +84,10 @@ void TreeSuite::testAdd00()
     size_t numItems = 0;
     for (const char* p = ITEMS; *p != 0; ++p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
             void* foundItem = 0;
-            unsigned long* item = new unsigned long(u32);
+            unsigned int* item = new unsigned int(u32);
             ++numItems;
             if (tree.find(item))
             {
@@ -113,12 +113,12 @@ void TreeSuite::testAdd00()
     CPPUNIT_ASSERT(ok);
 
     void* foundItem;
-    ok = (tree.findMax(foundItem) && (*static_cast<unsigned long*>(foundItem) == maxItem));
+    ok = (tree.findMax(foundItem) && (*static_cast<unsigned int*>(foundItem) == maxItem));
     CPPUNIT_ASSERT(ok);
-    ok = (tree.findMin(foundItem) && (*static_cast<unsigned long*>(foundItem) == minItem));
+    ok = (tree.findMin(foundItem) && (*static_cast<unsigned int*>(foundItem) == minItem));
     CPPUNIT_ASSERT(ok);
 
-    unsigned long v = 0;
+    unsigned int v = 0;
     ok = tree.apply(checkItem, &v);
     CPPUNIT_ASSERT(ok);
 
@@ -144,9 +144,9 @@ void TreeSuite::testAdd01()
     bool ok = true;
     for (const char* p = ITEMS; *p != 0; ++p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
-            unsigned long* item = new unsigned long(u32);
+            unsigned int* item = new unsigned int(u32);
             item_t found;
             if (!tree.add(item, found.opaque))
             {
@@ -162,7 +162,7 @@ void TreeSuite::testAdd01()
     }
     CPPUNIT_ASSERT(ok);
 
-    unsigned long v = 0;
+    unsigned int v = 0;
     ok = tree.apply(checkItem, &v);
     CPPUNIT_ASSERT(ok);
 
@@ -186,9 +186,9 @@ void TreeSuite::testApply00()
     Tree tree0(U32::compareP);
     for (const char* p = ITEMS + NUM_ITEMS - 1; p >= ITEMS; --p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
-            unsigned long* item = new unsigned long(u32);
+            unsigned int* item = new unsigned int(u32);
             if (!tree0.add(item))
             {
                 delete item;
@@ -197,7 +197,7 @@ void TreeSuite::testApply00()
     }
 
     Tree tree1(tree0);
-    for (unsigned long i = 0; i < 10; ++i)
+    for (unsigned int i = 0; i < 10; ++i)
     {
         void* item = tree0.peek(0);
         tree0.rm(item);
@@ -207,11 +207,11 @@ void TreeSuite::testApply00()
     bool ok = (tree0 == tree1);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long numItems = tree0.numItems();
-    for (unsigned long i = 0, item = 0; i < numItems; ++i)
+    unsigned int numItems = tree0.numItems();
+    for (unsigned int i = 0, item = 0; i < numItems; ++i)
     {
-        unsigned long item0 = *static_cast<unsigned long*>(tree0.peek(i));
-        unsigned long item1 = *static_cast<unsigned long*>(tree1.peek(i));
+        unsigned int item0 = *static_cast<unsigned int*>(tree0.peek(i));
+        unsigned int item1 = *static_cast<unsigned int*>(tree1.peek(i));
         if ((item0 != item1) || (item >= item0))
         {
             ok = false;
@@ -240,7 +240,7 @@ void TreeSuite::testCtor00()
     bool ok = (compare != 0);
     CPPUNIT_ASSERT(ok);
 
-    unsigned long item[3] = {3, 1, 2};
+    unsigned int item[3] = {3, 1, 2};
     ok = (compare(&item[0], &item[0]) == 0);
     CPPUNIT_ASSERT(ok);
     ok = (compare(&item[0], &item[1]) < 0);
@@ -275,9 +275,9 @@ void TreeSuite::testCtor01()
     Tree tree0(U32::compareP);
     for (const char* p = ITEMS + NUM_ITEMS - 1; p >= ITEMS; --p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
-            unsigned long* item = new unsigned long(u32);
+            unsigned int* item = new unsigned int(u32);
             if (!tree0.add(item))
             {
                 delete item;
@@ -340,9 +340,9 @@ void TreeSuite::testRm00()
     Tree tree0(U32::compareP);
     for (const char* p = ITEMS + NUM_ITEMS - 1; p >= ITEMS; --p)
     {
-        for (unsigned long u32 = *p; u32 != 0; u32 <<= 1)
+        for (unsigned int u32 = *p; u32 != 0; u32 <<= 1)
         {
-            unsigned long* item = new unsigned long(u32);
+            unsigned int* item = new unsigned int(u32);
             if (!tree0.add(item))
             {
                 delete item;
@@ -378,13 +378,13 @@ void TreeSuite::testRm00()
     const char* p0 = ITEMS + 23;
     for (const char* p = p0;;)
     {
-        unsigned long u32a = *p << 5;
-        for (unsigned long u32 = u32a;;)
+        unsigned int u32a = *p << 5;
+        for (unsigned int u32 = u32a;;)
         {
             void *removedItem;
             if (tree0.rm(&u32, removedItem))
             {
-                delete static_cast<unsigned long*>(removedItem);
+                delete static_cast<unsigned int*>(removedItem);
             }
             if ((u32 <<= 1) == 0) { u32 = *p; continue; }
             if (u32 == u32a) break;

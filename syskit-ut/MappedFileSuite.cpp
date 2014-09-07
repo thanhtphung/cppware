@@ -31,7 +31,7 @@ bool MappedFileSuite::cb0a(void* arg, const Directory& parent, const String& chi
     {
         String path(parent.path());
         path += childName;
-        MappedFile file(path.widen(), true /*readOnly*/, 0UL /*mapSize*/);
+        MappedFile file(path.widen(), true /*readOnly*/, 0U /*mapSize*/);
         if (file.isOk() && (file.path() == path))
         {
             keepGoing = false;
@@ -54,7 +54,7 @@ void MappedFileSuite::cb1a(void* arg, const Directory& parent, const String& chi
     String path(parent.path());
     path += childName;
     bool readOnly = true;
-    MappedFile file0(path.widen(), readOnly, 1UL /*mapSize*/);
+    MappedFile file0(path.widen(), readOnly, 1U /*mapSize*/);
     if ((!file0.isOk()) || (file0.mapSize() <= 1) || (file0.addrOf(0) == 0))
     {
         bool* failed = static_cast<bool*>(arg);
@@ -94,7 +94,7 @@ void MappedFileSuite::cb1a(void* arg, const Directory& parent, const String& chi
 void MappedFileSuite::testCtor00()
 {
     String path("/");
-    MappedFile file(path.widen(), 0UL /*mapSize*/);
+    MappedFile file(path.widen(), 0U /*mapSize*/);
     bool ok = (!file.isOk()) && (file.path() == path);
     CPPUNIT_ASSERT(ok);
 
@@ -109,7 +109,7 @@ void MappedFileSuite::testCtor00()
 void MappedFileSuite::testCtor01()
 {
     String path("../../../etc/122333.txt");
-    MappedFile file(path.widen(), true /*readOnly*/, 0UL /*mapSize*/);
+    MappedFile file(path.widen(), true /*readOnly*/, 0U /*mapSize*/);
     bool ok = file.isOk() && (file.path() == path);
     CPPUNIT_ASSERT(ok);
 
@@ -135,8 +135,8 @@ void MappedFileSuite::testCtor01()
 void MappedFileSuite::testCtor02()
 {
     String path("../../../etc/empty.txt");
-    MappedFile file(path.widen(), true /*readOnly*/, 1UL /*mapSize*/);
-    bool ok = file.isOk() && (file.path() == path) && (file.mapSize() > 1UL);
+    MappedFile file(path.widen(), true /*readOnly*/, 1U /*mapSize*/);
+    bool ok = file.isOk() && (file.path() == path) && (file.mapSize() > 1U);
     CPPUNIT_ASSERT(ok);
 
     // Read-only file cannot be resized.

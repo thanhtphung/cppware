@@ -134,17 +134,17 @@ void GrowableSuite::testNextCap00()
     Container flex0(111, 222);
     bool ok = ((flex0.nextCap(99) == 111) && (flex0.nextCap(345) == 555));
     CPPUNIT_ASSERT(ok);
-    ok = (flex0.nextCap(0xffffffffUL) == 0);
+    ok = (flex0.nextCap(0xffffffffU) == 0);
     CPPUNIT_ASSERT(ok);
 
-    Container flex1(0x87654321UL, 0x7fffffffL);
+    Container flex1(0x87654321U, 0x7fffffffL);
     ok = (flex1.nextCap() == 0);
     CPPUNIT_ASSERT(ok);
 
     Container flex2(7, -1);
     ok = (flex2.nextCap(99) == 112);
     CPPUNIT_ASSERT(ok);
-    ok = (flex2.nextCap(0xfffffffeUL) == 0);
+    ok = (flex2.nextCap(0xfffffffeU) == 0);
     CPPUNIT_ASSERT(ok);
     ok = ((flex2.increaseCap(3) == 10) && (flex2.capacity() == 10));
     CPPUNIT_ASSERT(ok);

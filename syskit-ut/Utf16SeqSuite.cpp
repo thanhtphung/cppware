@@ -16,22 +16,22 @@ const size_t NUM_U16S = 20;
 
 const utf32_t SAMPLE[NUM_CHARS] =
 {
-    0x00000000UL, //2-byte value
-    0x0000000aUL, //2-byte value
-    0x0000007fUL, //2-byte value
-    0x00000080UL, //2-byte value
-    0x000000abUL, //2-byte value
-    0x000007ffUL, //2-byte value
-    0x00000800UL, //2-byte value
-    0x0000abcdUL, //2-byte value
-    0x0000ffffUL, //2-byte value
-    0x00010000UL, //4-byte value
-    0x0000000aUL, //2-byte value
-    0x000abcdeUL, //4-byte value
-    0x0000abcdUL, //2-byte value
-    0x000000abUL, //2-byte value
-    0x0010ffffUL, //4-byte value
-    0x000abcdeUL  //4-byte value
+    0x00000000U, //2-byte value
+    0x0000000aU, //2-byte value
+    0x0000007fU, //2-byte value
+    0x00000080U, //2-byte value
+    0x000000abU, //2-byte value
+    0x000007ffU, //2-byte value
+    0x00000800U, //2-byte value
+    0x0000abcdU, //2-byte value
+    0x0000ffffU, //2-byte value
+    0x00010000U, //4-byte value
+    0x0000000aU, //2-byte value
+    0x000abcdeU, //4-byte value
+    0x0000abcdU, //2-byte value
+    0x000000abU, //2-byte value
+    0x0010ffffU, //4-byte value
+    0x000abcdeU  //4-byte value
 };
 
 
@@ -196,7 +196,7 @@ void Utf16SeqSuite::testApply03()
 void Utf16SeqSuite::testConvert00()
 {
     utf32_t* sample = new utf32_t[65536];
-    for (utf32_t i = 0; i <= 0xffffUL; ++i)
+    for (utf32_t i = 0; i <= 0xffffU; ++i)
     {
         sample[i] = i;
     }
@@ -243,15 +243,15 @@ void Utf16SeqSuite::testConvert01()
 {
     utf32_t sample[9] =
     {
-        0x0000000aUL, //2-byte value
-        0x000000abUL, //2-byte value
-        0x0000abcdUL, //2-byte value
-        0x000abcdeUL, //4-byte value
-        0x000abcdeUL, //4-byte value
-        0x0000abcdUL, //2-byte value
-        0x000000abUL, //2-byte value
-        0x0000000aUL, //2-byte value
-        0x00000000UL  //2-byte value
+        0x0000000aU, //2-byte value
+        0x000000abU, //2-byte value
+        0x0000abcdU, //2-byte value
+        0x000abcdeU, //4-byte value
+        0x000abcdeU, //4-byte value
+        0x0000abcdU, //2-byte value
+        0x000000abU, //2-byte value
+        0x0000000aU, //2-byte value
+        0x00000000U  //2-byte value
     };
     Utf8Seq seq8;
     seq8.shrink(sample, 9);
@@ -351,7 +351,7 @@ void Utf16SeqSuite::testConvert03()
     bool ok = ((seq.shrink(SAMPLE, NUM_CHARS, defaultChar) == 0) && (seq == *seq0_));
     CPPUNIT_ASSERT(ok);
 
-    const utf32_t someInvalidSeq[5] = {0UL, 1UL, 0xabcddcbaUL, 1UL, 0UL};
+    const utf32_t someInvalidSeq[5] = {0U, 1U, 0xabcddcbaU, 1U, 0U};
     ok = ((seq.shrink(someInvalidSeq, 5, defaultChar) == 1) && (seq.numChars() == 5));
     CPPUNIT_ASSERT(ok);
     ok = (seq[2] == defaultChar);
@@ -395,7 +395,7 @@ void Utf16SeqSuite::testConvert04()
 
 void Utf16SeqSuite::testCountChars00()
 {
-    unsigned int numChars = 0x12345678UL;
+    unsigned int numChars = 0x12345678U;
     bool ok = Utf16Seq::countChars(0, 0, numChars) && (numChars == 0);
     CPPUNIT_ASSERT(ok);
 
@@ -611,7 +611,7 @@ void Utf16SeqSuite::testOp02()
 //
 void Utf16SeqSuite::testOp03()
 {
-    utf32_t s[3] = {1UL, 2UL, 3UL};
+    utf32_t s[3] = {1U, 2U, 3U};
     Utf16Seq seq;
     seq.shrink(s, 3);
     bool ok = (seq != *seq1_);

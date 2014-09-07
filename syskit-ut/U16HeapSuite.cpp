@@ -61,7 +61,7 @@ void U16HeapSuite::testCtor00()
     // Zero capacity.
     U16Heap heap1(256 /*capacity*/, 0 /*growBy*/);
     for (const char* p = ITEMS; *p != 0; heap1.add(*p++));
-    U16Heap heapB(0UL /*capacity*/, 0 /*growBy*/);
+    U16Heap heapB(0U /*capacity*/, 0 /*growBy*/);
     heapB = heap1;
     ok = (heapB.numItems() == 0);
     CPPUNIT_ASSERT(ok);
@@ -204,7 +204,7 @@ void U16HeapSuite::testRm00()
     CPPUNIT_ASSERT(ok);
 
     // Invalid index.
-    ok = (!heap.rmFromIndex(9999UL));
+    ok = (!heap.rmFromIndex(9999U));
     CPPUNIT_ASSERT(ok);
 }
 

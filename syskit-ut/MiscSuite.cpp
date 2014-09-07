@@ -39,7 +39,7 @@ const sample_t DATE_SAMPLE[] =
     {"Oct 29 2011", "2011-10-29", 20111029U},
     {"Nov 30 2012", "2012-11-30", 20121130U}
 };
-const unsigned long NUM_DATE_SAMPLES = sizeof(DATE_SAMPLE) / sizeof(DATE_SAMPLE[0]);
+const size_t NUM_DATE_SAMPLES = sizeof(DATE_SAMPLE) / sizeof(DATE_SAMPLE[0]);
 
 BEGIN_NAMESPACE
 
@@ -131,7 +131,7 @@ void MiscSuite::testCallStack00()
 void MiscSuite::testDate00()
 {
     bool ok = true;
-    for (unsigned long i = 0; i < NUM_DATE_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_DATE_SAMPLES; ++i)
     {
         const sample_t& r = DATE_SAMPLE[i];
         Date date(r.date);
@@ -143,25 +143,23 @@ void MiscSuite::testDate00()
         }
     }
 
-#if 0
     Date date0("Jan 01 0000");
     Date date1("Dec 31 9999");
     Date date2("Aug  7 2009");
     char s0[Date::MaxDateStringLength + 1];
     char s1[Date::MaxDateStringLength + 1];
     char s2[Date::MaxDateStringLength + 1];
-    bool ok = (date0 == 101UL) && (String("0000-01-01") == date0.asString(s0)) &&
-        (date1 == 99991231UL) && (String("9999-12-31") == date1.asString(s1)) &&
-        (date2 == 20090807UL) && (String("2009-08-07") == date2.asString(s2));
+    ok = (date0 == 101U) && (String("0000-01-01") == date0.asString(s0)) &&
+        (date1 == 99991231U) && (String("9999-12-31") == date1.asString(s1)) &&
+        (date2 == 20090807U) && (String("2009-08-07") == date2.asString(s2));
     CPPUNIT_ASSERT(ok);
-#endif
 
     char t[Date::MaxTimeStringLength + 1];
     unsigned int secs = 0;
     ok = (String("00000:00:00:00") == Date::formatTime(t, secs));
     CPPUNIT_ASSERT(ok);
 
-    secs = 0xffffffffUL;
+    secs = 0xffffffffU;
     ok = (String("49710:06:28:15") == Date::formatTime(t, secs));
     CPPUNIT_ASSERT(ok);
 }
@@ -275,7 +273,7 @@ void MiscSuite::testUtc00()
     ok = (t0.toFiletime() == now64);
     CPPUNIT_ASSERT(ok);
 
-    t0 = Utc(0UL, 0UL);
+    t0 = Utc(0U, 0U);
     t1 = Utc(Utc::ZERO);
     ok = (t1 == t0);
     CPPUNIT_ASSERT(ok);
