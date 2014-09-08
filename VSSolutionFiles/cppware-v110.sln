@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "syskit", "..\syskit\vc110\syskit\syskit.vcxproj", "{AAB2ED1C-B225-45FC-BD31-08DCB241FA6C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "appkit", "..\appkit\vc110\appkit\appkit.vcxproj", "{7787DDC5-57A8-4BA1-BC37-94F45E82B88F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "syskit-ut", "..\syskit-ut\vc110\syskit-ut\syskit-ut.vcxproj", "{23FF251D-863D-4740-A2FB-3425BC2B58D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{991F526A-C615-4670-BE38-9DA9F9153144} = {991F526A-C615-4670-BE38-9DA9F9153144}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppunit", "..\cppunit-1.12.1\vc110\cppunit\cppunit.vcxproj", "{09375379-1C5C-4C6D-8B3D-742A01181616}"
 EndProject
@@ -22,6 +25,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netkit", "..\netkit\vc110\netkit\netkit.vcxproj", "{991F526A-C615-4670-BE38-9DA9F9153144}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netkit-ut", "..\netkit-ut\vc110\netkit-ut\netkit-ut.vcxproj", "{0126C2DD-A077-4E2C-A04C-9076F17B8A03}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "packet", "..\winpcap-4.1.3\vc110\packet\packet.vcxproj", "{D86E08AF-947B-45BB-8A67-F6E355D62E7A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wpcap", "..\winpcap-4.1.3\vc110\wpcap\wpcap.vcxproj", "{2FE29844-8866-4D2D-8377-5A2744C64FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +94,14 @@ Global
 		{0126C2DD-A077-4E2C-A04C-9076F17B8A03}.Release|Win32.Build.0 = Release|Win32
 		{0126C2DD-A077-4E2C-A04C-9076F17B8A03}.Release|x64.ActiveCfg = Release|x64
 		{0126C2DD-A077-4E2C-A04C-9076F17B8A03}.Release|x64.Build.0 = Release|x64
+		{D86E08AF-947B-45BB-8A67-F6E355D62E7A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D86E08AF-947B-45BB-8A67-F6E355D62E7A}.Debug|x64.ActiveCfg = Debug|x64
+		{D86E08AF-947B-45BB-8A67-F6E355D62E7A}.Release|Win32.ActiveCfg = Release|Win32
+		{D86E08AF-947B-45BB-8A67-F6E355D62E7A}.Release|x64.ActiveCfg = Release|x64
+		{2FE29844-8866-4D2D-8377-5A2744C64FF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2FE29844-8866-4D2D-8377-5A2744C64FF2}.Debug|x64.ActiveCfg = Debug|x64
+		{2FE29844-8866-4D2D-8377-5A2744C64FF2}.Release|Win32.ActiveCfg = Release|Win32
+		{2FE29844-8866-4D2D-8377-5A2744C64FF2}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +112,7 @@ Global
 		{84CB5629-C53F-4762-B1E0-337A1CD51EE1} = {87713202-5477-444C-B59C-0C1EFB8A11F3}
 		{3971E0FE-5F15-44C9-95E7-244642988205} = {E5FCD7AD-35B8-4F9D-8248-13F3FF3E88E2}
 		{0126C2DD-A077-4E2C-A04C-9076F17B8A03} = {E5FCD7AD-35B8-4F9D-8248-13F3FF3E88E2}
+		{D86E08AF-947B-45BB-8A67-F6E355D62E7A} = {87713202-5477-444C-B59C-0C1EFB8A11F3}
+		{2FE29844-8866-4D2D-8377-5A2744C64FF2} = {87713202-5477-444C-B59C-0C1EFB8A11F3}
 	EndGlobalSection
 EndGlobal
