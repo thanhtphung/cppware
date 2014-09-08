@@ -1,0 +1,235 @@
+﻿Environment at start of build:
+ALLUSERSPROFILE = C:\ProgramData
+APPDATA = C:\Users\ttp\AppData\Roaming
+asl.log = Destination=file
+BUILDOPERATECLIENT = YES
+CommonProgramFiles = C:\Program Files (x86)\Common Files
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+CommonProgramW6432 = C:\Program Files\Common Files
+COMPUTERNAME = WII-DESKTOP
+ComSpec = C:\Windows\system32\cmd.exe
+DXSDK_DIR = C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\
+ERLANG_HOME = C:\Program Files\erl5.10.4
+FP_NO_HOST_CHECK = NO
+HOMEDRIVE = C:
+HOMEPATH = \Users\ttp
+LOCALAPPDATA = C:\Users\ttp\AppData\Local
+LOGONSERVER = \\WII-DESKTOP
+MSBuildLoadMicrosoftTargetsReadOnly = true
+NUMBER_OF_PROCESSORS = 8
+OnlineServices = Online Services
+OS = Windows_NT
+P4JOURNAL = C:\p4log\journal
+P4ROOT = G:\p4root
+Path = C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\NativeBinaries/x86;C:\Program Files (x86)\Embarcadero\Studio\15.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\15.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\Win64;C:\Program Files (x86)\HP SimplePass\x64;C:\Program Files (x86)\HP SimplePass\;;C:\Program Files (x86)\Embarcadero\Studio\14.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\14.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\Win64;C:\Program Files (x86)\CollabNet;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;G:\projects\FIST32\Shared\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\12.0\DLLShared\;C:\Program Files\Perforce;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\IBM\RationalPurifyPlus\Common;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\;C:\Program Files\OpenVPN\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1;C:\freeware\putty;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\12.0\DLLShared\;C:\Program Files\Perforce;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\IBM\RationalPurifyPlus\Common;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Perforce\Server
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PCBRAND = Pavilion
+PkgDefApplicationConfigFile = C:\Users\ttp\AppData\Local\Microsoft\VisualStudio\12.0\devenv.exe.config
+Platform = MCD
+PLUGIN_PATH = G:\projects\Mainline2\Plugins\bin\
+PROCESSOR_ARCHITECTURE = x86
+PROCESSOR_ARCHITEW6432 = AMD64
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+PROCESSOR_LEVEL = 6
+PROCESSOR_REVISION = 3a09
+ProgramData = C:\ProgramData
+ProgramFiles = C:\Program Files (x86)
+ProgramFiles(x86) = C:\Program Files (x86)
+ProgramW6432 = C:\Program Files
+PSModulePath = C:\Windows\system32\WindowsPowerShell\v1.0\Modules\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\PowerShell\Modules\
+PUBLIC = C:\Users\Public
+ROOT_DIR = G:\projects\Mainline2\
+SESSIONNAME = Console
+SystemDrive = C:
+SystemRoot = C:\Windows
+TEMP = C:\Users\ttp\AppData\Local\Temp
+TMP = C:\Users\ttp\AppData\Local\Temp
+USERDOMAIN = WII-DESKTOP
+USERNAME = ttp
+USERPROFILE = C:\Users\ttp
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+VisualStudioDir = C:\Users\ttp\Documents\Visual Studio 2013
+VisualStudioEdition = Microsoft Visual Studio Professional 2013
+VisualStudioVersion = 12.0
+VS100COMNTOOLS = c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS90COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\
+VSLANG = 1033
+windir = C:\Windows
+windows_tracing_flags = 3
+windows_tracing_logfile = C:\BVTBin\Tests\installpackage\csilogfile.log
+
+  bpf_dump.c
+  bpf_filter.c
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(283): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(342): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(359): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(501): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(544): warning C4018: '<' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(642): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(650): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\bpf\net\bpf_filter.c(650): warning C4018: '>=' : signed/unsigned mismatch
+  bpf_image.c
+  etherent.c
+  fad-win32.c
+  ffs.c
+  gencode.c
+  getservent.c
+  grammar.c
+  inet.c
+  nametoaddr.c
+  optimize.c
+..\..\wpcap\libpcap\optimize.c(672): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+..\..\wpcap\libpcap\optimize.c(937): warning C4018: '>' : signed/unsigned mismatch
+..\..\wpcap\libpcap\optimize.c(941): warning C4018: '>=' : signed/unsigned mismatch
+..\..\wpcap\libpcap\optimize.c(2111): warning C4018: '<' : signed/unsigned mismatch
+  pcap-new.c
+  pcap-remote.c
+  pcap-tc.c
+  pcap-win32.c
+  pcap.c
+  savefile.c
+  scanner.c
+<stdout>(4016): warning C4018: '<' : signed/unsigned mismatch
+<stdout>(4362): warning C4013: 'fileno' undefined; assuming extern returning int
+  sockutils.c
+  Compiling...
+  Win32-Extensions.c
+     Creating library G:\githome\cppware\VSSolutionFiles\..\Build\Lib\v100-Win32\wpcap.lib and object G:\githome\cppware\VSSolutionFiles\..\Build\Lib\v100-Win32\wpcap.exp
+  Generating code
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\optimize.c(406): warning C4715: 'atomuse' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(4298): warning C4715: 'gen_mpls_linktype' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(7659): warning C4715: 'gen_ahostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(4175): warning C4715: 'gen_ipfchostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(4139): warning C4715: 'gen_wlanhostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(3785): warning C4715: 'gen_thostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(3751): warning C4715: 'gen_fhostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(3709): warning C4715: 'gen_ehostop' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(5891): warning C4715: 'gen_proto' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(4545): warning C4715: 'gen_host6' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(4428): warning C4715: 'gen_host' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(6360): warning C4715: 'gen_ncode' : not all control paths return a value
+g:\githome\cppware\winpcap-4.1.3\wpcap\libpcap\gencode.c(6200): warning C4715: 'gen_scode' : not all control paths return a value
+  Finished generating code
+  wpcap.vcxproj -> G:\githome\cppware\VSSolutionFiles\..\Build\Bin\v100-Win32\wpcap.dll
+
+Project Performance Summary:
+        2 ms  G:\githome\cppware\winpcap-4.1.3\vc100\packet\packet.vcxproj   4 calls
+                  0 ms  GetTargetPath                              1 calls
+                  1 ms  GetNativeManifest                          1 calls
+                  1 ms  GetResolvedLinkLibs                        1 calls
+                  0 ms  GetCopyToOutputDirectoryItems              1 calls
+     6539 ms  G:\githome\cppware\winpcap-4.1.3\vc100\wpcap\wpcap.vcxproj   1 calls
+               6539 ms  Build                                      1 calls
+
+Target Performance Summary:
+        0 ms  CreateCustomManifestResourceNames          1 calls
+        0 ms  MakeDirsForManifest                        1 calls
+        0 ms  SelectResourceCompile                      1 calls
+        0 ms  ExpandSDKReferences                        1 calls
+        0 ms  AfterBuildGenerateSources                  1 calls
+        0 ms  ComputeManifestGeneratedLinkerInputs       1 calls
+        0 ms  ResolveReferences                          1 calls
+        0 ms  SelectClCompile                            1 calls
+        0 ms  GetCopyToOutputDirectoryXamlAppDefs        1 calls
+        0 ms  _CheckForCompileOutputs                    1 calls
+        0 ms  CopyFilesToOutputDirectory                 1 calls
+        0 ms  _RemoveNameMetadataFromProjectReferenceItems   1 calls
+        0 ms  _SelectedFiles                             1 calls
+        0 ms  _PrepareForBuild                           1 calls
+        0 ms  _Midl                                      1 calls
+        0 ms  SelectCustomBuild                          1 calls
+        0 ms  AfterBuildGenerateSourcesEvent             1 calls
+        0 ms  GetTargetPath                              1 calls
+        0 ms  _GenerateXMLData                           1 calls
+        0 ms  ResolveAssemblyReferences                  1 calls
+        0 ms  BeforeLink                                 1 calls
+        0 ms  _Manifest                                  1 calls
+        0 ms  AfterBuild                                 1 calls
+        0 ms  CreateSatelliteAssemblies                  1 calls
+        0 ms  _Appverifier                               1 calls
+        0 ms  ComputeCLInputPDBName                      1 calls
+        0 ms  BuildGenerateSources                       1 calls
+        0 ms  GetFrameworkPaths                          1 calls
+        0 ms  AfterResourceCompile                       1 calls
+        0 ms  _Xsd                                       1 calls
+        0 ms  _DetermineManagedStateForLink              1 calls
+        0 ms  RegisterOutput                             1 calls
+        0 ms  ComputeReferenceLinkInputs                 1 calls
+        0 ms  MakeDirsForBscMake                         1 calls
+        0 ms  _XdcMake                                   1 calls
+        0 ms  ComputeResolveLinkObj                      1 calls
+        0 ms  MakeDirsForResourceCompile                 1 calls
+        0 ms  BuildLink                                  1 calls
+        0 ms  _ResourceCompile                           1 calls
+        0 ms  ComputeLinkInputsFromProject               1 calls
+        0 ms  Build                                      1 calls
+        0 ms  _Link                                      1 calls
+        0 ms  BuildLinkTraverse                          1 calls
+        0 ms  ComputeRCOutputs                           1 calls
+        0 ms  _GenerateSatelliteAssemblyInputs           1 calls
+        0 ms  PostBuildEvent                             1 calls
+        0 ms  AfterBuildCompileEvent                     1 calls
+        0 ms  ComputeMIDLGeneratedCompileInputs          1 calls
+        0 ms  SetUserMacroEnvironmentVariables           1 calls
+        0 ms  GetResolvedLinkLibs                        1 calls
+        0 ms  BuildGenerateSourcesTraverse               1 calls
+        0 ms  SplitResourcesByCulture                    1 calls
+        0 ms  AfterLink                                  1 calls
+        0 ms  PrepareResourceNames                       1 calls
+        0 ms  ComputeManifestInputsTargets               1 calls
+        0 ms  BeforeClCompile                            1 calls
+        0 ms  AfterResolveReferences                     1 calls
+        0 ms  BeforeResolveReferences                    1 calls
+        0 ms  DoLinkOutputFilesMatch                     1 calls
+        0 ms  ComputeReferenceCLInput                    1 calls
+        0 ms  PreBuildEvent                              1 calls
+        0 ms  MakeDirsForMidl                            1 calls
+        0 ms  _BscMake                                   1 calls
+        0 ms  ComputeCLGeneratedLinkInputs               1 calls
+        0 ms  ResolveSDKReferences                       1 calls
+        0 ms  _ClCompile                                 1 calls
+        0 ms  ComputeRCGeneratedLinkInputs               1 calls
+        0 ms  BuildCompile                               1 calls
+        0 ms  _ALink                                     1 calls
+        0 ms  AssignProjectConfiguration                 1 calls
+        0 ms  BeforeResourceCompile                      1 calls
+        0 ms  _CopySourceItemsToOutputDirectory          1 calls
+        0 ms  AfterMidl                                  1 calls
+        0 ms  PreLinkEvent                               1 calls
+        0 ms  _Deploy                                    1 calls
+        0 ms  _CheckForInvalidConfigurationAndPlatform   1 calls
+        0 ms  PrepareForBuild                            1 calls
+        0 ms  _GenerateWebServiceProxy                   1 calls
+        0 ms  AfterClCompile                             1 calls
+        0 ms  BeforeBuildGenerateSources                 1 calls
+        0 ms  ResolvedXDCMake                            1 calls
+        0 ms  PlatformPrepareForBuild                    1 calls
+        0 ms  MakeDirsForXdcMake                         1 calls
+        0 ms  GetNativeManifest                          1 calls
+        1 ms  ComputeCLOutputs                           1 calls
+        1 ms  GetReferenceAssemblyPaths                  1 calls
+        1 ms  SetBuildDefaultEnvironmentVariables        1 calls
+        1 ms  MakeDirsForCl                              1 calls
+        1 ms  ComputeLinkImportLibraryOutputsForClean    1 calls
+        1 ms  ComputeCLCompileGeneratedSbrFiles          1 calls
+        1 ms  _SplitProjectReferencesByFileExistence     1 calls
+        1 ms  ComputeCustomBuildOutput                   1 calls
+        1 ms  _DetermineManagedStateFromCL               1 calls
+        1 ms  AssignTargetPaths                          1 calls
+        1 ms  GetCopyToOutputDirectoryItems              1 calls
+        1 ms  ComputeCLCompileGeneratedXDCFiles          1 calls
+        1 ms  BuildCompileTraverse                       1 calls
+        1 ms  _PrepareForAssemblyReferenceResolution     1 calls
+        1 ms  GetInstalledSDKLocations                   1 calls
+        1 ms  MakeDirsForLink                            1 calls
+        1 ms  FinalizeBuildStatus                        1 calls
+        2 ms  InitializeBuildStatus                      1 calls
+        4 ms  SetCABuildNativeEnvironmentVariables       1 calls
+        7 ms  ResolveProjectReferences                   1 calls
+        9 ms  ResolvedLinkLib                            1 calls
+       61 ms  ResourceCompile                            1 calls
+       70 ms  Manifest                                   1 calls
+     1939 ms  Link                                       1 calls
+     4428 ms  ClCompile                                  1 calls
