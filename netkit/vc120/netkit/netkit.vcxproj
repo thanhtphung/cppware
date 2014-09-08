@@ -74,24 +74,38 @@
     <BuildLog>
       <Path>$(OutDir)$(TargetName).log</Path>
     </BuildLog>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\libpcap\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <BuildLog>
       <Path>$(OutDir)$(TargetName).log</Path>
     </BuildLog>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\libpcap\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <BuildLog>
       <Path>$(OutDir)$(TargetName).log</Path>
     </BuildLog>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\libpcap\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <BuildLog>
       <Path>$(OutDir)$(TargetName).log</Path>
     </BuildLog>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\libpcap\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CapConfig.cpp" />
+    <ClCompile Include="..\..\CapDevice.cpp" />
+    <ClCompile Include="..\..\CapFile.cpp" />
     <ClCompile Include="..\..\IcmpAddrMask.cpp" />
     <ClCompile Include="..\..\IcmpEcho.cpp" />
     <ClCompile Include="..\..\IcmpHdr.cpp" />
@@ -110,6 +124,7 @@
     <ClCompile Include="..\..\MacAddrVec.cpp" />
     <ClCompile Include="..\..\MacIntf.cpp" />
     <ClCompile Include="..\..\MacIntfVec.cpp" />
+    <ClCompile Include="..\..\NetCap.cpp" />
     <ClCompile Include="..\..\Paddr.cpp" />
     <ClCompile Include="..\..\PaddrVec.cpp" />
     <ClCompile Include="..\..\RoEtherPkt.cpp" />
@@ -121,6 +136,8 @@
     <ClCompile Include="..\..\Subnet.cpp" />
     <ClCompile Include="..\..\UdpClient.cpp" />
     <ClCompile Include="..\..\Winsock.cpp" />
+    <ClCompile Include="..\..\win\CapDevice-win.cpp" />
+    <ClCompile Include="..\..\win\NetCap-win.cpp" />
     <ClCompile Include="..\..\win\netkit-pch-win.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -133,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CapConfig.hpp" />
+    <ClInclude Include="..\..\CapDevice.hpp" />
+    <ClInclude Include="..\..\CapFile.hpp" />
     <ClInclude Include="..\..\IcmpAddrMask.hpp" />
     <ClInclude Include="..\..\IcmpEcho.hpp" />
     <ClInclude Include="..\..\IcmpHdr.hpp" />
@@ -142,6 +161,7 @@
     <ClInclude Include="..\..\IpCap.hpp" />
     <ClInclude Include="..\..\IpFrag.hpp" />
     <ClInclude Include="..\..\IpHdr.hpp" />
+    <ClInclude Include="..\..\NetCap.hpp" />
     <ClInclude Include="..\..\netkit-pch.h" />
     <ClInclude Include="..\..\IfSpeed.hpp" />
     <ClInclude Include="..\..\IpAddr.hpp" />

@@ -99,7 +99,7 @@ void MacIntfSuite::testReset00()
 {
     bool ok = true;
     MacIntf macIntf;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if ((macIntf.reset(r.s) != r.isValid) || (r.isValid && (!macIntf.hasKey(r.addr))))
@@ -125,7 +125,7 @@ void MacIntfSuite::testToString00()
     MacIntf macIntf;
     char s0[MacIntf::StrLength + 1];
     char s1[MacIntf::StrLength + 1];
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         macIntf.reset(r.addr, r.intf);
@@ -149,13 +149,13 @@ void MacIntfSuite::testVec00()
     MacIntfVec vec0;
     String intf;
     StringVec intfs;
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
         const sample_t& r = SAMPLE[i];
         if (r.isValid)
         {
             macIntf.reset(r.addr, r.intf);
-            unsigned long foundAt = vec0.numItems();
+            unsigned int foundAt = vec0.numItems();
             if ((!vec0.add(macIntf)) || (vec0.findIndex(macIntf) != foundAt))
             {
                 ok = false;

@@ -9,11 +9,13 @@
 
 #include "netkit-ut-pch.h"
 #include "CapConfigSuite.hpp"
+#include "CapDeviceSuite.hpp"
 #include "IpAddrSetSuite.hpp"
 #include "IpAddrSuite.hpp"
 #include "IpDeviceSuite.hpp"
 #include "MacAddrSuite.hpp"
 #include "MacIntfSuite.hpp"
+#include "NetCapSuite.hpp"
 #include "PaddrSuite.hpp"
 #include "SubnetSuite.hpp"
 #include "UdpClientSuite.hpp"
@@ -31,6 +33,13 @@ CPPUNIT_TEST_SUITE_REGISTRATION(MacIntfSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(PaddrSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(SubnetSuite);
 CPPUNIT_TEST_SUITE_REGISTRATION(UdpClientSuite);
+
+// Avoid winpcap-related test suites in debug builds.
+// Those DLLs and driver are still to be done.
+#ifndef _DEBUG
+CPPUNIT_TEST_SUITE_REGISTRATION(CapDeviceSuite);
+CPPUNIT_TEST_SUITE_REGISTRATION(NetCapSuite);
+#endif
 
 using namespace appkit;
 using namespace netkit;

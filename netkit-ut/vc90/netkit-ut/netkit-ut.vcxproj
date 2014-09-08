@@ -130,11 +130,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CapConfigSuite.cpp" />
+    <ClCompile Include="..\..\CapDeviceSuite.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\IpAddrSetSuite.cpp" />
     <ClCompile Include="..\..\IpAddrSuite.cpp" />
     <ClCompile Include="..\..\IpDeviceSuite.cpp" />
     <ClCompile Include="..\..\MacAddrSuite.cpp" />
     <ClCompile Include="..\..\MacIntfSuite.cpp" />
+    <ClCompile Include="..\..\NetCapSuite.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\PaddrSuite.cpp" />
     <ClCompile Include="..\..\SubnetSuite.cpp" />
     <ClCompile Include="..\..\UdpClientSuite.cpp" />
@@ -159,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CapConfigSuite.hpp" />
+    <ClInclude Include="..\..\CapDeviceSuite.hpp" />
+    <ClInclude Include="..\..\NetCapSuite.hpp" />
     <ClInclude Include="..\..\netkit-ut-pch.h" />
     <ClInclude Include="..\..\IpAddrSetSuite.hpp" />
     <ClInclude Include="..\..\IpAddrSuite.hpp" />

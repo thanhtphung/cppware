@@ -173,7 +173,7 @@ void SubnetSuite::testCtor00()
 {
     bool ok = true;
     char s[Subnet::StrLength + 1];
-    for (unsigned long i = 0; i < NUM_SAMPLES; ++i)
+    for (unsigned int i = 0; i < NUM_SAMPLES; ++i)
     {
 
         const sample_t& r = SAMPLE[i];

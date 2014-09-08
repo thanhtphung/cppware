@@ -20,17 +20,17 @@ IpDeviceSuite::~IpDeviceSuite()
 
 //
 // Interfaces under test:
-// - unsigned long IpDevice::categorize(unsigned long);
+// - unsigned int IpDevice::categorize(unsigned int);
 //
 void IpDeviceSuite::testCategorize00()
 {
-    bool ok = (IpDevice::categorize(0x7f000001UL) == IpDevice::Loopback);
+    bool ok = (IpDevice::categorize(0x7f000001U) == IpDevice::Loopback);
     CPPUNIT_ASSERT(ok);
 
-    ok = (IpDevice::categorize(0x7f000000UL) == IpDevice::Broadcast);
+    ok = (IpDevice::categorize(0x7f000000U) == IpDevice::Broadcast);
     CPPUNIT_ASSERT(ok);
 
-    ok = (IpDevice::categorize(0x7fffffffUL) == IpDevice::Broadcast);
+    ok = (IpDevice::categorize(0x7fffffffU) == IpDevice::Broadcast);
     CPPUNIT_ASSERT(ok);
 }
 
@@ -38,7 +38,7 @@ void IpDeviceSuite::testCategorize00()
 void IpDeviceSuite::testCtor00()
 {
     bool ok = true;
-    unsigned long numDevices = IpDevice::numDevices();
+    unsigned char numDevices = IpDevice::numDevices();
     IpAddr ipAddr;
     MacAddr macAddr;
     for (unsigned char i = 0; i < numDevices; ++i)
@@ -61,13 +61,13 @@ void IpDeviceSuite::testCtor00()
         {
             ipAddr = device->addr(j);
             ipAddr.toString(addr);
-            if (device->addrIsNear(device->addr(j)) ||
+            if (device->addrIsNear(ipAddr.asU32()) ||
                 (IpDevice::find(addr) != device) ||
                 ((IpDevice::categorize(device->addr(j)) != IpDevice::Local) &&
                 (IpDevice::categorize(device->addr(j)) != IpDevice::Loopback)))
             {
                 ok = false;
-                i = static_cast<unsigned char>(numDevices - 1); //terminate outer loop
+                i = numDevices - 1; //terminate outer loop
                 break;
             }
         }
