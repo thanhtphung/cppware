@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2FE29844-8866-4D2D-8377-5A2744C64FF2}</ProjectGuid>
+    <RootNamespace>wpcap</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\dll-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\dlld-Win32.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\dll-x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\VSPropertyFiles\dlld-x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\wpcap\libpcap;..\..\wpcap\libpcap\lbl;..\..\wpcap\libpcap\bpf\;..\..\Common;..\..\wpcap\libpcap\win32\include;..\..\wpcap\Win32-Extensions;..\..\..\airpcap-4.1.1\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;LIBPCAP_EXPORTS;_WINDOWS;HAVE_ADDRINFO;YY_NEVER_INTERACTIVE;yylval=pcap_lval;HAVE_STRERROR;__STDC__;INET6;SIZEOF_CHAR=1;SIZEOF_SHORT=2;SIZEOF_INT=4;WPCAP;HAVE_SNPRINTF;HAVE_VSNPRINTF;HAVE_REMOTE;HAVE_AIRPCAP_API;_U_=;YY_NO_UNISTD_H;HAVE_TC_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>../../wpcap/PRJ/WPCAP.DEF</ModuleDefinitionFile>
+    </Link>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\wpcap\libpcap;..\..\wpcap\libpcap\lbl;..\..\wpcap\libpcap\bpf\;..\..\Common;..\..\wpcap\libpcap\win32\include;..\..\wpcap\Win32-Extensions;..\..\..\airpcap-4.1.1\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;LIBPCAP_EXPORTS;_WINDOWS;HAVE_ADDRINFO;YY_NEVER_INTERACTIVE;yylval=pcap_lval;HAVE_STRERROR;__STDC__;INET6;SIZEOF_CHAR=1;SIZEOF_SHORT=2;SIZEOF_INT=4;WPCAP;HAVE_SNPRINTF;HAVE_VSNPRINTF;HAVE_REMOTE;HAVE_AIRPCAP_API;_U_=;YY_NO_UNISTD_H;HAVE_TC_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>../../wpcap/PRJ/WPCAP.DEF</ModuleDefinitionFile>
+    </Link>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\wpcap\libpcap;..\..\wpcap\libpcap\lbl;..\..\wpcap\libpcap\bpf\;..\..\Common;..\..\wpcap\libpcap\win32\include;..\..\wpcap\Win32-Extensions;..\..\..\airpcap-4.1.1\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;LIBPCAP_EXPORTS;_WINDOWS;HAVE_ADDRINFO;YY_NEVER_INTERACTIVE;yylval=pcap_lval;HAVE_STRERROR;__STDC__;INET6;SIZEOF_CHAR=1;SIZEOF_SHORT=2;SIZEOF_INT=4;WPCAP;HAVE_SNPRINTF;HAVE_VSNPRINTF;HAVE_REMOTE;HAVE_AIRPCAP_API;_U_=;YY_NO_UNISTD_H;HAVE_TC_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>../../wpcap/PRJ/WPCAP.DEF</ModuleDefinitionFile>
+    </Link>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\wpcap\libpcap;..\..\wpcap\libpcap\lbl;..\..\wpcap\libpcap\bpf\;..\..\Common;..\..\wpcap\libpcap\win32\include;..\..\wpcap\Win32-Extensions;..\..\..\airpcap-4.1.1\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;LIBPCAP_EXPORTS;_WINDOWS;HAVE_ADDRINFO;YY_NEVER_INTERACTIVE;yylval=pcap_lval;HAVE_STRERROR;__STDC__;INET6;SIZEOF_CHAR=1;SIZEOF_SHORT=2;SIZEOF_INT=4;WPCAP;HAVE_SNPRINTF;HAVE_VSNPRINTF;HAVE_REMOTE;HAVE_AIRPCAP_API;_U_=;YY_NO_UNISTD_H;HAVE_TC_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>../../wpcap/PRJ/WPCAP.DEF</ModuleDefinitionFile>
+    </Link>
+    <BuildLog>
+      <Path>$(OutDir)$(TargetName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\wpcap\libpcap\bpf_dump.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\bpf\net\bpf_filter.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\bpf_image.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\etherent.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\fad-win32.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\Win32\Src\ffs.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\gencode.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\Win32\Src\getservent.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\grammar.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\inet.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\nametoaddr.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\optimize.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\pcap-new.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\pcap-remote.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\pcap-tc.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\pcap-win32.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\pcap.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\savefile.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\scanner.c" />
+    <ClCompile Include="..\..\wpcap\libpcap\sockutils.c" />
+    <ClCompile Include="..\..\wpcap\Win32-Extensions\Win32-Extensions.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\wpcap\libpcap\acconfig.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\arcnet.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\atmuni31.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\dlpisubs.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\ethertype.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\gencode.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\ieee80211.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\llc.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\nlpid.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap-int.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap-namedb.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap-remote.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap-stdinc.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap-tc.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\pcap1.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\ppp.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\remote-ext.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\sockutils.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\sunatmpos.h" />
+    <ClInclude Include="..\..\wpcap\libpcap\tokdefs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\wpcap\Win32-Extensions\version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\packet\packet.vcxproj">
+      <Project>{d86e08af-947b-45bb-8a67-f6e355d62e7a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

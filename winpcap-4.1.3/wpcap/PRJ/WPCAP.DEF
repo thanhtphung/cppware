@@ -1,5 +1,3 @@
-LIBRARY wpcap.dll
-
 EXPORTS
 		pcap_lookupdev
 		pcap_lookupnet
